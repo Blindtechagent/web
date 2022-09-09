@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todo-app</title>
+    <link rel="stylesheet" href="./stylesheet/style.css" />
+<style>   /* reset style code here */
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  outline: none;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+html {
+  font-size: 50%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f0ffff;
+}
+
+/* styling container here  */
+.container {
+  max-width: 900px;
+  margin: 5rem auto;
+  display: grid;
+  grid-template-columns: 95%;
+  justify-content: center;
+  align-items: center;
+  grid-row-gap: 25px;
+}
+
+/* styling todo input */
+.todo-input,
+.todo-lists {
+  border: 4px solid #4ae9e1;
+  border-radius: 1rem;
+  background-color: #444444;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5), -2px -4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.todo-input h1 {
+  font-size: 4rem;
+  padding: 0.8rem;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.show-input-action,
+.show-result-action {
+  width: 90%;
+  margin: 0.5rem auto;
+  padding: 1.2rem 0rem;
+  font-size: 2.6rem;
+  text-transform: capitalize;
+  color: #fff;
+  border: none;
+  border-radius: 0.7rem;
+}
+
+.show-input-action {
+  display: none;
+}
+
+.todo-form #input-todo,
+#todo-button {
+  font-size: 2rem;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 0.7rem;
+  margin: 2rem auto;
+  border: none;
+  display: block;
+}
+
+.todo-form #input-todo {
+  width: 80%;
+  background-color: transparent;
+  border-bottom: 2px solid #4ae9e1;
+}
+
+.todo-form #todo-button {
+  width: 100px;
+  border-radius: 0.5rem;
+  background-color: #3d8750;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+}
+
+.todo-form #todo-button:hover {
+  background-color: #ff8c00;
+  color: black;
+}
+
+/* styling todo lists  */
+.todo-lists h2 {
+  font-size: 3.5rem;
+  text-transform: capitalize;
+  color: #fff;
+  padding: 0.7rem;
+}
+
+.show-result-action {
+  display: none;
+}
+
+.todo-lists .btn {
+  display: block;
+  width: 150px;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 1rem auto;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+  cursor: pointer;
+  background-color: #c01d1d;
+  transition: all 0.3s;
+}
+
+.todo-lists .btn:hover {
+  background-color: #ffd700;
+  color: black;
+}
+
+/* styling list element */
+.ul-list {
+  margin: 2rem auto;
+}
+
+.ul-list li {
+  display: grid;
+  grid-template-columns: 1fr 9fr 2fr;
+  justify-content: center;
+  align-items: center;
+  background-color: #222;
+  margin: 1rem auto;
+  border-radius: 0.5rem;
+}
+
+.ul-list li p {
+  font-size: 2rem;
+  color: #fff;
+  text-transform: capitalize;
+  padding: 1rem;
+
+}
+
+.ul-list li p:nth-child(2) {
+  text-align: left;
+}
+
+.ul-list li p img {
+  cursor: pointer;
+  width: 2rem;
+  height: auto;
+  border-radius: 0.5rem;
+  transition: all 0.4s;
+}
+
+.ul-list li p img:hover {
+  transform: scale(1.2);
+  background-color: #f0ffff;
+}
+
+/* style making for javascript manipulation */
+.show-alert-green {
+  background-color: #7fcd71;
+  display: block;
+}
+
+.show-alert-red {
+  background-color: #e8706c;
+  display: block;
+}
+
+.scaling {
+  transform: scale(90%);
+}
+
+/* media query  */
+@media only screen and (min-width: 596px) {
+  html {
+    font-size: 62.5%;
+  }
+
+  body {
+    background-color: lightblue;
+  }
+
+  .container {
+    grid-template-columns: 85%;
+    grid-row-gap: 50px;
+  }
+
+  .ul-list li {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    background-color: lightpink;
+  }
+
+  .show-input-action,
+  .show-result-action {
+    width: 80%;
+
+  }
+
+  .ul-list li {
+    width: 85%;
+  }
+}
+
+
+/* happy coding!! */  </style> 
+ </head>
+  <body>
+    <div class="container">
+      <div class="todo-input">
+        <h1>Todo App</h1>
+        <p class="show-input-action"></p>
+        <form class="todo-form" autocomplete="off">
+          <input type="text" id="input-todo" placeholder="Enter a todo here" />
+          <input id="todo-button" type="submit" value="Add" />
+        </form>
+      </div>
+      <div class="todo-lists">
+        <h2>todo list</h2>
+        <p class="show-result-action">successfully deleted</p>
+
+        <ul class="ul-list">
+          <!--
+          <li>
+            <p>1 </p> <p>work hard</p>
+            <p><img  src="./icon/icons8-trash-30.png" alt="Delete" /></p>
+          </li>
+         -->
+        </ul>
+
+        <button type="reset" id="reset-button" class="btn">clear all</button>
+      </div>
+    </div>
+
+    <script>   // selecting all necessary dom element
+// todo input container
+const inputContainer = document.querySelector(".todo-input");
+const showInputAction = inputContainer.querySelector(".show-input-action");
+const todoForm = inputContainer.querySelector(".todo-form");
+const inputTodo = todoForm.querySelector("#input-todo");
+const todoButton = todoForm.querySelector("#todo-button");
+
+// todo list container
+const listContainer = document.querySelector(".todo-lists");
+const showResultAction = listContainer.querySelector(".show-result-action");
+const unOrderList = listContainer.querySelector(".ul-list");
+const clearButton = listContainer.querySelector("#reset-button");
+
+// all function here
+// loadDataFromLocalStorage function here
+const loadDataFromLocalStorage = () => {
+  //get data from localStorage
+  let todoArray = getDataFromLocalStorage();
+
+  // create item list from data
+  createListElementShow(todoArray);
+};
+
+// showSuccessfullAlert function
+const showActionAlert = (text, signal, element) => {
+  element.textContent = text;
+  element.classList.add(`show-alert-${signal}`);
+  inputTodo.value = "";
+
+  // removing actionAlert message
+  setTimeout(() => {
+    element.classList.remove(`show-alert-${signal}`);
+  }, 1500);
+};
+
+// checkDataValidity function
+const checkDataValidity = (event) => {
+  event.preventDefault();
+  let todoValue = inputTodo.value;
+
+  //checking user enter valid data and take action
+  if (todoValue) {
+    putDataInLocalStorage(todoValue);
+    showActionAlert(`${todoValue} is successfully added`, "green", showInputAction);
+
+  } else {
+    showActionAlert("please enter a todo", "red", showInputAction);
+  }
+};
+
+// getDataFromLocalStorage function
+const getDataFromLocalStorage = () => {
+  let todoArray, exist;
+
+  exist = localStorage.getItem("todoArray");
+  todoArray = exist === null ? [] : JSON.parse(exist);
+
+  return todoArray;
+};
+
+// putDataInLocalStorage function
+const putDataInLocalStorage = (todoValue) => {
+  let uniqueId, arryData, todoArray, serial;
+
+  // calling getDataFromLocalStorage function
+  todoArray = getDataFromLocalStorage();
+
+  // generating a unique id for every todo list
+  uniqueId = Date.now().toString();
+
+  // making array data for pushing
+  arryData = { id: uniqueId, value: todoValue };
+
+  // pushing array data on todoArray
+  todoArray.push(arryData);
+
+  // make serial for giving serial every list of todo
+  serial = todoArray.length;
+
+  // showing data in todo list
+  createListElement(arryData, serial);
+
+  // updated data again set in localStorage
+  setDataInLocalStorage(todoArray);
+};
+
+// setDataInLocalStorage function
+const setDataInLocalStorage = (todoArray) => {
+  // make stringify the todoArray for storing
+  let storableData = JSON.stringify(todoArray);
+
+  // store todoArray in localStorage
+  localStorage.setItem("todoArray", storableData);
+};
+
+// createListElement function
+const createListElement = (arryData, serial) => {
+  let uniqueId, value;
+  uniqueId = arryData.id;
+  value = arryData.value;
+
+  // creating element
+  const list = document.createElement("li");
+  list.id = uniqueId;
+  const element = `<p>${serial} :</p> <p>${value}</p> <p id="single-delete"><img  src="./icon/icons8-trash-30.png" alt="Delete" /></p>`;
+
+  // put element with list
+  list.innerHTML = element;
+
+  // append list with unOrderList
+  unOrderList.appendChild(list);
+
+  // singleListDelete
+  const singleListDelete = list.querySelector("#single-delete");
+  singleListDelete.addEventListener("click", deleteSingleItem);
+};
+
+// deleteSingleItem function
+const deleteSingleItem = (event) => {
+  let todoArray, position, previousItem;
+
+  // some necessary dom selecting
+  const selectedList = event.target.parentElement.parentElement;
+  const value = event.target.parentElement.previousElementSibling.innerText;
+  const id = selectedList.id;
+
+  //removing selected item
+  unOrderList.removeChild(selectedList);
+
+  // show an adding data action
+  showActionAlert(`${value} is removed successfully`, "green", showResultAction);
+
+  // get array from localStorage
+  todoArray = getDataFromLocalStorage();
+
+  // finding deleted item index
+  position = todoArray.findIndex((object) => {
+    return object.id === id;
+  });
+
+  // taking previous item
+  previousItem = todoArray.filter((value, index) => {
+    return index > position;
+  });
+
+  // also finding next elements
+  todoArray = todoArray.filter((value, index) => {
+    return index < position;
+  });
+
+  // pushing next elements value on todoArray
+  previousItem.forEach((value) => {
+    todoArray.push(value);
+  });
+
+  // update localStorage when delete a single item
+  setDataInLocalStorage(todoArray);
+  // take a reload for making serial correct
+  setTimeout(() => {
+    location.reload();
+  }, 2000);
+};
+
+// createListElement function
+const createListElementShow = (todoArray) => {
+  let arryData, serial;
+
+  // create new list item when user add data or load window
+  todoArray.forEach((value, index, array) => {
+    arryData = value;
+    serial = index + 1;
+    createListElement(arryData, serial);
+  });
+};
+
+// clearAllListItem function
+const clearAllListItem = () => {
+  let len = getDataFromLocalStorage().length;
+
+  if (len !== 0) {
+    // take a confirmation from user
+    let descition = confirm("Are You Sure To Delete All Todo ?");
+
+    // take action which given by user
+    if (descition) {
+      // remove all item from current window
+      unOrderList.textContent = "";
+
+      // also remove from localStorage
+      localStorage.removeItem("todoArray");
+      showActionAlert("all items are successfully deleted", "red", showResultAction);
+
+    } else {
+      showActionAlert("items are not deleted", "green", showResultAction);
+    }
+
+  } else {
+    showActionAlert("no more item to delete", "red", showResultAction);
+  }
+};
+
+// all event listener
+// load event listener
+document.addEventListener("DOMContentLoaded", loadDataFromLocalStorage);
+
+// form event listener
+todoForm.addEventListener("submit", checkDataValidity);
+
+//clear all button listener
+clearButton.addEventListener("click", clearAllListItem);
+
+
+// event listener for styling button
+todoButton.addEventListener("mousedown", () => {
+  todoButton.classList.add("scaling");
+});
+
+todoButton.addEventListener("mouseup", () => {
+  todoButton.classList.remove("scaling");
+});
+
+clearButton.addEventListener("mousedown", () => {
+  clearButton.classList.add("scaling");
+});
+
+clearButton.addEventListener("mouseup", () => {
+  clearButton.classList.remove("scaling");
+});
+
+
+
+// happy coding !!!!!!
+// this project made by Fahad at 30 & 31 March, 2022
+  </script>
+  </body>
+</html>
+
+<!-- happy coding!! -->

@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>  <html lang="en">  <head>     <meta charset="UTF-8"> <meta name="description" content="Blind tech agent is multipurpose website for all">  <meta name="keywords" content="Blind tech agent.net, BlindTechAgent.net, Blindtechagent, Blind tech agent, for blind, pawan">    <meta name="viewport" content="width=device-width, initial-scale=1.0">     <meta http-equiv="X-UA-Compatible" content="ie=edge"> <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Blind tech agent</title>  
+<style> header{padding:0px;}        #main-heading{text-align:center; font-family:Times_New_Roman; font-weight:bold; padding:20px 4p; }   #head{ width:100%; height:70vh; padding:0px; background:#D462FF; color:#8BFF61; animation: head 5s ease-in-out 0.7s infinite alternate both; }
+@keyframes head { 0%{background:#D462FF; color:#8BFF61;}  25%{background:#FF6347; color:#47E3FF;}  50%{background:#12AD2B; color:#0909FF;}  75%{background:#0909FF; color:#FFFF0A;}  100%{background:black; color:snow;}  }  .hidden{font-size:0px;}
+.tab { overflow: hidden; border: 1px solid black; background-color:lime; padding:0px; margin:0px;}  .tab button { background-color:skyblue; border: none;   outline: none;   cursor: pointer; padding: 14px 16px; margin:0px; font-size:1.2rem;}  .tab button.active { background-color:gold; }
+.toolsLink{ background:rgb(242, 139, 255);  display:block;  margin:18px;  padding:6px;  text-decoration:none;  width:200px;  border:none;
+}
+.ctnbtn{ background-color:rgb(255, 100, 255); color:orange;  overflow:hidden;  margin:18px;  padding:8px;  width:200px; border:none;
+}
+</style>  
+</head>
+<body>
+<center>
+ <header>
+<div id="head">  <img style="border:0px; overflow:hidden;border-radius:15%;" src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo" width="150px" height="150px"></img>
+ <h1 id="main-heading">BLIND TECH AGENT</h1>   <hr>  
+<h2>Welcome to our site</h2>
+<br>
+  <div id="greet">
+</div> 
+<div class="time"></div>
+      <div class="date"></div>
+</div>
+ <nav class="tab">
+<button onclick="openTab(event, 'home')" class="tablinks" id="defaultOpen">HOME <p class="hidden">, tab</p></button>  
+<button onclick="openTab(event, 'tools')" class="tablinks">Tools <p class="hidden">,tab</p></button> 
+ 
+<button onclick="openTab(event, 'contact')" class="tablinks">Contact <p class="hidden">,tab</p></button> 
+ 
+<button onclick="openTab(event, 'about')" class="tablinks">About <p class="hidden">,tab</p></button> 
+</nav>  
+</header>  
+
+<div style="background:rgba(86, 165, 236, 0.6);" id="home" class="tabcontent">
+<br>
+<br>
+<section>     <h2>Welcome to our website</h2>
+ <p>This is multipurpose website</p>  
+<br>
+<p>There are many tools available in tools page</p>
+<p>so please check</p>
+<a class="w3-button w3-orange" onclick="openTab(event, 'tools')">Tools page</a>
+</section>
+<br>
+<br>
+<br>
+</div>
+<div style="background:rgba(255, 165, 0, 0.5);" id="tools" class="tabcontent">
+<h2>Tools</h2>
+<p>there are many tools available here</p>
+<br>
+<a href="age.html" class="toolsLink">Age calculator</a>
+<a href="calculator.html" class="toolsLink">Online Calculator</a>
+<a href="todolist.html" class="toolsLink">ToDo list</a>
+<a href="https://blindtechagent.github.io/guess-game/" class="toolsLink">Guess the Number game</a>
+<a href="whatsapp.html" class="toolsLink">WhatsApp number link generator</a>
+<br>
+<br>
+<br>
+</div>
+<div style="background:rgba(0, 255, 0, 0.5);" id="contact" class="tabcontent">
+<br>
+<br>
+<h2>Contact us</h2>
+<p style="color:blue;">if you have any problem or suggestion related to this website,
+so you can contact us</p>
+<button onclick="window.location.href='MAILTO:pawanpianoartist@gmail.com'" class="ctnbtn">Mail us</button>
+<br>   <button onclick="window.location.href='https://wa.me/+919315548418?text=I%20need%20help'" class="ctnbtn"> Contact us on WhatsApp </button>
+<br>   <button onclick="window.location.href='https://t.me/pawan_ks'" class="ctnbtn">  Contact us on telegram </button>
+ 
+  
+<br>
+<br>
+<br>
+</div>
+<div id="about" class="tabcontent">
+<h2>About us</h2>
+</div>
+<footer class="w3-container w3-dark-grey">    <p>Copyright © Blind tech agent</p>
+<br>
+<section>
+<a href="https://youtube.com/c/BlindTechAgent" class="w3-left w3-margin-min" target="_blank"> <i class="fa fa-youtube" style="font-size:34px; color:orange;"></i> <br> 
+YouTube</a>
+</section>    </footer>
+<script>     function openTab(evt, tabName) {
+var i, tabcontent, tablinks;
+
+ tabcontent = document.getElementsByClassName("tabcontent");
+ for (i = 0; i < tabcontent.length; i++) {
+ tabcontent[i].style.display = "none";
+}
+
+tablinks = document.getElementsByClassName("tablinks");
+for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+document.getElementById("defaultOpen").click();
+</script>
+<script>   
+const timeEl = document.querySelector('.time')
+const dateEl = document.querySelector('.date')
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+function setTime() {
+    const time = new Date();
+    const month = time.getMonth()
+     const year = time.getFullYear()
+
+       const day = time.getDay()
+    const date = time.getDate()
+    const hours = time.getHours()
+    const hoursForClock = hours >= 13 ? hours % 12 : hours;
+    const minutes = time.getMinutes()
+    const seconds = time.getSeconds()
+    const ampm = hours >= 12 ? 'PM' : 'AM'
+   timeEl.innerHTML = `${hoursForClock}:${minutes < 10 ? `0${minutes}` : minutes} ${ampm}`
+    dateEl.innerHTML = `${days[day]}, ${months[month] } ${date}, ${year}`
+}
+
+
+setTime()
+
+setInterval(setTime, 1000)  
+
+const time = new Date().getHours();
+let greeting;
+if (time < 12) {
+ greeting = "Good morning";
+}  if (time >= 12)  {
+ greeting = "Good afternoon";
+} 
+ if (time >= 17) {
+greeting = "Good evening"; } 
+if (time >= 21) { greeting = "Good night";}     document.getElementById("greet").innerHTML = greeting;
+ </script>
+
+  </body>
+</html>
