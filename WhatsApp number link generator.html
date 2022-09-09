@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>WhatsApp number link generator</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">  
+
+</head>
+
+<body class="w3-light-green">
+<center>
+<h1 class="w3-text-indigo">Whatsapp number link generator</h1>
+<form action="https://api.whatsapp.com/send" method="GET" target="_blank" name="form_main">
+<br>
+<br>
+<label for="code">Country code</label>
+<input type="tel" id="code" name="code" required value="91">
+<br>
+<br>
+<br>
+  
+<label for="phone">Enter your 10 digit Phone numbr</label>
+<input type="tel"  name="phone" id="phone" required>
+<br>
+<br>
+<button type="button" class="w3-button w3-blue w3-auto w3-round" onclick="generate()">Generate link</button>
+<br>
+<br>
+<textarea readonly placeholder="your link" id="result"></textarea>
+<br>
+<br>
+<br>
+<button type="button" class="w3-btn w3-purple w3-riple w3-margin" onclick="copy()">Copy link</button>
+<button type="submit" class="w3-btn w3-purple w3-riple w3-margin">open in WhatsApp</button>
+</form>
+<script>
+function generate() {
+let num = document.form_main.phone.value;
+let code = document.form_main.code.value;
+let link = "https://wa.me/";
+let result = `${link}${code}${num}`;
+document.getElementById('result').innerText = result; }
+function copy() {
+var me = document.getElementById("result");
+me.select(); document.execCommand("copy"); alert("Copied successfully");
+}
+</script>
+</body>
+</html>
