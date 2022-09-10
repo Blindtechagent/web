@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>WhatsApp number link generator</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">  
+
+</head>
+
+<body class="w3-light-green ">
+<center>
+<h1 class="w3-text-indigo">Telegram link generator</h1>
+<form name="form_main">  
+<label for="phone">Enter your username without @ symbol</label>
+<input type="text"  name="phone" id="phone" onkeyup="EnableDisable(this)" required>
+<p>Note:
+do not include @ simble before username,
+and do not include space.</p>
+<br>
+<button type="button" class="w3-button w3-blue w3-auto w3-round" disabled onclick="generate()" id="gen">Generate link</button>
+<br>
+<br>
+<textarea readonly placeholder="your link here" id="result"></textarea>
+<br>
+<br>
+<br>
+<button type="button" class="w3-btn w3-blue w3-riple w3-margin" onclick="copy()">Copy link</button>
+
+</form>
+<script>
+function generate() {
+let num = document.form_main.phone.value;
+let link = "https://t.me/";
+let result = `${link}${num}`;
+document.getElementById('result').innerText = result; }
+function copy() {
+var me = document.getElementById("result");
+me.select(); document.execCommand("copy"); alert("Copied successfully");
+}
+
+    function EnableDisable(phone) {
+        var btnSubmit = document.getElementById("gen");
+        if (phone.value.trim() != "") {
+            btnSubmit.disabled = false;
+        } else {
+            btnSubmit.disabled = true;
+        }
+    };
+</script>
+</body>
+</html>
