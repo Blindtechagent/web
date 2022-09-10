@@ -20,10 +20,10 @@
 <br>
   
 <label for="phone">Enter your 10 digit Phone numbr</label>
-<input type="tel"  name="phone" id="phone" required>
+<input type="tel"  name="phone" id="phone" onkeyup="EnableDisable(this)" required>
 <br>
 <br>
-<button type="button" class="w3-button w3-blue w3-auto w3-round" onclick="generate()">Generate link</button>
+<button type="button" class="w3-button w3-blue w3-auto w3-round" disabled onclick="generate()" id="gen">Generate link</button>
 <br>
 <br>
 <textarea readonly placeholder="your link" id="result"></textarea>
@@ -44,6 +44,14 @@ function copy() {
 var me = document.getElementById("result");
 me.select(); document.execCommand("copy"); alert("Copied successfully");
 }
+    function EnableDisable(phone) {
+        var btnSubmit = document.getElementById("gen");
+        if (phone.value.trim() != "") {
+            btnSubmit.disabled = false;
+        } else {
+            btnSubmit.disabled = true;
+        }
+    };
 </script>
 </body>
 </html>
