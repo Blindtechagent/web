@@ -7,73 +7,55 @@
 <script src="https://kit.fontawesome.com/a5db627303.js" crossorigin="anonymous"></script>
    <title>Calculater</title>
 <style>
-*{   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   font-family:TimesNewRoman;
+
+body{
+	font-family: 'Open Sans',sans-serif;
+	background-color: white;
 }
-body
-{
-   display: flex;
-   justify-content: center;
-   align-items: center;
- padding:50px 10px; }
-.main
-{
-   position: relative;
-   background: lime;
-   border-radius: 6px;
-   overflow: hidden;
-   border: 1.5px solid blue; 
+.keyboard{ display:grid; grid-template-columns:auto auto auto auto; border:none;}
+.calculator{
+	width:80vw;
+ 	height: 75vh;
+	background-color:#7FFF00; padding:10px; 
+
+	margin: 25px auto;
+
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.main .calculator
-{
-  padding:3px; position: relative;
-   display: grid;
+.value{
+background:white; color:black; text-align: left;
+	height: 12vh;
+width:70vw; margin: 5%;
+	padding: 5px;
+	font-size: 1em;
 }
-.main .calculator .value
-{
-   grid-column: span 4;
-   width: 75vw;
-   height: 20vh;
-   background: white;
-   color: black;
-   border: none;
-  
-   font-size: 1.3em;
-   text-align: left;
-   outline: none;
-   padding: 8px; margin:5px;
+
+ .num{
+	width: 15vw;
+ 	height: 10vh;
+	margin: 6%;
+font-weight: bold;
+	font-size: 1.5em;
+	background-color: skyblue; text-align:center;
+	cursor: pointer;
 }
-.main .calculator span
-{
-   display: grid;
-   width: 70px;
-   height: 70px;
-   place-items: center;
-   font-size: 30px;
- margin:2.6px; background:skyblue; color:red;
-   border: none;
-  
-   transition: 0.5s;
-   user-select: none;
-   -webkit-user-select: none;
-   cursor: pointer;
+.clear{ font-size:1em; }
+.clear:active, .num:active{
+background:blue; color:snow; width:17vw; height:12vh; 
 }
-.main .calculator .backspace
-{
-   grid-column: span 2;
-   width: 140px;
-}
-i{ color:red; font-size:30px; }
+
+i{ color:red; margin:14px; font-size:30px; }
 </style>
 </head>
 <body>
 <br>   <div class="main">
       <form action="#" name="calc" class="calculator">
          <input type="text" readonly name="textview" class="value">
-         <span role="button" class="num backspace" onclick="document.calc.textview.value = ''">Clear</span>
+<div class="keyboard">         <span role="button" class="num clear" onclick="document.calc.textview.value = ''">Clear</span>
          <span role="button" class="num operator" onclick="back()"><i title="backspace" class="fa fa-b"></i></span>
+         <span role="button" class="num operator" onclick="document.calc.textview.value += '%'">
+<i title="percent" class="fas fa-percent"></i></span>
          <span role="button" class="num operator" onclick="document.calc.textview.value += '/'"><i title="divide" class="fas fa-divide"></i></span>
          <span role="button" class="num" onclick="document.calc.textview.value += '7'">7</span>
          <span role="button" class="num" onclick="document.calc.textview.value += '8'">8</span>
@@ -91,7 +73,7 @@ i{ color:red; font-size:30px; }
          <span role="button" class="num" onclick="document.calc.textview.value += '00'">00</span>
          <span role="button" class="num operator" onclick="document.calc.textview.value += '.'">.</span>
          <span role="button" class="num equal" onclick="document.calc.textview.value = eval(document.calc.textview.value)"><i title="equals" class="fas fa-equals"></i></span>
-      </form>
+ </div>     </form>
    </div>
 
    <script>
