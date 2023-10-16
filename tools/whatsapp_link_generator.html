@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/a5db627303.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../others/loading.js"></script>
+  <meta charset="UTF-8">
+  <title>WhatsApp number link generator</title>
+</head>
+
+<body class="w3-light-green">
+  <div class="preloader">
+    <div class="loader"></div>
+    <p id="loading-text" tabindex="0" autofocus aria-live="assertive">LOADING</p>
+  </div>
+  <div class="body">
+    <header>
+      <a class="skip" href="#main">Skip to main content</a>
+      <a href="../index.html" class="link">Blind Tech agent</a>
+      <img class="menuBtn w3-display-topleft" role="button" src="https://static.thenounproject.com/png/2438551-200.png"
+        title="menu"></img>
+      <div class="drawer w3-sidebar w3-bar-block w3-anemate-left">
+        <a id="loginBtn" role="menuitem" href="../menu/login.html" class="menuLinks w3-bar-item">Log in</a>
+        <a id="accountBtn" role="menuitem" href="../menu/createAccount.html" class="menuLinks w3-bar-item"></a>
+        <a role="menuitem" href="../menu/contact.html" class="menuLinks w3-bar-item">Contact us</a>
+        <a role="menuitem" href="../menu/about.html" class="menuLinks w3-bar-item">About us</a>
+        <a role="menuitem" href="../menu/privacy_policy.html" class="menuLinks w3-bar-item">Privacy policy</a>
+      </div>
+      <img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo" width="100px" height="100px"
+        class="w3-image"></img>
+      <h1 id="main-heading">BLIND TECH AGENT</h1>
+      <hr>
+      <p>"Transforming lives with the power of technology."</p>
+      <nav class="w3-bar">
+        <a role="tab" href="../index.html" target="_self" class="tab">HOME</a>
+        <a role="tab" href="../tools.html" target="_self" aria-label="Selected, Tools" class="tab w3-yellow">TOOLS </a>
+        <a role="tab" href="../education.html" target="_self" class="tab">EDUCATION</a>
+        <a role="tab" href="../articles.html" target="_self" class="tab">ARTICLES</a>
+      </nav>
+    </header>
+    <main>
+      <center>
+        <div id="heading-box" tabindex="0" role="heading" aria-level="2">
+          <h2 class="w3-text-indigo">WhatsApp number link generator</h2>
+        </div>
+        <form action="https://api.whatsapp.com/send" method="GET" target="_blank" name="form_main">
+          <br>
+          <br>
+          <p>select your country code</p>
+          <select id="code" name="code">
+            <option value="91" selected>India (+91)</option>
+            <option value="880">Bangladesh (+880)</option>
+            <option value="975">Bhutan (+975)</option>
+            <option value="86">China (+86)</option>
+            <option value="62">Indonesia (+62)</option>
+            <option value="977">Nepal (+977)</option>
+            <option value="92">Pakistan (+92)</option>
+            <option value="63">Philippines (+63)</option>
+            <option value="65">Singapore (+65)</option>
+            <option value="94">Sri Lanka (+94)</option>
+            <option value="66">Thailand (+66)</option>
+            <option value="84">Vietnam (+84)</option>
+          </select>
+          <br>
+          <br>
+          <label for="phone">Enter your 10 digit phone number</label>
+          <input type="tel" name="phone" id="phone" onkeyup="enableDisable(this)" required>
+          <br>
+          <br>
+          <button type="button" class="w3-button w3-blue w3-auto w3-round" disabled onclick="generate()"
+            id="gen">Generate
+            link</button>
+          <br>
+          <br>
+          <textarea readonly placeholder="Your link" id="result"></textarea>
+          <br>
+          <br>
+          <br>
+          <button type="button" class="w3-btn w3-purple w3-ripple w3-margin" onclick="copy()">Copy link</button>
+          <button type="button" class="w3-btn w3-purple w3-ripple w3-margin" onclick="share()">Share link</button>
+          <button type="submit" class="w3-btn w3-purple w3-ripple w3-margin" onclick="openWhatsApp(event)">Direct chat
+            in
+            WhatsApp</button>
+        </form>
+    </main>
+    <footer class="footer">
+      <h2>Footer</h2>
+      <h3 class="footer-heading">Connect with us</h3>
+      <div class="w3-block">
+        <a href="https://youtube.com/@BlindTechAgent" class="social-icon youtube"><i class="fab fa-youtube"
+            title="Join us on YouTube"></i></a>
+        <a href="https://t.me/Blindtechagent" class="social-icon telegram"><i class="fab fa-telegram-plane"
+            title="Join us on telegram"></i></a>
+      </div>
+      <p class="text-center">&copy; 2023 Blind Tech Agent. All Rights Reserved.</p>
+    </footer>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="../others/firebase.js"></script>
+  <script src="../others/global.js"></script>
+  <script>
+    function generate() {
+      const num = document.form_main.phone.value.trim();
+      const code = document.form_main.code.value;
+
+      if (num.length !== 10 || isNaN(num)) {
+        alert("Please enter a valid 10 digit phone number");
+        return;
+      }
+
+      const link = "https://wa.me/";
+      const result = `${link}${code}${num}`;
+      document.getElementById('result').innerText = result;
+    }
+
+    function copy() {
+      const result = document.getElementById("result");
+      if (!result.value) {
+        alert("Please generate the link first.");
+        return;
+      }
+      result.select();
+      document.execCommand("copy");
+      alert("Link copied to clipboard!");
+    }
+
+    function enableDisable(phone) {
+      const btnSubmit = document.getElementById("gen");
+      if (phone.value.trim() !== "") {
+        btnSubmit.disabled = false;
+      } else {
+        btnSubmit.disabled = true;
+      }
+    };
+
+    function openInWhatsApp() {
+      const result = document.getElementById("result");
+      if (!result.value) {
+        alert("Please generate the link first.");
+        return;
+      }
+      document.form_main.submit();
+    }
+
+    function share() {
+      const result = document.getElementById("result").value;
+      if (!result) {
+        alert("Please generate the link first.");
+        return;
+      }
+      if (navigator.share) {
+        navigator.share({
+          title: 'Share WhatsApp link',
+          url: result
+        })
+          .then(() => console.log('Link shared successfully'))
+          .catch((error) => console.log('Error sharing link:', error));
+      } else {
+        alert('Web Share API not supported on this browser.');
+      }
+    }
+  </script>
+</body>
+
+</html>

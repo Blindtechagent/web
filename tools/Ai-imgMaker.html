@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/a5db627303.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../others/loading.js"></script>
+  <title>AI Image maker</title>
+<style>
+/* Reset some default styles */
+main, h1, h2, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the body */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+/* Style the header section */
+.image-generator {
+  background: linear-gradient(rgba(0, 119, 182, 0.8), rgba(0, 119, 182, 0.5)), url('background-image.jpg');
+  background-size: cover;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+}
+
+.image-generator h2 {
+  font-size: 32px;
+}
+
+/* Style the form */
+.generate-form {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the input and select */
+.prompt-input, .img-quantity {
+  width: 90%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Style the button */
+.generate-btn {
+  background-color: #0077b6;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.generate-btn:hover {
+  background-color: #00537e;
+}
+
+/* Style the image gallery section */
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Style the generated image cards (you can add more styles here) */
+.image-card {
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add hover effect to the image cards */
+.image-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+}
+</style>
+  <script src="./AiImgMaker.js" defer></script>
+</head>
+<body>
+  <div class="preloader">
+    <div class="loader"></div>
+    <p id="loading-text" tabindex="0" autofocus aria-live="assertive">LOADING</p>
+  </div>
+  <div class="body">
+    <header>
+      <a class="skip" href="#main">Skip to main content</a>
+      <a href="../index.html" class="link">Blind Tech agent</a>
+      <img class="menuBtn w3-display-topleft" role="button" src="https://static.thenounproject.com/png/2438551-200.png"
+        title="menu"></img>
+      <div class="drawer w3-sidebar w3-bar-block w3-anemate-left">
+        <a id="loginBtn" role="menuitem" href="../menu/login.html" class="menuLinks w3-bar-item">Log in</a>
+        <a id="accountBtn" role="menuitem" href="../menu/createAccount.html" class="menuLinks w3-bar-item"></a>
+        <a role="menuitem" href="../menu/contact.html" class="menuLinks w3-bar-item">Contact us</a>
+        <a role="menuitem" href="../menu/about.html" class="menuLinks w3-bar-item">About us</a>
+        <a role="menuitem" href="../menu/privacy_policy.html" class="menuLinks w3-bar-item">Privacy policy</a>
+      </div>
+      <img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo" width="100px" height="100px"
+        class="w3-image"></img>
+      <h1 id="main-heading">BLIND TECH AGENT</h1>
+      <hr>
+      <p>"Transforming lives with the power of technology."</p>
+      <nav class="w3-bar">
+        <a role="tab" href="../index.html" target="_self" class="tab">HOME</a>
+        <a role="tab" href="../tools.html" target="_self" aria-label="Selected, Tools" class="tab w3-yellow">TOOLS
+        </a>
+        <a role="tab" href="../education.html" target="_self" class="tab">EDUCATION</a>
+        <a role="tab" href="../articles.html" target="_self" class="tab">ARTICLES</a>
+      </nav>
+    </header>
+    <main>
+<div id="non-loggedin-section"></div> <div id="loggedin-section">
+  <section class="image-generator">
+    <div class="content">
+      <h2>AI Image Maker</h2>
+<p>Create amazing pictures using our AI Image Maker. Just describe what you want, and see it turn into beautiful images like magic.</p>
+      <form action="#" class="generate-form">
+<label for="description">Please Describe What You'd Like to See in the Images:</label>
+        <input id="description" class="prompt-input" type="text" required>
+        <div class="controls">
+<label >Number of Images:</label>
+<select id="image-quantity" class="img-quantity" >
+  <option value="1">1 Image</option>
+  <option value="2" selected>2 Images</option>
+  <option value="3">3 Images</option>
+  <option value="4">4 Images</option>
+</select>
+          <button type="submit" aria-live="assertive" class="generate-btn">Generate</button>
+        </div>
+      </form>
+    </div>
+  </section>
+  
+  <section class="image-gallery">
+    <!-- Generated image cards will be displayed here -->
+  </section>
+</div>
+</main>
+<footer class="footer">
+<h2>Footer</h2>
+    <h3 class="footer-heading">Connect with us</h3>
+    <div class="w3-block">
+        <a href="https://youtube.com/@BlindTechAgent" class="social-icon youtube"><i class="fab fa-youtube" title="Join us on YouTube"></i></a>
+        <a href="https://t.me/Blindtechagent" class="social-icon telegram"><i class="fab fa-telegram-plane" title="Join us on telegram"></i></a>
+    </div>
+    <p class="text-center">&copy; 2023 Blind Tech Agent. All Rights Reserved.</p>
+</footer>
+</div>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="../others/firebase.js"></script>
+  <script src="../others/global.js"></script>
+  <script src="../others/auth.js"></script>
+<script src="./imgMaker.js"></script>
+</body>
+</html>
