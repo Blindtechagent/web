@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    * {
+      font-family: TimesNewRoman;
+    }
+
+    body {
+      background: #50C878;
+    }
+
+    form {
+      background: skyblue;
+      border-radius: 10%;
+      height: 60vh;
+      width: 85vw;
+      margin: auto;
+      padding: 40px auto;
+    }
+
+    input {
+      display: block;
+      margin: 10px auto;
+    }
+
+    label {
+      font-size: 1.5em;
+      color: black;
+    }
+
+    .button {
+      background: #6A0DAD;
+      font-size: 1.5em;
+      color: snow;
+      margin: 20px auto;
+      padding: 10px;
+      border: none;
+      display: block;
+      width: 45vw;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: indigo;
+    }
+    .link{ background:lime; color:snow; width:60%; margin:10px auto; padding:8px; display:block; }
+  </style>
+</head>
+
+<body>
+  <center>
+    <h1>Login</h1>
+    <form autocomplete="off" id="login-form">
+      <label for="login-email">Email ID</label>
+      <input type="email" id="login-email" required>
+      <label for="login-password">Password</label>
+      <input type="password" id="login-password" required>
+<p>Forgot Password?</p>
+<a id="forgot-password-link" class="link" role="button">Reset Password</a>
+      <button class="button" type="submit">Login</button>
+    <p>Not have an account yet? <a class="link" href="createAccount.html">Create Account</a></p>
+    </form>
+      </center>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="login.js"></script>
+</body>
+
+</html>

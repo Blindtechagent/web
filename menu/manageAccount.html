@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Account</title>
+<script src="./../others/loading.js"></script>
+<link rel="stylesheet" href="./style.css">
+      <style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #6A0DAD;
+}
+
+#changeBox {
+  display: none;
+  margin-top: 20px;
+  padding: 10px;
+  border: 2px solid #6A0DAD;
+  border-radius: 5px;
+}
+
+#changeBox input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #6A0DAD;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#logout {
+  text-align: center;
+}
+    </style>
+</head>
+<body>
+<div class="preloader">
+    <div class="loader"></div>
+    <p id="loading-text" tabindex="0" autofocus aria-live="assertive">LOADING</p>
+  </div>
+      <center>
+        <h1>Manage Account</h1>
+        <div class="container" id="logout">
+            <br>
+            <br>
+            <button id="UsersName" class="button" onclick="changeName()"></button>
+            <div id="changeBox">
+                <input type="text" autofocus required placeholder="Enter new name"/>
+                <button class="button" onclick="saveNewName()">Save</button>
+            </div>
+            <h2>Log out</h2>
+            <button class="button" onclick="logOut()">Log out</button>
+        </div>
+    </center>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="../others/firebase.js"></script>
+    <script>
+        const nameBtn = document.getElementById("UsersName");
+        const changeBox = document.getElementById("changeBox");
+        const input = document.querySelector("#changeBox input");
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                const emailId = user.email;
+                firebase.database().ref("users/" + emailId.replace('.', ',') + "/name").once("value")
+                    .then((snapshot) => {
+                        const storedName = snapshot.val() || "User";
+                        nameBtn.textContent = `${storedName}, change your name`;
+                    })
+                    .catch((error) => {
+                        console.error("Database read error:", error);
+                        alert("An error occurred while retrieving data. Please try again.");
+                    });
+            }
+        });
+
+        function changeName() {
+            changeBox.style.display = "block";
+            input.focus();
+        }
+
+        function saveNewName() {
+            const newName = input.value.trim();
+            if (newName !== "") {
+                const emailId = firebase.auth().currentUser.email;
+                firebase.database().ref("users/" + emailId.replace('.', ',')).update({ name: newName })
+                    .then(() => {
+                        nameBtn.textContent = `${newName}, change your name`;
+                    })
+                    .catch((error) => {
+                        console.error("Database write error:", error);
+                        alert("An error occurred while saving the new name. Please try again.");
+                    });
+            }
+            changeBox.style.display = "none";
+            input.value = "";
+        }
+
+        function logOut() {
+            if (confirm("Are you sure you want to log out?")) {
+                firebase.auth().signOut()
+                    .then(() => {
+                        window.location.replace("../index.html");
+                    })
+                    .catch((error) => {
+                        console.error("Logout error:", error);
+                        alert("An error occurred while logging out. Please try again.");
+                    });
+            }
+        }
+    </script>
+</body>
+</html>

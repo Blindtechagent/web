@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account</title>
+  <style>
+    * {
+      font-family: TimesNewRoman;
+    }
+
+    body {
+      background: #50C878;
+    }
+
+    form {
+      background: skyblue;
+      border-radius: 10%;
+      width: 85vw;
+      margin: auto;
+      padding:10px;
+    }
+
+    input {
+      display: block;
+      margin: 10px auto;
+    }
+
+    label {
+      font-size: 1.5em;
+      color: black;
+    }
+
+    .button {
+      background: #6A0DAD;
+      font-size: 1.5em;
+      color: snow;
+      margin: 20px auto;
+      padding: 10px;
+      border: none;
+      display: block;
+      width: 45vw;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: indigo;
+    }
+
+    .password-hint {
+      color: red;
+      font-size: 1.2em;
+      margin-top: -15px;
+    }
+    .link{ background:lime; color:snow; width:60%; margin:16px auto; padding:8px; display:block; }
+  </style>
+</head>
+
+<body>
+  <center>
+    <h1>Create Account</h1>
+    <form autocomplete="off" id="form">
+      <label for="name">Enter your Name</label>
+      <input type="text" id="name" required>
+            <label for="email">Enter your Email ID</label>
+      <input type="email" id="email" required>
+      <label for="password">Enter your Password (min. 6 characters)</label>
+      <input type="password" id="password" required>
+      <span class="password-hint">Password must contain at least 6 characters.</span>
+      <button class="button" type="reset">Clear inputs</button>
+      <button class="button" type="submit">Create account</button>
+<p>Already have an account?</p>
+<a href="login.html" class="link">Log in</a>
+    </form>
+  </center>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="../others/firebase.js"></script>
+  <script src="./signup.js"></script>
+</body>
+
+</html>

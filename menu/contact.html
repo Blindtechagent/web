@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Contact us</title>
+  <style>
+    body div {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .contact-box {
+      border: 1px solid #333;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      display: block;
+      text-align: center;
+    }
+
+    .email-box {
+      background-color: #dd4b39;
+      color: #fff;
+    }
+
+    .telegram-box {
+      background-color: #0088cc;
+      color: #fff;
+    }
+
+    .whatsapp-box {
+      background-color: #25d366;
+      color: #fff;
+    }
+
+    .fa {
+      display: block;
+      font-size: 44px;
+      margin: 10px auto;
+    }
+  </style>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="../style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a5db627303.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../others/loading.js"></script>
+</head>
+
+<body>
+  <div class="preloader">
+    <div class="loader"></div>
+    <p id="loading-text" tabindex="0" autofocus aria-live="assertive">LOADING</p>
+  </div>
+  <div class="body">
+    <header>
+      <a class="skip" href="#main">Skip to main content</a>
+      <a href="./index.html" class="link">Blind Tech agent</a>
+      <img class="menuBtn w3-display-topleft" role="button" src="https://static.thenounproject.com/png/2438551-200.png"
+        title="menu"></img>
+      <div class="drawer w3-sidebar w3-bar-block w3-anemate-left">
+        <a id="loginBtn" role="menuitem" href="./login.html" class="menuLinks w3-bar-item">Log in</a>
+        <a id="accountBtn" role="menuitem" href="./createAccount.html" class="menuLinks w3-bar-item"></a>
+        <a role="menuitem" href="./contact.html" class="menuLinks w3-bar-item">Contact us</a>
+        <a role="menuitem" href="./about.html" class="menuLinks w3-bar-item">About us</a>
+        <a role="menuitem" href="./privacy_policy.html" class="menuLinks w3-bar-item">Privacy policy</a>
+      </div>
+      <img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo" width="100px" height="100px"
+        class="w3-image"></img>
+      <h1 id="main-heading">BLIND TECH AGENT</h1>
+      <hr>
+      <p>"Transforming lives with the power of technology."</p>
+      <nav class="w3-bar">
+        <a role="tab" href="../index.html" target="_self" class="tab">HOME</a>
+        <a role="tab" href="../tools.html" target="_self" class="tab">TOOLS </a>
+        <a role="tab" href="../education.html" target="_self" class="tab">EDUCATION</a>
+        <a role="tab" href="../articles.html" target="_self" class="tab">ARTICLES</a>
+      </nav>
+    </header>
+    <main>
+      <div id="heading-box" tabindex="0" role="heading" aria-level="2">
+        <h2>Contact us</h2>
+      </div>
+  </div>
+  <div class="contact-box email-box">
+    <i class="far fa-envelope"></i>
+    <h2>Email</h2>
+    <a href="mailto: pawanpianoartist@gmail.com">Mail us</a>
+  </div>
+  <div class="contact-box telegram-box">
+    <i class="fab fa-telegram"></i>
+    <h2>Telegram</h2>
+    <a href="https://t.me/pawan_ks" target="_blank">Contact on Telegram</a>
+  </div>
+  <div class="contact-box whatsapp-box">
+    <i class="fab fa-whatsapp"></i>
+    <h2>WhatsApp</h2>
+    <a href="https://wa.me/919315548418" target="_blank">Contact on WhatsApp</a>
+    </main>
+    <footer class="footer">
+      <h2>Footer</h2>
+      <h3 class="footer-heading">Connect with us</h3>
+      <div class="w3-block">
+        <a href="https://youtube.com/@BlindTechAgent" class="social-icon youtube"><i class="fab fa-youtube"
+            title="Join us on YouTube"></i></a>
+        <a href="https://t.me/Blindtechagent" class="social-icon telegram"><i class="fab fa-telegram-plane"
+            title="Join us on telegram"></i></a>
+      </div>
+      <p class="text-center">&copy; 2023 Blind Tech Agent. All Rights Reserved.</p>
+    </footer>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="../others/firebase.js"></script>
+  <script src="../others/global.js"></script>
+</body>
+
+</html>
