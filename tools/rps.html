@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/a5db627303.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../others/loading.js"></script>
+  <title>Rock Paper Scissors Game</title>
+  <style>
+    .container {
+      margin: auto;
+      background-color: rgba(255, 255, 0, 0.2);
+      padding: 20px;
+    }
+
+    main h2 {
+      text-align: center;
+      color: #22A7F0;
+    }
+
+    #choices {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .choice {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 10px;
+      cursor: pointer;
+      color: #ffffff;
+      background-color: #22A7F0;
+      padding: 10px;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+    }
+
+    .choice:hover {
+      background-color: #1E8ABE;
+    }
+
+    .choice i {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .choice span {
+      font-weight: bold;
+    }
+
+    #result {
+      text-align: center;
+      margin-top: 20px;
+      color: #22A7F0;
+      font-weight: bold;
+    }
+
+    #scores {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .score {
+      text-align: center;
+    }
+
+    #play-again {
+      display: none;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #22A7F0;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #play-again:hover {
+      background-color: #1E8ABE;
+    }
+
+    .tutorial {
+      margin-top: 40px;
+      color: #777777;
+    }
+
+    ol,
+    ul {
+      margin: 10px 0;
+      padding-left: 20px;
+      color: black;
+    }
+
+    #status-update {
+      font-size: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="preloader">
+    <div class="loader"></div>
+    <p id="loading-text" tabindex="0" autofocus aria-live="assertive">LOADING</p>
+  </div>
+  <div class="body">
+    <header>
+      <a class="skip" href="#main">Skip to main content</a>
+      <a href="../index.html" class="link">Blind Tech agent</a>
+      <img class="menuBtn w3-display-topleft" role="button" src="https://static.thenounproject.com/png/2438551-200.png"
+        title="menu"></img>
+      <div class="drawer w3-sidebar w3-bar-block w3-anemate-left">
+        <a id="loginBtn" role="menuitem" href="../menu/login.html" class="menuLinks w3-bar-item">Log in</a>
+        <a id="accountBtn" role="menuitem" href="../menu/createAccount.html" class="menuLinks w3-bar-item"></a>
+        <a role="menuitem" href="../menu/contact.html" class="menuLinks w3-bar-item">Contact us</a>
+        <a role="menuitem" href="../menu/about.html" class="menuLinks w3-bar-item">About us</a>
+        <a role="menuitem" href="../menu/privacy_policy.html" class="menuLinks w3-bar-item">Privacy policy</a>
+      </div>
+      <img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo" width="100px" height="100px"
+        class="w3-image"></img>
+      <h1 id="main-heading">BLIND TECH AGENT</h1>
+      <hr>
+      <p>"Transforming lives with the power of technology."</p>
+      <nav class="w3-bar">
+        <a role="tab" href="../index.html" target="_self" class="tab">HOME</a>
+        <a role="tab" href="../tools.html" target="_self" aria-label="Selected, Tools" class="tab w3-yellow">TOOLS </a>
+        <a role="tab" href="../education.html" target="_self" class="tab">EDUCATION</a>
+        <a role="tab" href="../articles.html" target="_self" class="tab">ARTICLES</a>
+      </nav>
+    </header>
+    <main class="container">
+<div id="non-loggedin-section"></div> <div id="loggedin-section">
+      <div id="heading-box" tabindex="0" role="heading" aria-level="2">
+        <h2>Rock Paper Scissors Game</h2>
+      </div>
+      <p>Select one of the following options:</p>
+      <div id="choices">
+        <div class="choice" onclick="playGame('rock')" role="button" aria-label="Rock" tabindex="0">
+          <i class="fas fa-hand-rock"></i>
+          <span>Rock</span>
+        </div>
+        <div class="choice" onclick="playGame('paper')" role="button" aria-label="Paper" tabindex="0">
+          <i class="fas fa-hand-paper"></i>
+          <span>Paper</span>
+        </div>
+        <div class="choice" onclick="playGame('scissors')" role="button" aria-label="Scissors" tabindex="0">
+          <i class="fas fa-hand-scissors"></i>
+          <span>Scissors</span>
+        </div>
+      </div>
+      <div id="result"></div>
+      <div id="scores">
+        <div id="user-score" class="score">
+          <span>Your Score</span>
+          <span id="user-count">0</span>
+        </div>
+        <div id="computer-score" class="score">
+          <span>Computer Score</span>
+          <span id="computer-count">0</span>
+        </div>
+      </div>
+      <button id="play-again" onclick="resetGame()">Play Again</button>
+      <div class="tutorial">
+        <h2>How to play?</h2>
+        <p>Welcome to the Rock Paper Scissors game!</p>
+        <p>To play, follow these steps:</p>
+        <ol>
+          <li>Choose either Rock, Paper, or Scissors by clicking on the corresponding icon.</li>
+          <li>The computer will also make a random choice.</li>
+          <li>Based on the following rules, the winner will be determined:</li>
+        </ol>
+        <ul>
+          <li>Rock beats Scissors</li>
+          <li>Paper beats Rock</li>
+          <li>Scissors beats Paper</li>
+        </ul>
+        <p>The game will keep track of your score and the computer's score. The first player to reach 10 points wins the
+          game.</p>
+      </div>
+      <div id="status-update" class="visually-hidden" aria-live="assertive"></div>
+    </div>
+    </main>
+    <footer class="footer">
+      <h2>Footer</h2>
+      <h3 class="footer-heading">Connect with us</h3>
+      <div class="w3-block">
+        <a href="https://youtube.com/@BlindTechAgent" class="social-icon youtube"><i class="fab fa-youtube"
+            title="Join us on YouTube"></i></a>
+        <a href="https://t.me/Blindtechagent" class="social-icon telegram"><i class="fab fa-telegram-plane"
+            title="Join us on telegram"></i></a>
+      </div>
+      <p class="text-center">&copy; 2023 Blind Tech Agent. All Rights Reserved.</p>
+    </footer>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="../others/firebase.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const backgroundMusic = new Audio('https://cdn.pixabay.com/audio/2022/03/13/audio_def1e03e13.mp3');
+      backgroundMusic.volume = "0.1";
+      backgroundMusic.play();
+      backgroundMusic.loop = "true";
+    });
+
+    let computerScore = 0;
+    let userScore = 0;
+    let roundCount = 0;
+    let gameStatus = 'ongoing';
+    const computerCountElement = document.getElementById('computer-count');
+    const userCountElement = document.getElementById('user-count');
+    const resultElement = document.getElementById('result');
+    const playAgainButton = document.getElementById('play-again');
+    const statusUpdateElement = document.getElementById('status-update');
+
+    function playGame(userChoice) {
+      if (gameStatus === 'ended') return;
+
+      const choices = ['rock', 'paper', 'scissors'];
+      const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+      roundCount++;
+
+      let result;
+      let soundEffect = '';
+
+      if (userChoice === 'rock') {
+        if (computerChoice === 'scissors') {
+          result = "You win!";
+          userScore++;
+          soundEffect = new Audio('https://www.myinstants.com/media/sounds/metal04gr-converted.mp3');
+        } else if (computerChoice === 'paper') {
+          result = "Computer wins!";
+          computerScore++;
+          soundEffect = new Audio('https://cdn.pixabay.com/audio/2022/03/10/audio_c2c9289cb7.mp3');
+        } else {
+          result = "It's a tie!";
+          soundEffect = new Audio('https://www.myinstants.com/media/sounds/rock-eyebrow-raise-sound-effect.mp3');
+        }
+      } else if (userChoice === 'paper') {
+        if (computerChoice === 'rock') {
+          result = "You win!";
+          userScore++;
+          soundEffect = new Audio('https://cdn.pixabay.com/audio/2022/03/10/audio_c2c9289cb7.mp3');
+        } else if (computerChoice === 'scissors') {
+          result = "Computer wins!";
+          computerScore++;
+          soundEffect = new Audio('https://cdn.pixabay.com/audio/2022/03/24/audio_13aa4ffe94.mp3');
+        } else {
+          result = "It's a tie!";
+          soundEffect = new Audio('https://cdn.pixabay.com/audio/2023/03/28/audio_45bf0b7be5.mp3');
+        }
+      } else if (userChoice === 'scissors') {
+        if (computerChoice === 'paper') {
+          result = "You win!";
+          userScore++;
+          soundEffect = new Audio('https://cdn.pixabay.com/audio/2022/03/24/audio_13aa4ffe94.mp3');
+        } else if (computerChoice === 'rock') {
+          result = "Computer wins!";
+          computerScore++;
+          soundEffect = new Audio('https://www.myinstants.com/media/sounds/metal04gr-converted.mp3');
+        } else {
+          result = "It's a tie!";
+          soundEffect = new Audio('https://cdn.pixabay.com/audio/2023/06/11/audio_5c28096d73.mp3');
+        }
+      }
+
+      computerCountElement.textContent = computerScore;
+      userCountElement.textContent = userScore;
+      resultElement.textContent = `You chose ${userChoice}, computer chose ${computerChoice}. ${result}`;
+
+      if (soundEffect instanceof Audio) {
+        soundEffect.play();
+      }
+
+      if (computerScore === 10 || userScore === 10) {
+        endGame();
+      } else {
+        const statusUpdate = `Round ${roundCount}. You chose ${userChoice}. Computer chose ${computerChoice}. ${result}. Your score: ${userScore}. Computer score: ${computerScore}.`;
+        statusUpdateElement.textContent = statusUpdate;
+        statusUpdateElement.focus();
+      }
+    }
+
+
+    function endGame() {
+      gameStatus = 'ended';
+
+      playAgainButton.style.display = 'block';
+      playAgainButton.disabled = false;
+
+      let gameResult;
+      if (computerScore > userScore) {
+        gameResult = "Computer wins the game!";
+        var lose = new Audio('https://cdn.pixabay.com/audio/2022/03/15/audio_7acc1c1ca7.mp3'); lose.play();
+      } else {
+        gameResult = "You win the game!";
+        var win = new Audio('https://cdn.pixabay.com/audio/2021/08/04/audio_12b0c7443c.mp3'); win.play();
+      }
+
+      const finalResult = resultElement.textContent + " " + gameResult;
+      resultElement.textContent = finalResult;
+      statusUpdateElement.textContent = finalResult;
+      statusUpdateElement.focus();
+    }
+
+    function resetGame() {
+      computerScore = 0;
+      userScore = 0;
+      roundCount = 0;
+      gameStatus = 'ongoing';
+
+      computerCountElement.textContent = computerScore;
+      userCountElement.textContent = userScore;
+      resultElement.textContent = "";
+      playAgainButton.style.display = 'none';
+      playAgainButton.disabled = true;
+      statusUpdateElement.textContent = "Game reset. Select one of the following options.";
+      statusUpdateElement.focus();
+    }
+  </script>
+  <script src="../others//global.js"></script>
+  <script src="../others//auth.js"></script>
+</body>
+
+</html>
