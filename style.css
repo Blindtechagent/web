@@ -1,0 +1,226 @@
+
+.body{     display: none; }
+.preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #22A7F0;
+      display: flex;
+      flex-direction: column; /* Display the children in a column */
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loader {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 32px solid transparent;
+      border-top-color: #F4D03F;
+      border-right-color: #58D68D;
+      border-bottom-color: #3498DB;
+      border-left-color: #E74C3C;
+      animation: spin 1s infinite linear;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    #loading-text {
+      text-align: center;
+      font-size: 4em;
+      color: #fff;
+      margin-top: 20px;
+    }
+ * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  text-align: center;
+  font-family: Times_New_Roman;
+}
+
+.skip { 
+  font-size: 0; 
+}
+
+.link {
+  background: none;
+  display:block;  
+  text-decoration: none;
+}
+
+#main-heading {
+  text-align: center;
+  font-weight: bold;
+}
+
+header {
+  width: 100%;
+  height: fit-content;
+  background: #F433FF;
+  color: #3DFF33;
+}
+
+.infobox {
+  padding: 10px;
+  margin: 20px auto;
+  width: 70%;
+  height: auto;
+  border: none;
+  animation: changeColor 5s ease-in-out 0.7s infinite alternate both;
+}
+
+@keyframes changeColor {
+  0% {
+    background: #D462FF;
+    color: #8BFF61;
+  }
+  25% {
+    background: #FF6347;
+    color: #47E3FF;
+  }
+  50% {
+    background: #12AD2B;
+    color: #0909FF;
+  }
+  75% {
+    background: #0909FF;
+    color: #FFFF0A;
+  }
+  100% {
+    background: black;
+    color: snow;
+  }
+}
+
+.menuBtn {
+  background: lime;
+  width: 20px;
+  height: 20px;
+}
+
+.drawer {
+  display: none;
+  padding: 10px;
+  background: #5FC135;
+  width: 60%;
+  height: 70%;
+  border: 1px solid red;
+  border-radius: 10px;
+}
+
+.menuLinks {
+  background: #9734C2;
+  color: snow;
+  text-decoration: none;
+  margin: 10px auto; display:block;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: lime;
+}
+
+nav a {
+  background: red;
+  color: white;
+  margin: 1px;
+  text-decoration: none;
+  width: 25%;
+  text-align: center;
+  padding: 8px auto;
+  border: none;
+}
+
+a{
+background:orange;  color:blue; padding:8px; 
+}
+main{
+padding:14px; font-size:14px;
+}
+#heading-box:focus {  outline:none; }
+.thoughtBox{ background:#691F6E; padding:8px;  }
+#thought{  color:white; font-size:1em; margin:8px;  }
+.thoughtBox button{  background:gold; color:#080808;   }
+/* tools page */
+.toolsLink{ background:rgb(242, 139, 255); color:black; font-size:1.5em;  display:block;   text-decoration:none;   border:1px solid black; height:45px; padding:4px;  }
+ul{
+list-style-type:disc;  
+}
+footer {
+  background-color: #333;
+position:apslute; bottom:0;  color: #fff;
+  padding: 30px 0;
+}
+.footer-heading {
+}
+
+.social-icon {
+  display: inline;
+  font-size: 20px;
+margin:16px;  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+  transform: translateY(-5px);
+}
+
+.youtube {
+float:left;
+  color: #c4302b;
+}
+
+.telegram {
+float:right;
+  color: #0088cc;
+}
+
+.text-center {
+  margin-top: 20px;
+}
+#non-loggedin-section {
+  text-align: center;
+  background-color: #f8f8f8;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#non-loggedin-section h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#non-loggedin-section p {
+  font-size: 16px;
+  color: #666;
+  margin: 10px 0;
+}
+
+#non-loggedin-section a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+#non-loggedin-section a:hover {
+  text-decoration: underline;
+}
