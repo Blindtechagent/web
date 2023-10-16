@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://kit.fontawesome.com/a5db627303.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="../others/loading.js"></script>
+	<title>About Blind Tech Agent</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+
+			.container {
+				background-color: #f5f5f5;
+				color: #333;
+			}
+
+			width:100vw;
+			margin: 0 auto;
+			padding: 30px;
+		}
+
+		main h2 {
+			font-size: 36px;
+			margin-bottom: 20px;
+			text-align: center;
+		}
+
+		p {
+			font-size: 18px;
+			line-height: 1.5;
+			margin-bottom: 20px;
+			text-align: justify;
+		}
+
+		.btn {
+			display: inline-block;
+			padding: 10px 20px;
+			background-color: #007bff;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			font-size: 18px;
+			text-align: center;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		.btn:hover {
+			background-color: #0062cc;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="preloader">
+		<div class="loader"></div>
+		<p id="loading-text" tabindex="0" autofocus aria-live="assertive">LOADING</p>
+	</div>
+	<div class="body">
+		<header>
+			<a class="skip" href="#main">Skip to main content</a>
+			<a href="../index.html" class="link">Blind Tech agent</a>
+			<img class="menuBtn w3-display-topleft" role="button"
+				src="https://static.thenounproject.com/png/2438551-200.png" title="menu"></img>
+			<div class="drawer w3-sidebar w3-bar-block w3-anemate-left">
+				<a id="loginBtn" role="menuitem" href="./login.html" class="menuLinks w3-bar-item">Log in</a>
+				<a id="accountBtn" role="menuitem" href="./createAccount.html" class="menuLinks w3-bar-item"></a>
+				<a role="menuitem" href="./contact.html" class="menuLinks w3-bar-item">Contact us</a>
+				<a role="menuitem" href="./about.html" class="menuLinks w3-bar-item">About us</a>
+				<a role="menuitem" href="./privacy_policy.html" class="menuLinks w3-bar-item">Privacy policy</a>
+			</div>
+			<img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo" width="100px" height="100px"
+				class="w3-image"></img>
+			<h1 id="main-heading">BLIND TECH AGENT</h1>
+			<hr>
+			<p>"Transforming lives with the power of technology."</p>
+			<nav class="w3-bar">
+				<a role="tab" href="../index.html" target="_self" class="tab">HOME</a>
+				<a role="tab" href="../tools.html" target="_self" class="tab">TOOLS </a>
+				<a role="tab" href="../education.html" target="_self" class="tab">EDUCATION</a>
+				<a role="tab" href="../articles.html" target="_self" class="tab">ARTICLES</a>
+			</nav>
+		</header>
+		<div class="container">
+			<div id="heading-box" tabindex="0" role="heading" aria-level="2">
+				<h2>About Blind Tech Agent</h2>
+			</div>
+			<p>Blind Tech Agent is a technology website that provides a range of useful tools and resources for people
+				of
+				all abilities, with a special focus on individuals who are visually impaired. Our mission is to help
+				people
+				understand and utilize technology to improve their daily lives and achieve their goals.</p>
+			<p>Our website offers a variety of resources related to technology, including tutorials, guides, and reviews
+				of
+				the latest gadgets and software. We also provide accessibility information to help people with
+				disabilities
+				better understand the tools available to them.</p>
+			<p>At Blind Tech Agent, we are committed to promoting digital inclusion and ensuring that everyone has
+				access to
+				technology. We believe that technology has the potential to transform lives and make the world a better
+				place, and we strive to make it accessible to everyone.</p>
+			<h2>About Me</h2>
+			<p>My name is Pawan Kumar, and I am the creator of Blind Tech Agent. I am also visually impaired and
+				understand
+				firsthand the challenges that people with disabilities face when trying to access and use technology. I
+				started this website to provide a platform where people could learn and share their knowledge about
+				technology.</p>
+			<p>I am passionate about technology and believe that it has the power to change lives. At Blind Tech Agent,
+				I am
+				committed to making technology accessible to everyone, regardless of their abilities or disabilities. I
+				am
+				dedicated to providing people with the tools and resources they need to navigate and utilize technology
+				with
+				ease.</p>
+			<p>As a member of the visually impaired community, I am committed to advocating for the rights of people
+				with
+				disabilities and ensuring that their voices are heard. I invite you to join our community and explore
+				all
+				that Blind Tech Agent has to offer. Together, we can make the world a more accessible and inclusive
+				place.
+			</p>
+		</div>
+		<footer class="footer">
+			<h2>Footer</h2>
+			<h3 class="footer-heading">Connect with us</h3>
+			<div class="w3-block">
+				<a href="https://youtube.com/@BlindTechAgent" class="social-icon youtube"><i class="fab fa-youtube"
+						title="Join us on YouTube"></i></a>
+				<a href="https://t.me/Blindtechagent" class="social-icon telegram"><i class="fab fa-telegram-plane"
+						title="Join us on telegram"></i></a>
+			</div>
+			<p class="text-center">&copy; 2023 Blind Tech Agent. All Rights Reserved.</p>
+		</footer>
+	</div>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+	<script src="../others/firebase.js"></script>
+	<script src="../others/global.js"></script>
+</body>
+
+</html>
