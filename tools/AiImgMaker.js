@@ -1,4 +1,3 @@
-
 const generateForm = document.querySelector(".generate-form");
 
 const generateBtn = generateForm.querySelector(".generate-btn");
@@ -7,7 +6,7 @@ const imageGallery = document.querySelector(".image-gallery");
 
 
 
-const OPENAI_API_KEY = "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"; // Your OpenAI API key here
+const OPENAI_API_KEY = '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'; // Your OpenAI API key here
 
 let isImageGenerating = false;
 
@@ -87,7 +86,7 @@ const generateAiImages = async (userPrompt, userImgQuantity) => {
 
     // Throw an error message if the API response is unsuccessful
 
-    if(!response.ok) throw new Error("Failed to generate AI images. Make sure your internet is on.");
+    if(!response.ok) throw new Error("Failed to generate AI images. Make sure your API key is valid.");
 
 
 
@@ -156,7 +155,7 @@ const handleImageGeneration = (e) => {
       </div>`
 
   ).join("");
-imageGallery.style.display="flex";
+
 
 
   imageGallery.innerHTML = imgCardMarkup;
