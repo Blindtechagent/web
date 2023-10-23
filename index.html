@@ -126,6 +126,21 @@
 
     <footer class="footer">
       <h2>Footer</h2>
+<div class="w3-container w3-card-4 w3-margin w3-center">
+        <h3 class="w3-container">Contact Us</h3>
+        <p class="w3-container">We welcome your input. Please use the form below to reach out to us, whether for suggestions or to report issues. We're here to assist you.</p>
+        <form id="contact-form">
+            <input type="text" id="user-name" class="w3-input w3-margin-top" placeholder="Your Full Name">
+            <input type="email" id="user-email" class="w3-input" placeholder="Your Email Address">
+            <select id="purpose-select" class="w3-select w3-margin-top">
+                <option disabled>Select purpose</option>
+                <option value="suggestion">I want to make a suggestion</option>
+                <option value="problem">I need to report a problem</option>
+            </select>
+            <textarea id="user-message" class="w3-input w3-margin-top" placeholder="Your Message"></textarea>
+            <button id="submit" class="w3-button w3-blue w3-margin-top w3-margin-bottom" onclick="sendMsg()">Send Your Message</button>
+        </form>
+    </div>
       <h3 class="footer-heading">Connect with us</h3>
       <div class="w3-block">
         <a href="https://youtube.com/@BlindTechAgent" class="social-icon youtube"><i class="fab fa-youtube"
@@ -141,6 +156,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
   <script src="./others/firebase.js"></script>
+  <script src="./others/contactForm.js"></script>
   <script src="./script.js"></script>
   <script>
     $(document).ready(function () {
