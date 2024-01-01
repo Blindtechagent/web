@@ -1,6 +1,8 @@
 $(document).ready(function () {
   const accountBtn = document.getElementById("accountBtn");
   const loginBtn = document.getElementById("loginBtn");
+  const menuBtn = $('.menuBtn');
+  const menuItems = $('#menuItems');
 
   if (accountBtn && loginBtn) {
     firebase.auth().onAuthStateChanged((user) => {
@@ -15,9 +17,12 @@ $(document).ready(function () {
         loginBtn.href = "../menu/login.html";
       }
     });
-  }
 
-  $('.menuBtn').click(function () {
-    $('.drawer').toggle(500);
-  });
+    menuBtn.click(function () {
+      const isHidden = menuItems.css("display") === "none";
+      menuItems.toggle(500);
+      menuBtn.attr("aria-expanded", !isHidden);
+      menuBtn.attr("aria-label", isHidden ? "Close Navigation Menu" : "Open Navigation Menu");
+    });
+  }
 });
