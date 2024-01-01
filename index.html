@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="en-US">
 
 <head>
   <meta charset="UTF-8">
@@ -21,45 +21,41 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/a5db627303.js" crossorigin="anonymous"></script>
   <script src="./others/loading.js"></script>
-  <style>
-    .close {
-      margin-left: 60px;
-      padding: 3px 5px;
-      border: none;
-    }
-  </style>
 </head>
 
 <body>
   <div class="preloader">
     <div class="loader"></div>
-    <p id="loading-text" tabindex="0" autofocus aria-live="assertive">LOADING</p>
+    <p id="loading-text" tabindex="0" autofocus aria-live="assertive" role="status">LOADING</p>
   </div>
   <div class="body">
-    <header>
-      <a class="skip" href="#main">Skip to main content</a>
-      <a href="./index.html" class="link">Blind Tech agent</a>
-      <img class="menuBtn w3-display-topleft" role="button" src="https://static.thenounproject.com/png/2438551-200.png"
-        title="menu"></img>
-      <div class="drawer w3-sidebar w3-bar-block w3-anemate-left">
-        <a id="loginBtn" role="menuitem" href="./menu/login.html" class="menuLinks w3-bar-item">Log in</a>
-        <a id="accountBtn" role="menuitem" href="./menu/createAccount.html" class="menuLinks w3-bar-item"></a>
-        <a role="menuitem" href="./menu/contact.html" class="menuLinks w3-bar-item">Contact us</a>
-        <a role="menuitem" href="./menu/about.html" class="menuLinks w3-bar-item">About us</a>
-        <a role="menuitem" href="./menu/privacy_policy.html" class="menuLinks w3-bar-item">Privacy policy</a>
-      </div>
+    <header role="header">
+      <a class="skip" href="#main" aria-label="Skip to main content"></a>
+      <a href="./index.html" class="link">      <h1 id="main-heading">BLIND TECH AGENT</h1></a>
+<button class="menuBtn w3-display-topleft" aria-label="Open Navigation Menu" aria-expanded="false" aria-controls="menuItems" aria-haspopup="true" role="menuitembutton">
+  <i class="fas fa-bars w3-display-topleft" style="margin:auto;"></i>
+</button>
+<nav>
+  <ul class="drawer w3-sidebar w3-bar-block w3-animate-left" id="menuItems" aria-orientation="vertical" role="navigation">
+    <li>
+      <a id="loginBtn" role="menuitem" href="./menu/login.html" class="menuLinks w3-bar-item">Log in</a>
+    </li>
+    <li>
+      <a id="accountBtn" role="menuitem" href="./menu/createAccount.html" class="menuLinks w3-bar-item">Create Account</a>
+    </li>
+    <li>
+      <a role="menuitem" href="./menu/contact.html" class="menuLinks w3-bar-item">Contact us</a>
+    </li>
+    <li>
+      <a role="menuitem" href="./menu/about.html" class="menuLinks w3-bar-item">About us</a>
+    </li>
+    <li>
+      <a role="menuitem" href="./menu/privacy_policy.html" class="menuLinks w3-bar-item">Privacy policy</a>
+    </li>
+  </ul>
+</nav>
       <img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo" width="80px" height="80px"
         class="w3-image"></img>
-      <h1 id="main-heading">BLIND TECH AGENT</h1>
-      <div id="accountBox" class="w3-tag w3-white w3-padding-16">
-        <br>
-        <p>have you not created an account yet?</p>
-        <br>
-        <a href="./menu/createAccount.html">Create account</a>
-        <button class="w3-red w3-round close" onclick="document.getElementById('accountBox').style.display = 'none'"
-          aria-label="close">&times;</button>
-      </div>
-      <hr>
       <p>"Transforming lives with the power of technology."</p>
       <div class="infobox w3-tag">
         <div id="greet">
@@ -67,14 +63,24 @@
         <div class="time"></div>
         <div class="date"></div>
       </div>
-      <nav class="w3-bar">
+      </header>
+      <nav class="w3-bar" role="tabpanel">
         <a role="tab" href="index.html" target="_self" aria-label="Selected, Home" class="tab w3-yellow">HOME</a>
         <a role="tab" href="tools.html" target="_self" class="tab">TOOLS </a>
         <a role="tab" href="education.html" target="_self" class="tab">EDUCATION</a>
         <a role="tab" href="articles.html" class="tab">ARTICLES</a>
       </nav>
-    </header>
+
     <main id="main">
+      <div id="accountBox" class="w3-tag w3-grey w3-padding-16 w3-card">
+        <br>
+        <p>have you not created an account yet?</p>
+        <br>
+        <a href="./menu/createAccount.html">Create account</a>
+        <button class="w3-red w3-round close" onclick="document.getElementById('accountBox').style.display = 'none'"
+          aria-label="close">&times;</button>
+      </div>
+
       <section>
         <h2>Welcome to Blind Tech Agent</h2>
         <div class="w3-round w3-container thoughtBox">
@@ -83,7 +89,7 @@
           <p id="thought"></p>
           <button onclick="translateToHindi()" class="w3-btn w3-left w3-round">Translate to Hindi</button>
           <br>
-    </div>        </div>
+    </div>
 <h3>Introducing Blind Tech Agent AI</h3>
         <p>"Welcome to Blind Tech Agent AI, your buddy on our website.</p>
         <p>We're excited to introduce this smart helper designed to make your online time better and easier. Blind Tech
@@ -126,21 +132,6 @@
 
     <footer class="footer">
       <h2>Footer</h2>
-<div class="w3-container w3-card-4 w3-margin w3-center">
-        <h3 class="w3-container">Contact Us</h3>
-        <p class="w3-container">We welcome your input. Please use the form below to reach out to us, whether for suggestions or to report issues. We're here to assist you.</p>
-        <form id="contact-form">
-            <input type="text" id="user-name" class="w3-input w3-margin-top" placeholder="Your Full Name">
-            <input type="email" id="user-email" class="w3-input" placeholder="Your Email Address">
-            <select id="purpose-select" class="w3-select w3-margin-top">
-                <option disabled>Select purpose</option>
-                <option value="suggestion">I want to make a suggestion</option>
-                <option value="problem">I need to report a problem</option>
-            </select>
-            <textarea id="user-message" class="w3-input w3-margin-top" placeholder="Your Message"></textarea>
-            <button id="submit" class="w3-button w3-blue w3-margin-top w3-margin-bottom" onclick="sendMsg()">Send Your Message</button>
-        </form>
-    </div>
       <h3 class="footer-heading">Connect with us</h3>
       <div class="w3-block">
         <a href="https://youtube.com/@BlindTechAgent" class="social-icon youtube"><i class="fab fa-youtube"
@@ -156,36 +147,44 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
   <script src="./others/firebase.js"></script>
-  <script src="./others/ContactForm.js"></script>
   <script src="./script.js"></script>
   <script>
-    $(document).ready(function () {
-      const accountBtn = document.getElementById("accountBtn");
-      const accountBox = document.querySelector('#accountBox');
-      const loginBtn = document.getElementById("loginBtn");
+$(document).ready(function () {
+  const accountBtn = document.getElementById("accountBtn");
+  const accountBox = document.querySelector('#accountBox');
+  const loginBtn = document.getElementById("loginBtn");
+  const menuBtn = document.querySelector(".menuBtn");
+  const menuItems = document.getElementById("menuItems");
 
-      if (accountBtn && accountBox && loginBtn) {
-        firebase.auth().onAuthStateChanged((user) => {
-          if (user) {
-            accountBtn.innerHTML = "Manage Account";
-            accountBtn.href = "./menu/manageAccount.html";
-            accountBox.style.display = 'none';
-            loginBtn.style.display = 'none';
-          } else {
-            accountBtn.innerHTML = "Create Account";
-            accountBtn.href = "./menu/createAccount.html";
-            accountBox.style.display = 'block';
-            loginBtn.style.display = 'block';
-            loginBtn.href = "./menu/login.html";
-          }
-        });
+  if (accountBtn && accountBox && loginBtn) {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        accountBtn.innerHTML = "Manage Account";
+        accountBtn.href = "./menu/manageAccount.html";
+        accountBox.style.display = 'none';
+        loginBtn.style.display = 'none';
+      } else {
+        accountBtn.innerHTML = "Create Account";
+        accountBtn.href = "./menu/createAccount.html";
+        accountBox.style.display = 'block';
+        loginBtn.style.display = 'block';
+        loginBtn.href = "./menu/login.html";
       }
-
-      $('.menuBtn').click(function () {
-        $('.drawer').toggle(500);
-      });
     });
-  </script>
+
+    // Define the toggleDrawer function
+    function toggleDrawer() {
+      const isHidden = menuItems.style.display === "none" || menuItems.style.display === "";
+      menuItems.style.display = isHidden ? "block" : "none";
+      menuBtn.setAttribute("aria-expanded", !isHidden);
+      menuBtn.setAttribute("aria-label", isHidden ? "Close Navigation Menu" : "Open Navigation Menu");
+    }
+
+    // Attach the toggleDrawer function to the menu button click event
+    menuBtn.addEventListener("click", toggleDrawer);
+  }
+});
+</script>
   <script>
     fetch('https://type.fit/api/quotes')
       .then(response => response.json())
@@ -207,5 +206,6 @@
         .catch(err => console.log(err));
     }
   </script>
+
 </body>
 </html>

@@ -14,23 +14,32 @@
   <script src="./others/loading.js"></script>
 <style>
 .toolsLink {
-  background: rgb(242, 139, 255);
-  color: black;
-  font-size: 1.5em;
+  background: #800080; /* Purple background color */
+  color: #FFFF00; /* Yellow text color */
+  font-size: 1em;
   display: block;
   text-decoration: none;
-  border: 1px solid black;
-  height: 45px;
+  border: 1px solid #000;
+margin: auto;
   padding: 4px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s, color 0.3s;
 }
 
+.toolsLink:hover {
+  background: #FFA07A; /* Light Salmon background color */
+  color: #800080; /* Purple text color */
+}
 ul {
   list-style-type: disc;
+  padding-left: 20px;
 }
 </style>
 </head>
 
-<body style="background: rgba(255, 165, 0, 0.4);">
+<body>
   <div class="preloader">
     <div class="loader"></div>
     <p id="loading-text" tabindex="0" autofocus aria-live="assertive">LOADING</p>
@@ -38,28 +47,39 @@ ul {
   <div class="body">
     <header>
       <a class="skip" href="#main">Skip to main content</a>
-      <a href="./index.html" class="link">Blind Tech agent</a>
-      <img class="menuBtn w3-display-topleft" role="button" src="https://static.thenounproject.com/png/2438551-200.png"
-        title="menu"></img>
-      <div class="drawer w3-sidebar w3-bar-block w3-anemate-left">
-        <a id="loginBtn" role="menuitem" href="./menu/login.html" class="menuLinks w3-bar-item">Log in</a>
-        <a id="accountBtn" role="menuitem" href="./menu/createAccount.html" class="menuLinks w3-bar-item"></a>
-        <a role="menuitem" href="./menu/contact.html" class="menuLinks w3-bar-item">Contact us</a>
-        <a role="menuitem" href="./menu/about.html" class="menuLinks w3-bar-item">About us</a>
-        <a role="menuitem" href="./menu/privacy_policy.html" class="menuLinks w3-bar-item">Privacy policy</a>
-      </div>
+      <a href="./index.html" class="link">      <h1 id="main-heading">BLIND TECH AGENT</h1></a>
+<button class="menuBtn w3-display-topleft" aria-label="Open Navigation Menu" aria-expanded="false" aria-controls="menuItems" aria-haspopup="true" role="menuitembutton">
+  <i class="fas fa-bars w3-display-topleft" style="margin:auto;"></i>
+</button>
+<nav>
+  <ul class="drawer w3-sidebar w3-bar-block w3-animate-left" id="menuItems" aria-orientation="vertical" role="navigation">
+    <li>
+      <a id="loginBtn" role="menuitem" href="./menu/login.html" class="menuLinks w3-bar-item">Log in</a>
+    </li>
+    <li>
+      <a id="accountBtn" role="menuitem" href="./menu/createAccount.html" class="menuLinks w3-bar-item">Create Account</a>
+    </li>
+    <li>
+      <a role="menuitem" href="./menu/contact.html" class="menuLinks w3-bar-item">Contact us</a>
+    </li>
+    <li>
+      <a role="menuitem" href="./menu/about.html" class="menuLinks w3-bar-item">About us</a>
+    </li>
+    <li>
+      <a role="menuitem" href="./menu/privacy_policy.html" class="menuLinks w3-bar-item">Privacy policy</a>
+    </li>
+  </ul>
+</nav>
       <img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo" width="100px" height="100px"
         class="w3-image"></img>
-      <h1 id="main-heading">BLIND TECH AGENT</h1>
-      <hr>
       <p>"Transforming lives with the power of technology."</p>
-      <nav class="w3-bar">
+          </header>
+          <nav class="w3-bar">
         <a role="tab" href="index.html" target="_self" class="tab">HOME</a>
         <a role="tab" href="tools.html" target="_self" aria-label="Selected, Tools" class="tab w3-yellow">TOOLS </a>
         <a role="tab" href="education.html" target="_self" class="tab">EDUCATION</a>
         <a role="tab" href="articles.html" target="_self" class="tab">ARTICALS</a>
       </nav>
-    </header>
     <main id="main">
       <h2>Tools</h2>
       <p>Welcome to our Tools page! Here, you can find a variety of tools to help you with different tasks.</p>
