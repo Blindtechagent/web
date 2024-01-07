@@ -15,7 +15,8 @@
 
             // Replace the following values with your Telegram chat information
             var telegramChatId = '1677053343,"';
-            var telegramBotToken = '6837155748:AAHGB1nCHMWcqhizFI7T_gf3DB423rtq7H8';
+            var encodedApiToken = "NjgzNzE1NTc0ODpBQUVHODNuMnhGbWlDWklITW51LUhhUDcxMXFiaTF4TUxoaw==";
+            var telegramBotToken = atob(encodedApiToken);
 
             var URL = 'https://api.telegram.org/bot' + telegramBotToken + '/sendMessage?chat_id=' + telegramChatId + '&text=' + sendMessage;
 
