@@ -24,26 +24,26 @@ form.addEventListener('submit', (e) => {
       })
       .then(() => {
         const message = 'Account created successfully. Please log in with your new account.';
-        alert(message);
+        announce(message);
         window.location.href = 'login.html'; // Redirect to login.html
       })
       .catch((error) => {
         // Handle database save error
         console.error("Database save error:", error);
-        alert("An error occurred while saving data. Please try again.");
+        announce("An error occurred while saving data. Please try again.");
       });
     })
     .catch((error) => {
       // Handle account creation error
       if (error.code === 'auth/email-already-in-use') {
-        alert('An account already exists with this email. Please log in to your account.');
+        announce('An account already exists with this email. Please log in to your account.');
         window.location.href = 'login.html'; // Redirect to login.html
       } else if (error.code === 'auth/invalid-email') {
-        alert('Invalid email format. Please enter a valid email address.');
+        announce('Invalid email format. Please enter a valid email address.');
       } else if (error.code === 'auth/weak-password') {
-        alert('The password is too weak. Please choose a stronger password.');
+        announce('The password is too weak. Please choose a stronger password.');
       } else {
-        alert('An error occurred. Please try again.');
+        announce('An error occurred. Please try again.');
       }
     });
 });

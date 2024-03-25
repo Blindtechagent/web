@@ -53,8 +53,11 @@
 </head>
 
 <body>
-  <center>
-    <h1>Login</h1>
+  <a href="javascript:history.go(-1)" style="position:fixed; top:0; left:0; display:inline-block; padding:10px; background-color:#007bff; color:#fff; text-decoration:none; border-radius:5px;">Back</a>
+<center>
+    <div id="heading-box" tabindex="0" role="heading" aria-level="1">
+<h1>Log in</h1>
+    </div>
     <form autocomplete="off" id="login-form">
       <label for="login-email">Email ID</label>
       <input type="email" id="login-email" required>
@@ -65,11 +68,13 @@
       <button class="button" type="submit">Login</button>
     <p>Not have an account yet? <a class="link" href="createAccount.html">Create Account</a></p>
     </form>
+    <div id="announcement" role="status" aria-live="assertive"></div>
       </center>
 
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="login.js"></script>
+  <script src="../others/global.js"></script>
 </body>
 
 </html>

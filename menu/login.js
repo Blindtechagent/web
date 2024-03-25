@@ -24,17 +24,17 @@ function loginUser(event) {
   // Use Firebase Authentication API to sign in the user
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then(function(userCredential) {
-      // Redirect to the homepage or another desired page
-      window.location.href = "../index.html";
+        announce("log in successfully");
+      window.history.back();
     })
     .catch(function(error) {
       // Handle login errors
       if (error.code === 'auth/user-not-found') {
-        alert('There is no account with this email. Please create an account first.');
+        announce('There is no account with this email. Please create an account first.');
         window.location.href = "./createAccount.html";
       } else {
         console.error("Login error:", error);
-        alert("An error occurred. Please try again.");
+        announce("An error occurred. Please try again.");
       }
     });
 }
