@@ -8,13 +8,13 @@ $(document).ready(function () {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         accountBtn.innerHTML = "Manage Account";
-        accountBtn.href = "../menu/manageAccount.html";
+        accountBtn.href = "./memu/manageAccount.html";
         loginBtn.style.display = 'none';
       } else {
         accountBtn.innerHTML = "Create Account";
-        accountBtn.href = "../menu/createAccount.html";
+        accountBtn.href = "./menu/createAccount.html";
         loginBtn.style.display = 'block';
-        loginBtn.href = "../menu/login.html";
+        loginBtn.href = "./menu/login.html";
       }
     });
   }

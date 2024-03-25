@@ -4,12 +4,10 @@ window.addEventListener('load', function() {
         var body = document.querySelector('.body');
         preloader.remove(); // Remove the preloader element from the document
 body.style.display = "block";
-      }, 2500);
+      }, 2000);
 
       setTimeout(function() {
         var loadingText = document.getElementById('loading-text');
         loadingText.textContent = 'LOADING finish';
-        loadingText.focus(); // Set focus to the loading text
-      }, 2000);
+      }, 1500);
     });
-  
