@@ -57,9 +57,10 @@ h1, h2, h3 {
   color: #FF5722;
 }
 
-a {
-  color: #03A9F4; /* Light blue color for links */
-  text-decoration: none;
+a{
+    background: orange;
+  color: #03A9F4;
+  padding :5px 10px; text-decoration: none;
   transition: color 0.3s;
 }
 

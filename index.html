@@ -50,6 +50,9 @@
       <a role="menuitem" href="./menu/about.html" class="menuLinks w3-bar-item">About us</a>
     </li>
     <li>
+      <a role="menuitem" href="./menu/donateUs.html" class="menuLinks w3-bar-item">Donate us</a>
+    </li>
+    <li>
       <a role="menuitem" href="./menu/privacy_policy.html" class="menuLinks w3-bar-item">Privacy policy</a>
     </li>
   </ul>
@@ -66,7 +69,7 @@
       </header>
       <nav class="w3-bar" role="tabpanel">
         <a role="tab" href="index.html" target="_self" aria-label="Selected, Home" class="tab w3-yellow">HOME</a>
-        <a role="tab" href="tools.html" target="_self" class="tab">TOOLS </a>
+        <a role="tab" href="features.html" target="_self" class="tab">FEATURES </a>
         <a role="tab" href="education.html" target="_self" class="tab">EDUCATION</a>
         <a role="tab" href="articles.html" class="tab">ARTICLES</a>
       </nav>
@@ -90,6 +93,37 @@
           <button onclick="translateToHindi()" class="w3-btn w3-left w3-round">Translate to Hindi</button>
           <br>
     </div>
+<section>
+    <h2>Learn the Basics of Web Development with HTML & CSS!</h2>
+    <p>I, Pawan Kumar, lead developer and founder of Blind Tech Agent, is offering an online course to teach you the fundamentals of HTML and CSS!</p>
+    <p>In this course, you'll gain the essential skills to build and style your own web pages. Whether you're a complete beginner or looking to brush up on your coding knowledge, this course is designed to be accessible and informative.</p>
+    
+    <h3>Here's what you'll learn:</h3>
+    <ul>
+        <li>HTML:</li>
+        <p>The building blocks of web pages. You'll understand how to structure content using tags and create elements like headings, paragraphs, images, and links.</p>
+        <li>Basic CSS:</li>
+        <p>Learn how to style your web pages with CSS. You'll cover topics like fonts, colors, layouts, and positioning to make your website visually appealing.</p>
+    </ul>
+    
+    <h3>Course Benefits:</h3>
+    <ul>
+        <li>Affordable Price:</li>
+        <p>This comprehensive course is offered for only 700 Indian rupees.</p>
+        <li>Expert Instruction:</li>
+        <p>Learn from Pawan Kumar, an experienced developer with a passion for web development education.</p>
+        <li>Clear and Concise Learning:</li>
+        <p>The course is designed to be easy to follow, with step-by-step instructions and practical examples.</p>
+        <li>Course Notes Included:</li>
+        <p>Gain access to valuable course notes for reference and continued learning.</p>
+    </ul>
+    
+    <p>Ready to take your first step into web development? Enroll in our online HTML & CSS course today!</p>
+    <p>For more information and registration details, please contact now.</p>
+    <p>Telegram: <a href="https://telegram.me/pawan_ks">Contact on telegram</a></p>
+    <p>WhatsApp: <a href="https://wa.me/919315548418?text=I%20want%20to%20join%20the%20course">Contact on Whatsapp</a></p>
+    <p>"Don't just browse the web, Let's build it! Enroll today and turn your web development dreams into reality."</p>
+</section>
 <h3>Introducing Blind Tech Agent AI</h3>
         <p>"Welcome to Blind Tech Agent AI, your buddy on our website.</p>
         <p>We're excited to introduce this smart helper designed to make your online time better and easier. Blind Tech
@@ -97,7 +131,7 @@
           information, recommendations, or just want to make your online journey more enjoyable, Blind Tech Agent AI has
           your back. So, start using it today and see how it can make your online experience more fun and useful. Try it
           now, and you'll discover a whole new world of convenience and assistance awaiting you!"</p>
-        <a href="./tools/blindtechagentAI.html">Try Blind tech agent ai now</a>
+        <a href="./features/blindtechagentAI.html">Try Blind tech agent ai now</a>
         <br>
         <h3 class="w3-warning">Important announcement</h3>
         <p>We have important information to share with you! To ensure that you stay informed about the latest updates
@@ -117,9 +151,9 @@
         <p>We are a multipurpose website dedicated to transforming lives with the power of technology. Although our
           website is designed to be accessible for the blind, it is meant for everyone who wants to benefit from the
           latest advancements in technology.</p>
-        <p>Our website provides a wide range of tools and resources to help you navigate through your daily tasks with
+        <p>Our website provides a wide range of features and resources to help you navigate through your daily tasks with
           ease. From productivity and entertainment apps to education resources, we've got you covered. Visit our <a
-            href="./tools.html">Tools page</a> to explore what we offer.</p>
+            href="./features.html">Features page</a> to explore what we offer.</p>
       </section>
       <section>
         <p>If you have any questions or encounter any issues while using our website, please don't hesitate to <a
@@ -128,6 +162,7 @@
           can.</p>
         <p>To learn more about our team and our mission, check out our <a href="./menu/about.html">About page</a></p>
       </section>
+      <div id="announcement" role="status" aria-live="assertive"></div>
     </main>
 
     <footer class="footer">
@@ -165,64 +200,5 @@
   <script src="./others/firebase.js"></script>
   <script src="./others/ContactForm.js"></script>
   <script src="./script.js"></script>
-  <script>
-$(document).ready(function () {
-  const accountBtn = document.getElementById("accountBtn");
-  const accountBox = document.querySelector('#accountBox');
-  const loginBtn = document.getElementById("loginBtn");
-  const menuBtn = document.querySelector(".menuBtn");
-  const menuItems = document.getElementById("menuItems");
-
-  if (accountBtn && accountBox && loginBtn) {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        accountBtn.innerHTML = "Manage Account";
-        accountBtn.href = "./menu/manageAccount.html";
-        accountBox.style.display = 'none';
-        loginBtn.style.display = 'none';
-      } else {
-        accountBtn.innerHTML = "Create Account";
-        accountBtn.href = "./menu/createAccount.html";
-        accountBox.style.display = 'block';
-        loginBtn.style.display = 'block';
-        loginBtn.href = "./menu/login.html";
-      }
-    });
-
-    // Define the toggleDrawer function
-    function toggleDrawer() {
-      const isHidden = menuItems.style.display === "none" || menuItems.style.display === "";
-      menuItems.style.display = isHidden ? "block" : "none";
-      menuBtn.setAttribute("aria-expanded", !isHidden);
-      menuBtn.setAttribute("aria-label", isHidden ? "Close Navigation Menu" : "Open Navigation Menu");
-    }
-
-    // Attach the toggleDrawer function to the menu button click event
-    menuBtn.addEventListener("click", toggleDrawer);
-  }
-});
-</script>
-  <script>
-    fetch('https://type.fit/api/quotes')
-      .then(response => response.json())
-      .then(data => {
-        const index = Math.floor(Math.random() * data.length);
-        const thought = data[index].text;
-        document.getElementById('thought').innerHTML = thought;
-      })
-      .catch(err => console.log(err));
-
-    function translateToHindi() {
-      const thought = document.getElementById('thought').innerHTML;
-      fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=hi&dt=t&q=${thought}`)
-        .then(response => response.json())
-        .then(data => {
-          const translated = data[0][0][0];
-          document.getElementById('thought').innerHTML = translated;
-        })
-        .catch(err => console.log(err));
-    }
-  </script>
-
 </body>
 </html>
