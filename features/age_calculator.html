@@ -1,0 +1,245 @@
+  <!DOCTYPE html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/a5db627303.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../others/loading.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .container {
+      background-color: #B0E0E6;
+      border-radius: 10px;
+    }
+
+    main h1 {
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      display: block;
+      margin: 1em 0 .5em;
+      font-weight: bold;
+    }
+
+    input[type="number"] {
+      display: block;
+      width: 100%;
+      font-size: 1.2em;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+      margin-bottom: 1.5em;
+    }
+
+    .button {
+      display: block;
+      margin: 2em auto 0;
+      padding: 16px;
+      font-size: 2em;
+      border: none;
+      border-radius: 3px;
+      width: 80%;
+      background-color: #4d9de0;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #4287c9;
+    }
+
+    #result {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-top: 2em;
+      padding: 1em;
+      background-color: #f9fafb;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="preloader">
+    <div class="loader"></div>
+    <p id="loading-text" tabindex="0" autofocus aria-live="assertive">LOADING</p>
+  </div>
+  <div class="body">
+    <header>
+      <a class="skip" href="#main">Skip to main content</a>
+<a href="../index.html" class="link">    <h1 id="main-heading">BLIND TECH AGENT</h1></a>
+<button class="menuBtn w3-display-topleft" aria-label="Open Navigation Menu" aria-expanded="false" aria-controls="menuItems" aria-haspopup="true" role="menuitembutton">
+  <i class="fas fa-bars w3-display-topleft" style="margin:auto;"></i>
+</button>
+<nav>
+ <ul class="drawer w3-sidebar w3-bar-block w3-animate-left" id="menuItems" aria-orientation="vertical" role="navigation">
+ <li>
+ <a id="loginBtn" role="menuitem" href="../menu/login.html" class="menuLinks w3-bar-item">Log in</a>
+ </li>
+ <li>
+ <a id="accountBtn" role="menuitem" href="../menu/createAccount.html" class="menuLinks w3-bar-item">Create Account</a>
+ </li>
+ <li>
+ <a role="menuitem" href="../menu/contact.html" class="menuLinks w3-bar-item">Contact us</a>
+ </li>
+ <li>
+ <a role="menuitem" href="../menu/about.html" class="menuLinks w3-bar-item">About us</a>
+ </li>
+    <li>
+      <a role="menuitem" href="../menu/donateUs.html" class="menuLinks w3-bar-item">Donate us</a>
+    </li>
+ <li>
+ <a role="menuitem" href="../menu/privacy_policy.html" class="menuLinks w3-bar-item">Privacy policy</a>
+ </li>
+ </ul>
+</nav>
+      <img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo" width="100px" height="100px"
+        class="w3-image"></img>
+      <p>"Transforming lives with the power of technology."</p>
+    </header>
+          <nav class="w3-bar">
+        <a role="tab" href="../index.html" target="_self" class="tab">HOME</a>
+        <a role="tab" href="../features.html" target="_self" aria-label="Selected, Features" class="tab w3-yellow">FEATURES </a>
+        <a role="tab" href="../education.html" target="_self" class="tab">EDUCATION</a>
+        <a role="tab" href="../articles.html" target="_self" class="tab">ARTICLES</a>
+      </nav>
+    <main>
+      <div id="heading-box" tabindex="0" role="heading" aria-level="2">
+        <h2>Age Calculator</h2>
+      </div>
+      <form class="container">
+        <p>Please enter your birthdate below to calculate your age:</p>
+        <label for="birth-year">Year (for example 1990):</label>
+        <input type="number" id="birth-year" placeholder="Enter your birth year...">
+        <label for="birth-month">Month, (for example 01 for January):</label>
+<select name="month" id="birth-month">
+  <option value="1">January</option>
+  <option value="2">February</option>
+  <option value="3">March</option>
+  <option value="4">April</option>
+  <option value="5">May</option>
+  <option value="6">June</option>
+  <option value="7">July</option>
+  <option value="8">August</option>
+  <option value="9">September</option>
+  <option value="10">October</option>
+  <option value="11">November</option>
+  <option value="12">December</option>
+</select>
+        <label for="birth-day">Day, (for example 15):</label>
+<select name="day" id="birth-day">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">11</option>
+  <option value="12">12</option>
+  <option value="13">13</option>
+  <option value="14">14</option>
+  <option value="15">15</option>
+  <option value="16">16</option>
+  <option value="17">17</option>
+  <option value="18">18</option>
+  <option value="19">19</option>
+  <option value="20">20</option>
+  <option value="21">21</option>
+  <option value="22">22</option>
+  <option value="23">23</option>
+  <option value="24">24</option>
+  <option value="25">25</option>
+  <option value="26">26</option>
+  <option value="27">27</option>
+  <option value="28">28</option>
+  <option value="29">29</option>
+  <option value="30">30</option>
+  <option value="31">31</option>
+</select>
+        <button type="button" class="button" onclick="calculateAge()">Calculate Age</button>
+        <div id="announcement" role="status" aria-live="assertive"></div>
+        <div id="result"></div>
+      </form>
+    </main>
+    <footer class="footer">
+      <h2>Footer</h2>
+      <h3 class="footer-heading">Connect with us</h3>
+      <div class="w3-block">
+        <a href="https://youtube.com/@BlindTechAgent" class="social-icon youtube"><i class="fab fa-youtube"
+            title="Join us on YouTube"></i></a>
+        <a href="https://t.me/Blindtechagent" class="social-icon telegram"><i class="fab fa-telegram-plane"
+            title="Join us on telegram"></i></a>
+      </div>
+      <p class="text-center">&copy; 2023 Blind Tech Agent. All Rights Reserved.</p>
+    </footer>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="../others/firebase.js"></script>
+  <script>
+    function calculateAge() {
+      var birthYear = parseInt(document.getElementById("birth-year").value);
+      var birthMonth = parseInt(document.getElementById("birth-month").value);
+      var birthDay = parseInt(document.getElementById("birth-day").value);
+
+      if (isNaN(birthYear) || birthYear < 1900 || birthYear > new Date().getFullYear()) {
+        announce("Please enter a valid birth year.");
+        return;
+      }
+
+      if (isNaN(birthMonth) || birthMonth < 1 || birthMonth > 12) {
+        announce("Please enter a valid birth month.");
+        return;
+      }
+
+      if (isNaN(birthDay) || birthDay < 1 || birthDay > 31) {
+        announce("Please enter a valid birth day.");
+        return;
+      }
+
+      var currentDate = new Date();
+      var currentDay = currentDate.getDate();
+      var currentMonth = 1 + currentDate.getMonth();
+      var currentYear = currentDate.getFullYear();
+
+      var monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+      if (birthDay > currentDay) {
+        currentDay += monthDays[currentMonth - 1];
+        currentMonth -= 1;
+      }
+
+      if (birthMonth > currentMonth) {
+        currentMonth += 12;
+        currentYear -= 1;
+      }
+
+      var dayDiff = currentDay - birthDay;
+      var monthDiff = currentMonth - birthMonth;
+      var yearDiff = currentYear - birthYear;
+      var calculatedAge = "Your age is " + yearDiff + " years, " + monthDiff + " months, and " + dayDiff + " days.";
+announce("Age calculated successfully" + calculatedAge);
+      document.getElementById("result").innerHTML = calculatedAge;
+    }
+  </script>
+  <script src="../others/global.js"></script>
+</body>
+
+</html>

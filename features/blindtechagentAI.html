@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/a5db627303.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../others/loading.js"></script>
+  <title>Blind tech agent AI</title>
+  <style>
+  main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f2f2f2;
+  padding: 20px;
+  text-align: center;
+  color: #000;
+  
+  }
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.container {
+  max-width: 90vw;
+  min-width: 80vw;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #d9d9d9;
+  overflow: hidden;
+  box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.5);
+}
+
+.tb {
+  width: 100%;
+  height: 320px;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  overflow: hidden;
+  border-top: 1px solid #c3baba;
+  overflow-y: scroll;
+}
+
+.tb::-webkit-scrollbar {
+  display: none;
+}
+
+.input-area {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  margin-top: 10px;
+}
+
+.input-area input {
+  width: calc(100% - 66px);
+  height: 100%;
+  padding: 10px;
+  outline: none;
+  border: 1px solid #c3baba;
+  border-radius: 8px;
+}
+
+.input-area button, #refreshButton{
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+  margin-left: 6px;
+  cursor: pointer;
+  background-color: #F4D03F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main img {
+  filter: invert();
+  width: 40px;
+  height: 40px;
+}
+
+.msg {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.msg span {
+  max-width: 85vw;
+  width: fit-content;
+  padding: 5px 10px;
+  margin-top: 10px;
+  color: #fff;
+  font-size: smaller;
+  border-radius: 8px;
+  background-color: #F433FF;
+}
+
+.msg1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dfm, .msg1 span {
+  max-width: 85vw;
+  width: fit-content;
+  padding: 5px 10px;
+  margin-top: 10px;
+  color: #fff;
+  text-align: start;
+  font-size: smaller;
+  border-radius: 8px;
+  background-color: #3DFF33;
+}
+
+.head {
+  width: 100%;
+  height: 55px;
+  display: flex;
+  align-items: center;
+}
+
+.head .info {
+  width: 100%;
+  height: 50px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.info span {
+  font-size: 12px;
+}
+
+.info span:first-child {
+  font-size: medium;
+  font-weight: 600;
+}
+
+main ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  color: #666;
+}
+
+main li {
+  margin-bottom: 10px;
+}
+.btn {
+    padding: 8px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: purple;
+    color: white;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    width: 60px;
+}
+
+.btn:hover {
+    background-color: #6a5acd;
+}
+
+</style>
+</head>
+<body>
+  <div class="preloader">
+    <div class="loader"></div>
+    <p id="loading-text" tbindex="0" autofocus aria-live="assertive">LOADING</p>
+  </div>
+  <div class="body">
+    <header>
+      <a class="skip" href="#main">Skip to main content</a>
+      <a href="../index.html" class="link">    <h1 id="main-heading">BLIND TECH AGENT</h1></a>
+<button class="menuBtn w3-display-topleft" aria-label="Open Navigation Menu" aria-expanded="false" aria-controls="menuItems" aria-haspopup="true" role="menuitembutton">
+  <i class="fas fa-bars w3-display-topleft" style="margin:auto;"></i>
+</button>
+<nav>
+ <ul class="drawer w3-sidebar w3-bar-block w3-animate-left" id="menuItems" aria-orientation="vertical" role="navigation">
+ <li>
+ <a id="loginBtn" role="menuitem" href="../menu/login.html" class="menuLinks w3-bar-item">Log in</a>
+ </li>
+ <li>
+ <a id="accountBtn" role="menuitem" href="../menu/createAccount.html" class="menuLinks w3-bar-item">Create Account</a>
+ </li>
+ <li>
+ <a role="menuitem" href="../menu/contact.html" class="menuLinks w3-bar-item">Contact us</a>
+ </li>
+ <li>
+ <a role="menuitem" href="../menu/about.html" class="menuLinks w3-bar-item">About us</a>
+ </li>
+    <li>
+      <a role="menuitem" href="../menu/donateUs.html" class="menuLinks w3-bar-item">Donate us</a>
+    </li>
+ <li>
+ <a role="menuitem" href="../menu/privacy_policy.html" class="menuLinks w3-bar-item">Privacy policy</a>
+ </li>
+ </ul>
+</nav>
+      <img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo" width="100px" height="100px"
+        class="w3-image"></img>
+      <p>"Transforming lives with the power of technology."</p>
+    </header>
+          <nav class="w3-bar">
+        <a role="tab" href="../index.html" target="_self" class="tab">HOME</a>
+        <a role="tab" href="../features.html" target="_self" aria-label="Selected, Features" class="tab w3-yellow">FEATURES
+        </a>
+        <a role="tab" href="../education.html" target="_self" class="tab">EDUCATION</a>
+        <a role="tab" href="../articles.html" target="_self" class="tab">ARTICLES</a>
+      </nav>
+<main id="main">
+   <div class="container">
+      <div class="head">
+         <div class="info">
+            <div id="heading-box" tbindex="0" role="heading" aria-level="2">
+               <h2>Blind Tech Agent AI</h2>
+            </div>
+         </div>
+      <button id="refreshButton"><img src="https://graph.org/file/254b9c2cd8d64b4075eaf.jpg" alt="Refresh"></button>
+</div>
+      <div class="tb" id="tb">
+         <div class="dfm">
+            <span>Hello! I am Blind Tech Agent AI. How can I assist you today?</span>
+         </div>
+      </div>
+      <div class="input-area">
+         <textarea id="msg_text" placeholder="Enter message here"></textarea>
+         <button onclick="send()"><img src="https://graph.org/file/ece316d459296026a5833.jpg" alt="Send"></button>
+      </div>
+   </div>
+   <section>
+    <h2>About Blind Tech Agent AI</h2>
+    <p>
+        Discover the power of Blind Tech Agent AI. It's your smart companion for:
+    </p>
+    <ul>
+        <li>Instant answers to your questions</li>
+        <li>Effortless content generation</li>
+        <li>Engaging conversations and insights</li>
+        <li>Multilingual support</li>
+        <li>Natural language understanding</li>
+        <li>and so much more</li>
+    </ul>
+    <p>Please note that messages are generated by AI. While we strive for accuracy, Blind Tech Agent AI may occasionally make mistakes. We are not responsible for the content of these messages.</p>
+    <p>
+        Whether you need assistance, generating content, or just a friendly chat, our AI is here to
+        enhance your experience. Join us in the future of technology!
+    </p>
+</section>
+<br><br>
+   <div id="announcement" role="status" aria-live="assertive"></div>
+
+</main>
+   <footer class="footer">
+      <h2>Footer</h2>
+          <h3 class="footer-heading">Connect with us</h3>
+          <div class="w3-block">
+                <a href="https://youtube.com/@BlindTechAgent" class="social-icon youtube"><i class="fab fa-youtube"
+            title="Join us on YouTube"></i></a>
+                <a href="https://t.me/Blindtechagent" class="social-icon telegram"><i class="fab fa-telegram-plane"
+            title="Join us on telegram"></i></a>
+            </div>
+          <p class="text-center">&copy; 2023 Blind Tech Agent. All Rights Reserved.</p>
+    </footer>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-datbase.js"></script>
+  <script src="../others/firebase.js"></script>
+  <script src="../others/global.js"></script>
+  <script src="./AI.js"></script>
+</body>
+</html>
