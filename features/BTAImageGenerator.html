@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTA Image Generator</title>
+    <link rel="stylesheet" href="./img-generator-styles.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a5db627303.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../others/loading.js"></script>
+</head>
+<body>
+    <div class="preloader">
+        <div class="loader"></div>
+        <p id="loading-text" tabindex="0" autofocus aria-live="assertive">LOADING</p>
+    </div>
+    <div class="body">
+        <header>
+            <a class="skip" href="#main">Skip to main content</a>
+            <a href="../index.html" class="link"><h1 id="main-heading">BLIND TECH AGENT</h1></a>
+            <button class="menuBtn w3-display-topleft" aria-label="Open Navigation Menu" aria-expanded="false" aria-controls="menuItems" aria-haspopup="true" role="menuitembutton">
+                <i class="fas fa-bars w3-display-topleft" style="margin:auto;"></i>
+            </button>
+            <nav>
+                <ul class="drawer w3-sidebar w3-bar-block w3-animate-left" id="menuItems" aria-orientation="vertical" role="navigation">
+                    <li><a id="loginBtn" role="menuitem" href="../menu/login.html" class="menuLinks w3-bar-item">Log in</a></li>
+                    <li><a id="accountBtn" role="menuitem" href="../menu/createAccount.html" class="menuLinks w3-bar-item">Create Account</a></li>
+                    <li><a role="menuitem" href="../menu/contact.html" class="menuLinks w3-bar-item">Contact us</a></li>
+                    <li><a role="menuitem" href="../menu/about.html" class="menuLinks w3-bar-item">About us</a></li>
+                    <li><a role="menuitem" href="../menu/donateUs.html" class="menuLinks w3-bar-item">Donate us</a></li>
+                    <li><a role="menuitem" href="../menu/privacy_policy.html" class="menuLinks w3-bar-item">Privacy policy</a></li>
+                </ul>
+            </nav>
+            <img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo" width="100px" height="100px" class="w3-image">
+            <p>"Transforming lives with the power of technology."</p>
+        </header>
+        <nav class="w3-bar">
+            <a role="tab" href="../index.html" target="_self" class="tab">HOME</a>
+            <a role="tab" href="../features.html" target="_self" aria-label="Selected, Features" class="tab w3-yellow">FEATURES</a>
+            <a role="tab" href="../education.html" target="_self" class="tab">EDUCATION</a>
+            <a role="tab" href="../articles.html" target="_self" class="tab">ARTICLES</a>
+        </nav>
+        <main id="main">
+            <div id="heading-box" tabindex="0" role="heading" aria-level="2">
+                <h2>BTA Image Generator</h2>
+            </div>
+            <p>Welcome to the BTA Image Generator! This tool lets you create images from text descriptions. Just type what you imagine, and we'll turn it into a picture.</p>
+            <p>How to use the tool:</p>
+            <ul>
+                <li>Type a description of the image you want in the box below. For example, "A cat sitting on a tree" or "A spaceship flying in space."</li>
+                <li>Click the "Generate Image" button.</li>
+                <li>Wait a moment, and your image will appear below.</li>
+            </ul>
+            <p>To download the image:</p>
+            <ul>
+                <li>On a phone or tablet: long press on the image to see the option to download.</li>
+                <li>On a laptop or computer: press the application key (or right-click) on the image to find the option to download.</li>
+            </ul>
+            <p>Unleash your creativity with this tool and give shape to your imagination!</p>
+            <div class="container">
+                <div class="inputArea">
+                    <textarea id="imgPrompt" placeholder="Type your prompt here..."></textarea>
+                    <button class="btn" onclick="sendPrompt()">Generate Image</button>
+                </div>
+                <div class="img-box" id="imgBox"></div>
+            </div>
+            <div id="announcement" role="status" aria-live="assertive"></div>
+        </main>
+        <footer class="footer">
+            <h2>Footer</h2>
+            <h3 class="footer-heading">Connect with us</h3>
+            <div class="w3-block">
+                <a href="https://youtube.com/@BlindTechAgent" class="social-icon youtube"><i class="fab fa-youtube" title="Join us on YouTube"></i></a>
+                <a href="https://t.me/Blindtechagent" class="social-icon telegram"><i class="fab fa-telegram-plane" title="Join us on telegram"></i></a>
+            </div>
+            <p class="text-center">&copy; 2023 Blind Tech Agent. All Rights Reserved.</p>
+        </footer>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="../others/firebase.js"></script>
+    <script src="../others/global.js"></script>
+    <script src="../others/auth.js"></script>
+    <script src="./img-generator-javascript.js"></script>
+</body>
+</html>

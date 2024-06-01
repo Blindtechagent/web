@@ -1,0 +1,70 @@
+h2 {
+
+    color: purple;
+    margin: 10px;
+}
+
+.container {
+    background-color: steelblue;
+    width: 90vw;
+    height: fit-content;
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.inputArea {
+    background-color: tomato;
+    display: flex;
+    margin: 16px auto;
+    padding: 8px;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 85vw;
+    height: fit-content;
+}
+
+#imgPrompt {
+    flex: 7;
+    margin: 8px 2px 8px 8px;
+
+    height: 12vh;
+    color: blue;
+}
+
+.btn {
+    flex: 1;
+    height: 12vh;
+    margin: 8px 8px 8px 2px;
+    padding: 8px;
+    background-color: dodgerblue;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.img-box {
+    background-color: #FFA500;
+    width: 85vw;
+    height: fit-content;
+    text-align: center;
+    display: none;
+    margin: 8px auto;
+    overflow: hidden;
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.user-prompt {
+    background-color: purple;
+    color: #FFD700;
+    display: block;
+    float: right;
+    clear: both;
+    margin: 8px;
+    width: fit-content;
+    padding: 8px;
+}
+
