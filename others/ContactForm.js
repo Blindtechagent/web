@@ -14,8 +14,8 @@
             var sendMessage = 'New Message' + '%0A' + 'Name : ' + name + '%0A' + 'Email : ' + email + '%0A' + 'Message Purpose : ' + selectedPurpose + '%0A' + 'Message : ' + userMessage;
 
             // Replace the following values with your Telegram chat information
-            var telegramChatId = '1677053343,"';
-            var telegramBotToken = '6837155748:AAHGB1nCHMWcqhizFI7T_gf3DB423rtq7H8';
+            var telegramChatId = '1677053343';
+            var telegramBotToken = '6837155748:AAEQHBXdgXGZZ880-Ky4z8TU1SS5NTvX_3M';
 
             var URL = 'https://api.telegram.org/bot' + telegramBotToken + '/sendMessage?chat_id=' + telegramChatId + '&text=' + sendMessage;
 
