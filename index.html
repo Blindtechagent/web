@@ -92,10 +92,15 @@
       <section>
         <h2>Welcome to Blind Tech Agent</h2>
         <div class="w3-round w3-container thoughtBox">
-          <h3 class="text-center w3-text-white">Thought of the Day</h3>
+          <h3 class="text-center w3-text-white">Random quotation</h3>
           <br>
-          <p id="thought"></p>
-          <button onclick="translateToHindi()" class="w3-btn w3-left w3-round">Translate to Hindi</button>
+          <div class="textCopy">
+          <p id="thought">loading quotation...</p>
+          <p id="author"></p>
+          </div>
+    <button id="copyBtn" aria-label="copy quotation" style="font-size:10px; padding:5px;" class="w3-btn w3-round"><i style="background:gold; color:#080808; font-sice:12px; padding:0px;" class="fas fa-copy"></i><br>copy</button>
+                    <button id="translateBtn" class="w3-btn w3-round">Translate to Hindi</button>
+    <button id="shareBtn" aria-label="share quotation" style="font-size:10px; padding:5px;" class="w3-btn w3-round"><i style="background:gold; color:#080808; font-sice:12px; padding:0px;" class="fas fa-share-alt"></i><br>share</button>
           <br>
         </div>
         <section>
@@ -107,37 +112,6 @@
             ease. From productivity and entertainment apps to education resources, we've got you covered. Visit our <a
               href="./features.html">Features page</a> to explore what we offer.</p>
           <br>
-        </section>
-        <section>
-          <h2 class="w3-warning">Excel Your Skills with Our Free Online Course</h2>
-          <p class="yellow">Are you looking to enhance your Microsoft Excel skills but don't know where to start? Look
-            no further!</p>
-          <p class="yellow">Blind Tech Agent is excited to offer a free online Excel course that will take you from
-            beginner to
-            proficient in just two months.</p>
-          <p class="yellow">Our course will cover the basics of Excel, including</p>
-          <p class="yellow">introduction to the software, the difference
-            between workbooks and worksheets,</p>
-          <p class="yellow">how to navigate the interface with ease, data entry techniques, and some
-            essential formulas to get you started. Whether you're a complete novice or looking to refresh your Excel
-            knowledge, this course is perfect for you.</p>
-          <p class="yellow">Classes will be conducted on Google Meet, providing a convenient and interactive learning
-            experience. Join us every week from 6 pm to 7 pm to dive into the world of Excel and unlock its full
-            potential</p>
-          <p class="yellow">In addition to live sessions, we will provide comprehensive notes and other supportive
-            materials to help you grasp the
-            concepts effectively.</p>
-          <p class="yellow">Best of all, this course is completely free of charge! Our goal is to empower individuals
-            with valuable
-            skills without any financial barriers. Don't miss this opportunity to excel in Excel and boost your
-            professional capabilities.</p>
-          <p class="yellow">Ready to excel your skills? Register for our free online Excel course today and embark on a
-            journey towards
-            Excel proficiency. Let's make learning accessible and enjoyable together with Blind Tech Agent.</p>
-          <p class="yellow"><strong>The last date of registration: May 5th, 2024.</strong></p>
-          <p class="yellow"><a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfMz4k6Xa-QRBHflNsQN2mlM9z58yLSm1QlSvn13gM3omX8ug/viewform">Registration
-              link</a>.</p>
         </section>
 
         <h3>Introducing Blind Tech Agent AI</h3>
@@ -214,6 +188,7 @@
   <script src="./others/firebase.js"></script>
   <script src="./others/ContactForm.js"></script>
   <script src="./script.js"></script>
+  <script src="./quotes.js"></script>
 </body>
 
 </html>
