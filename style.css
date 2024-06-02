@@ -116,45 +116,42 @@ header {
   margin: 10px auto;
   width: 70%;
   height: auto;
-  background: linear-gradient(135deg, #F433FF, #3DFF33);
-  /* Gradient background */
-  border: 2px solid #F433FF;
-  /* Border color */
+  background: #000; /* Initial background color */
+  border: 4px solid #FFF;
   border-radius: 15px;
   text-align: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  animation: changeColor 6s ease-in-out infinite;
+  animation: changeBackgroundColor 10s linear infinite, changeTextColor 10s linear infinite;
+  color: #FFF; /* Initial text color */
 }
 
-@keyframes changeColor {
-  0% {
-    background: linear-gradient(135deg, #F433FF, #3DFF33);
-    color: #3DFF33;
-    opacity: 1;
+@keyframes changeBackgroundColor {
+  0%, 100% {
+    background: #000; /* Black */
   }
-
   25% {
-    background: linear-gradient(135deg, #3DFF33, #F433FF);
-    color: #F433FF;
-    opacity: 0.8;
+    background: #FF4500; /* Orange Red */
   }
-
   50% {
-    background: linear-gradient(135deg, #F433FF, #3DFF33);
-    color: #3DFF33;
-    opacity: 0.6;
+    background: #008000; /* Green */
   }
-
   75% {
-    background: linear-gradient(135deg, #3DFF33, #F433FF);
-    color: #F433FF;
-    opacity: 0.8;
+    background: #0000FF; /* Blue */
   }
+}
 
-  100% {
-    background: linear-gradient(135deg, #F433FF, #3DFF33);
-    color: #3DFF33;
-    opacity: 1;
+@keyframes changeTextColor {
+  0%, 100% {
+    color: #FFF; /* White */
+  }
+  25% {
+    color: #000; /* Black */
+  }
+  50% {
+    color: #FFF; /* White */
+  }
+  75% {
+    color: #000; /* Black */
   }
 }
 
@@ -175,11 +172,11 @@ header {
   top: 22px;
   left: 0;
   background: #64DD17;
-  /* Updated color matching your header */
   width: 80%;
   border: 2px solid #388E3C;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
 nav ul {
@@ -196,12 +193,11 @@ nav ul {
   padding: 10px 15px;
   border-radius: 5px;
   text-align: center;
-  background-image: linear-gradient(to bottom, #7E57C2 50%, #5E35B1 50%);
-  background-size: 100% 200%;
-  background-position: center top;
+  background-color: #7E57C2;
+  width:70vw;
 }
 
-nav {
+Nav {
   display: flex;
   justify-content: space-between;
   background-color: lime;
