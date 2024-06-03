@@ -8,7 +8,7 @@ $(document).ready(function () {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         accountBtn.innerHTML = "Manage Account";
-        accountBtn.href = "./memu/manageAccount.html";
+        accountBtn.href = "./menu/manageAccount.html";
         loginBtn.style.display = 'none';
       } else {
         accountBtn.innerHTML = "Create Account";
