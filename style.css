@@ -121,8 +121,8 @@ header {
   border-radius: 15px;
   text-align: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  animation: changeBackgroundColor 10s linear infinite, changeTextColor 10s linear infinite;
-  color: #FFF; /* Initial text color */
+  animation: changeBackgroundColor 14s linear infinite;
+  color: yellow; /* Initial text color */
 }
 
 @keyframes changeBackgroundColor {
@@ -138,22 +138,7 @@ header {
   75% {
     background: #0000FF; /* Blue */
   }
-}
-
-@keyframes changeTextColor {
-  0%, 100% {
-    color: #FFF; /* White */
-  }
-  25% {
-    color: #000; /* Black */
-  }
-  50% {
-    color: #FFF; /* White */
-  }
-  75% {
-    color: #000; /* Black */
-  }
-}
+        }
 
 .menuBtn {
   background: #4CAF50;
