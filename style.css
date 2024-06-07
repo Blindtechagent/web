@@ -122,7 +122,8 @@ header {
   text-align: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   animation: changeBackgroundColor 14s linear infinite;
-  color: yellow; /* Initial text color */
+    font-weight: bolder;
+        color:ghostwhite;
 }
 
 @keyframes changeBackgroundColor {
@@ -130,13 +131,14 @@ header {
     background: #000; /* Black */
   }
   25% {
-    background: #FF4500; /* Orange Red */
+    background: #FF0000; /*Red */
   }
   50% {
     background: #008000; /* Green */
   }
   75% {
     background: #0000FF; /* Blue */
+
   }
         }
 
