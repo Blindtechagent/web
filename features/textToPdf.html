@@ -152,12 +152,16 @@
 <p>Simply input your text, click 'Convert to PDF,' and boom!Your text will be transformed into a downloadable PDF file.</p>
  <p>Feel free to customize the file name as desired, then click 'Download PDF' to save your document locally.</p>
 <div class="container">
+<form id="form" name="pdfform">
         <p>Enter your text below:</p>
         <p>Currently supported only English</p>
-        <textarea id="txtContent" cols="60" rows="10" placeholder="Enter your text here..."></textarea>
+        <textarea id="txtContent" required cols="60" rows="10" placeholder="Enter your text here..."></textarea>
         <br>
         <button id="btnGenerate">Convert to PDF</button>
+        </form>
         <div id="downloadBox">
+        <p>Your PDF file is generated.</p>
+            <p> <small id="pdf-size"></small></p>
           <label for="fileName">File Name:</label>
           <input type="text" id="fileName" value="my.pdf">
           <br>
@@ -183,7 +187,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="../others/firebase.js"></script>
     <script src="../others/global.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.6/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.6/vfs_fonts.js"></script>
     <script src="./ttp.js"></script>
 </body>
 
