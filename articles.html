@@ -5,7 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <meta name="description" content="Discover a variety of informative and engaging articles on different topics at Blind Tech Agent. Enhance your knowledge and stay updated with us.">
+<meta name="keywords" content="Blind Tech Agent, articles, informative articles, engaging content, education, knowledge, learning, technology, health, lifestyle, science, business, entertainment, blind tech agent articles page, articles page of Blind Tech Agent, blog of Blind Tech Agent, Blind Tech Agent blog">
+<meta name="author" content="Blind Tech Agent">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+
+<meta property="og:title" content="Articles - Blind Tech Agent">
+<meta property="og:description" content="Explore a wide range of articles on various topics, all aimed at enhancing your knowledge and keeping you informed.">
+<meta property="og:image" content="https://te.legra.ph/file/1456591743bc08490d50c.jpg">
+<meta property="og:url" content="https://blindtechagent.github.io/web/articles.html">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://kit.fontawesome.com/a5db627303.js" crossorigin="anonymous"></script>
@@ -34,6 +45,9 @@
     <li>
       <a id="accountBtn" role="menuitem" href="./menu/createAccount.html" class="menuLinks w3-bar-item">Create Account</a>
     </li>
+          <li>
+            <a role="menuitem" href="./menu/joinUs.html" class="menuLinks w3-bar-item">Join our team</a>
+          </li>
     <li>
       <a role="menuitem" href="./menu/contact.html" class="menuLinks w3-bar-item">Contact us</a>
     </li>
@@ -48,8 +62,28 @@
     </li>
   </ul>
 </nav>
-      <img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo" width="100px" height="100px"
-        class="w3-image"></img>
+<div class="header-container">
+        <img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo of Blind Tech Agent" width="100px" height="100px" class="logo">
+        <button onclick="openDialog()" class="language-button">Translate page</button>
+      </div>
+    <dialog id="dialog" role="dialog" aria-modal="true">
+        <div class="dialog-content">
+            <h2>Change the Language of Our Website</h2>
+            <p>
+                We offer multiple language options to make our website accessible to a wider audience. 
+                Please select your preferred language from the dropdown menu below. Once you have made 
+                your selection, click the "Close and Save Language" button to save your choice and exit this popup.
+            </p>
+        </div>
+
+        <div id="google_translate_element"></div>
+
+        <div class="dialog-footer">
+            <button onclick="closeDialog()" class="close-button">
+                Close and Save Language
+            </button>
+        </div>
+    </dialog>
       <p>"Transforming lives with the power of technology."</p>
 </header>
       <nav class="w3-bar">
@@ -59,10 +93,13 @@
         <a role="tab" href="articles.html" target="_self" aria-label="Selected, Articles"
           class="tab w3-yellow">ARTICLES</a>
       </nav>
-      <main class="w3-dark-grey" id="main">
-        <h2>Coming soon...</h2>
-        <p>This page is under development</p>
-      </main>
+      <main id="main">
+        <h1>Articles</h1>
+    <div id="articles">
+        <!-- Articles will be dynamically generated here -->
+        <p>Loading Articles</p>
+    </div>
+          </main>
 
       <footer class="footer">
         <h2>Footer</h2>
@@ -81,6 +118,10 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
   <script src="./others/firebase.js"></script>
   <script src="./others/indexGlobal.js"></script>
+  <script src="./articles/index.js"></script>
+  <script src="./others/translate.js"></script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="./articles/articles.js"></script>
 </body>
 
 </html>

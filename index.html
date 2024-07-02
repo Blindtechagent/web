@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description"
-    content="Blind Tech Agent provides resources and information on technology for people with visual impairments. We offer assistive technology solutions, product reviews, and tutorials to empower visually impaired individuals. Join our community today.">
+  <meta name="description" content="Blind Tech Agent offers useful features, tools for daily bases and information on technology for people with visual impairments. We provide tools, educational content, and articles to empower visually impaired individuals. Join our supportive community today.">
+
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Blind Tech Agent - Technology for the Visually Impaired">
+  <meta property="og:title" content="Blind Tech Agent - Transforming lives with the power of technology.">
   <meta property="og:description"
-    content="Blind Tech Agent provides resources and information on technology for people with visual impairments. We offer assistive technology solutions, product reviews, and tutorials to empower visually impaired individuals. Join our community today.">
+    content="Blind Tech Agent offers useful features, tools for daily bases and information on technology for people with visual impairments. We provide tools, educational content, and articles to empower visually impaired individuals. Join our supportive community today.">
   <meta property="og:image" content="https://te.legra.ph/file/1456591743bc08490d50c.jpg">
   <meta property="og:url" content="https://blindtechagent.github.io/web/">
   <meta property="og:type" content="website">
@@ -49,6 +49,9 @@
               Account</a>
           </li>
           <li>
+            <a role="menuitem" href="./menu/joinUs.html" class="menuLinks w3-bar-item">Join our team</a>
+          </li>
+          <li>
             <a role="menuitem" href="./menu/contact.html" class="menuLinks w3-bar-item">Contact us</a>
           </li>
           <li>
@@ -62,8 +65,28 @@
           </li>
         </ul>
       </nav>
-      <img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo" width="80px" height="80px"
-        class="w3-image"></img>
+      <div class="header-container">
+        <img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo of Blind Tech Agent" width="100px" height="100px" class="logo">
+        <button onclick="openDialog()" class="language-button">Translate page</button>
+      </div>
+    <dialog id="dialog" role="dialog" aria-modal="true">
+        <div class="dialog-content">
+            <h2>Change the Language of Our Website</h2>
+            <p>
+                We offer multiple language options to make our website accessible to a wider audience. 
+                Please select your preferred language from the dropdown menu below. Once you have made 
+                your selection, click the "Close and Save Language" button to save your choice and exit this popup.
+            </p>
+        </div>
+
+        <div id="google_translate_element"></div>
+
+        <div class="dialog-footer">
+            <button onclick="closeDialog()" class="close-button">
+                Close and Save Language
+            </button>
+        </div>
+    </dialog>
       <p>"Transforming lives with the power of technology."</p>
       <div class="infobox w3-tag">
         <div id="greet">
@@ -103,7 +126,38 @@
     <button id="shareBtn" aria-label="share quotation" style="font-size:10px; padding:5px;" class="w3-btn w3-round"><i style="background:gold; color:#080808; font-sice:12px; padding:0px;" class="fas fa-share-alt"></i><br>share</button>
           <br>
         </div>
-        <section>
+        <section style="background-color: #3D9970; color: #001F3F; padding: 20px;">
+    <h2>Join Us: We're Hiring!</h2>
+    <p>At Blind Tech Agent, we are committed to making life easier for everyone, especially visually impaired individuals. We're looking for passionate and talented people to join our team. By joining us, you will make a real difference and work in a supportive and innovative environment.</p>
+    
+    <h3>Who We're Looking For:</h3>
+    
+    <p><strong>Web Developers:</strong><br>
+    Do you have experience building and maintaining websites? Do you know your way around HTML? We need you to help enhance our platform and make it more user-friendly.</p>
+    
+    <p><strong>Educational Content Providers:</strong><br>
+    Are you skilled at creating and delivering educational materials? We need your expertise to educate and support our users.</p>
+    
+    <p><strong>YouTube Video Creators:</strong><br>
+    Do you enjoy making engaging videos and have at least 50 subscribers on your YouTube channel? Join us to produce content that informs and inspires our audience.</p>
+    
+    <p><strong>Writers/Promoters:</strong><br>
+    Do you have a talent for writing and promoting? Help us spread the word about Blind Tech Agent and reach more people.</p>
+    
+    <h3>Why You Should Join Us:</h3>
+    
+    <ul>
+        <li><strong>Make a Real Impact:</strong> Your work will improve the online experience for everyone, especially the visually impaired.</li>
+        <li><strong>Be Part of a Supportive Community:</strong> Join a team that values collaboration, innovation, and mutual support.</li>
+        <li><strong>Develop Your Skills:</strong> Gain new skills and enhance your existing ones through hands-on experience.</li>
+        <li><strong>Expand Your Network:</strong> Connect with like-minded individuals and grow your professional network.</li>
+        <li><strong>Experience Personal Growth:</strong> Contribute to a meaningful cause and see your personal growth.</li>
+    </ul>
+    
+    <p>We value diversity and welcome applicants from all backgrounds. If you’re passionate about making a difference and want to join a team that cares, we encourage you to <a href="#" style="color: #1A73E8; text-decoration: underline;">apply here</a>.</p>
+</section>
+<br>
+<section>
           <p>We are a multipurpose website dedicated to transforming lives with the power of technology. Although our
             website is designed to be accessible for the blind, it is meant for everyone who wants to benefit from the
             latest advancements in technology.</p>
@@ -112,7 +166,7 @@
             ease. From productivity and entertainment apps to education resources, we've got you covered. Visit our <a
               href="./features.html">Features page</a> to explore what we offer.</p>
           <br>
-       </section>
+        </section>
 
         <h3>Introducing Blind Tech Agent AI</h3>
         <p>"Welcome to Blind Tech Agent AI, your buddy on our website.</p>
@@ -170,7 +224,6 @@
             Message</button>
         </form>
       </div>
-
       <h3 class="footer-heading">Connect with us</h3>
       <div class="w3-block">
         <a href="https://youtube.com/@BlindTechAgent" class="social-icon youtube"><i class="fab fa-youtube"
@@ -187,7 +240,9 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
   <script src="./others/firebase.js"></script>
   <script src="./others/ContactForm.js"></script>
+  <script src="./others/translate.js"></script>
   <script src="./script.js"></script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script src="./quotes.js"></script>
 </body>
 
