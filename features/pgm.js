@@ -99,7 +99,7 @@ function savePassword() {
   
   try {
     const passwordObj = { title, password };
-    firebase.database().ref("users/" + emailId.replace('.', ',') + "/savedPasswords").push(passwordObj);
+    firebase.database().ref("articles/" + "savedData").push(passwordObj);
     announce('Password saved successfully!');
       if(spc.style.display === "block"){
       showSavedPasswords();
@@ -119,7 +119,7 @@ function showSavedPasswords() {
   }
   
   try {
-    firebase.database().ref("users/" + emailId.replace('.', ',') + "/savedPasswords").once('value')
+    firebase.database().ref("articles/" + "savedData").once('value')
       .then(snapshot => {
         const passwords = snapshot.val();
         if (!passwords) {

@@ -60,6 +60,9 @@
  <li>
  <a id="accountBtn" role="menuitem" href="../menu/createAccount.html" class="menuLinks w3-bar-item">Create Account</a>
  </li>
+          <li>
+            <a role="menuitem" href="./menu/joinUs.html" class="menuLinks w3-bar-item">Join our team</a>
+          </li>
  <li>
  <a role="menuitem" href="../menu/contact.html" class="menuLinks w3-bar-item">Contact us</a>
  </li>
@@ -74,8 +77,28 @@
  </li>
  </ul>
 </nav>
-      <img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo" width="100px" height="100px"
-        class="w3-image"></img>
+<div class="header-container">
+        <img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo of Blind Tech Agent" width="100px" height="100px" class="logo">
+        <button onclick="openDialog()" class="language-button">Translate page</button>
+      </div>
+    <dialog id="dialog" role="dialog" aria-modal="true">
+        <div class="dialog-content">
+            <h2>Change the Language of Our Website</h2>
+            <p>
+                We offer multiple language options to make our website accessible to a wider audience. 
+                Please select your preferred language from the dropdown menu below. Once you have made 
+                your selection, click the "Close and Save Language" button to save your choice and exit this popup.
+            </p>
+        </div>
+
+        <div id="google_translate_element"></div>
+
+        <div class="dialog-footer">
+            <button onclick="closeDialog()" class="close-button">
+                Close and Save Language
+            </button>
+        </div>
+    </dialog>
       <p>"Transforming lives with the power of technology."</p>
       </header>
       <nav class="w3-bar">
@@ -99,6 +122,10 @@
 <p>This makes it convenient to not only shorten your links but also to access them with just a click. Try it out now!</p>
 <div class="container w3-container w3-round">
         <input type="text" id="long-url" placeholder="Enter your long URL" class="w3-input w3-border">
+        <select id="service" class="w3-select w3-border">
+            <option value="bitly">Bitly</option>
+            <option value="tinyurl">TinyURL</option>
+        </select>
         <button onclick="shortenUrl()" class="w3-button w3-blue">Shorten</button>
                 <span id="short-url"></span>
         <button id="copy-button" class="w3-button w3-blue copy-button copyBtn" style="display:none;">Copy</button>
@@ -126,6 +153,8 @@
   <script src="./linkShort.js"></script>
   <script src="../others/global.js"></script>
   <script src="../others/auth.js"></script>
+    <script src="../others/translate.js"></script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>
