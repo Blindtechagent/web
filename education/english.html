@@ -31,13 +31,37 @@
         <ul class="drawer w3-sidebar w3-bar-block w3-animate-left" id="menuItems" aria-orientation="vertical" role="navigation">
           <li><a id="loginBtn" role="menuitem" href="../menu/login.html" class="menuLinks w3-bar-item">Log in</a></li>
           <li><a id="accountBtn" role="menuitem" href="../menu/createAccount.html" class="menuLinks w3-bar-item">Create Account</a></li>
+          <li>
+            <a role="menuitem" href="./menu/joinUs.html" class="menuLinks w3-bar-item">Join our team</a>
+          </li>
           <li><a role="menuitem" href="../menu/contact.html" class="menuLinks w3-bar-item">Contact us</a></li>
           <li><a role="menuitem" href="../menu/about.html" class="menuLinks w3-bar-item">About us</a></li>
           <li><a role="menuitem" href="../menu/donateUs.html" class="menuLinks w3-bar-item">Donate us</a></li>
           <li><a role="menuitem" href="../menu/privacy_policy.html" class="menuLinks w3-bar-item">Privacy policy</a></li>
         </ul>
       </nav>
-      <img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo" width="100px" height="100px" class="w3-image">
+<div class="header-container">
+        <img src="https://te.legra.ph/file/1456591743bc08490d50c.jpg" alt="logo of Blind Tech Agent" width="100px" height="100px" class="logo">
+        <button onclick="openDialog()" class="language-button">Translate page</button>
+      </div>
+    <dialog id="dialog" role="dialog" aria-modal="true">
+        <div class="dialog-content">
+            <h2>Change the Language of Our Website</h2>
+            <p>
+                We offer multiple language options to make our website accessible to a wider audience. 
+                Please select your preferred language from the dropdown menu below. Once you have made 
+                your selection, click the "Close and Save Language" button to save your choice and exit this popup.
+            </p>
+        </div>
+
+        <div id="google_translate_element"></div>
+
+        <div class="dialog-footer">
+            <button onclick="closeDialog()" class="close-button">
+                Close and Save Language
+            </button>
+        </div>
+    </dialog>
       <p>"Transforming lives with the power of technology."</p>
     </header>
     <nav class="w3-bar">
@@ -60,10 +84,22 @@
       </div>
 
     <div class="box">
-        <h3>Noun</h3>
-        <p>This audio provides a comprehensive overview of nouns, including their definition, usage, and the various types of nouns and their functions in sentences.</p>
+<h3>Nouns in Modern English</h3>
+<p>This audio provides a comprehensive overview of nouns according to modern English, including their definition, usage, and the various types of nouns and their functions in sentences.</p>
         <p>Recorded by: <strong>Vivek kumar yadav</strong></p>
         <button onclick="playAudio('https://drive.google.com/file/d/1gRsucveI0TKo0o2F_0Zz7mlNd2uJQPxH/preview?usp=sharing', this)">Play Audio</button>
+      </div>
+    <div class="box">
+<h3>Nouns in Ancient English</h3>
+<p>This audio provides a comprehensive overview of nouns according to Ancient English, including their definition, usage, and the various types of nouns and their functions in sentences.</p>
+        <p>Recorded by: <strong>Vivek kumar yadav</strong></p>
+        <button onclick="playAudio('https://drive.google.com/file/d/1m75eqYilaMHVDZIOJA3GUBBt4JxXGhb6/preview?usp=sharing', this)">Play Audio</button>
+      </div>
+    <div class="box">
+<h3>Collective Nouns</h3>
+<p>This audio provides a detailed exploration of collective nouns, covering their definition, usage, and various examples illustrating their roles in sentences.</p>
+        <p>Recorded by: <strong>Vivek kumar yadav</strong></p>
+        <button onclick="playAudio('https://drive.google.com/file/d/1lR5ykAMH2ucdfhEzCGMg-t8Oy2sSOT4U/preview?usp=sharing', this)">Play Audio</button>
       </div>
 </main>
     <footer class="footer">
@@ -83,6 +119,8 @@
   <script src="../others/global.js"></script>
   <script src="../others/auth.js"></script>
   <script src="./educationalContent.js"></script>
+  <script src="../others/translate.js"></script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>
