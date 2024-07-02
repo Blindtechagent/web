@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join Blind Tech Agent, an innovative platform dedicated to making life easier for visually impaired individuals. Apply for roles in web development, educational content creation, YouTube video creation, or writing and promotion.">
+    <meta name="keywords" content="Blind Tech Agent, join us, web development, educational content, YouTube video creation, writing, promotion, visually impaired support">
+    <title>Join Us - Blind Tech Agent</title>
+    <style>
+        body {
+            font-family: times_new_roman;
+            margin: 0;
+            padding: 0;
+            background-color: magenta;
+            color: #333;
+        }
+        h1 {
+            background-color: yellow;
+            color: indigo;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 2rem auto;
+            background-color: #fff;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        ul {
+            margin: 1rem 0;
+            padding: 0;
+            list-style-type: disc;
+            margin-left: 2rem;
+        }
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            background-color: #f0f4c3;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            margin: 0.5rem 0;
+            font-weight: bold;
+            color: #0056b3;
+        }
+        input, select, textarea {
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+        button {
+            padding: 0.75rem;
+            background-color: #0056b3;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #004494;
+        }
+        .success {
+            color: green;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+        .form-instruction {
+            margin-bottom: 1rem;
+            font-style: italic;
+            color: #555;
+        }
+        .benefits {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1 tabindex="0">Join Us</h1>
+
+<div class="container">
+    <h2>We're Hiring!</h2>
+    <p>Blind Tech Agent is dedicated to making life easier for everyone, especially visually impaired individuals. We are seeking passionate and talented people to join our team. By joining us, you'll make a real impact and be part of a supportive and innovative environment.</p>
+    <p>We are looking for:</p>
+    <ul>
+        <li><strong>Web Developers:</strong> If you have experience in building and maintaining websites and have knowledge of HTML, join us to enhance our platform and make it more user-friendly.</li>
+        <li><strong>Educational Content Providers:</strong> If you can create and deliver educational materials, we need your help to educate and support our users.</li>
+        <li><strong>YouTube Video Creators:</strong> If you enjoy making engaging videos and have 50+ subscribers on your YouTube channel, help us produce content that informs and inspires our audience.</li>
+        <li><strong>Writers/Promoters:</strong> If you have a talent for writing and promoting, join us to spread the word about Blind Tech Agent and reach more people.</li>
+    </ul>
+    <h2>Why You Should Join Us</h2>
+    <p>Joining Blind Tech Agent offers many benefits. Here are some reasons to become part of our team:</p>
+    <ul class="benefits">
+        <li><strong>Make a contribution:</strong> Your work will contribute to improving the online experience of all individuals, with a special focus on the visually impaired.</li>
+        <li><strong>Supportive Community:</strong> Join a team that values collaboration, innovation, and mutual support.</li>
+        <li><strong>Skill Development:</strong> Gain new skills and enhance your existing ones through hands-on experience.</li>
+        <li><strong>Networking Opportunities:</strong> Connect with like-minded individuals and expand your professional network.</li>
+        <li><strong>Personal Growth:</strong> Experience personal growth by contributing to a meaningful cause.</li>
+    </ul>
+    <p>We value diversity and welcome applicants from all backgrounds. If you are passionate about making a difference and want to be part of a team that cares, we encourage you to apply.</p>
+
+    <form id="joinForm" onsubmit="sendMsg(event)">
+        <p class="form-instruction">Please fill out the form below to apply:</p>
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+        <label for="role">Desired Role: you can also select multiple roles</label>
+        <select id="role" name="role" required multiple>
+            <option value="web-developer">Web Developer</option>
+            <option value="content-provider">Educational Content Provider</option>
+            <option value="youtuber">YouTube Video Creator</option>
+            <option value="writer">Writer/Promoter</option>
+        </select>
+
+        <label for="message">Tell Us About Yourself:</label>
+        <textarea id="message" name="message" rows="6" placeholder="Why do you want to join us? Describe your skills and experience." required></textarea>
+
+        <button type="submit">Submit Application</button>
+        <p class="success" id="successMessage" style="display: none;">Thank you for your application! We will review it and get back to you soon.</p>
+    </form>
+</div>
+
+<script src="./joinUs.js"></script>
+
+</body>
+</html>

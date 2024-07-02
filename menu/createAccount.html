@@ -1,91 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Create Account</title>
   <style>
     * {
-      font-family: TimesNewRoman;
+      font-family: 'Arial', sans-serif;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-
     body {
-      background: #50C878;
+      background: linear-gradient(135deg, #50C878, #388E3C);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
-
+    .container {
+      background: #fff;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #6A0DAD;
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 1.5rem;
+      color: #333;
+      font-size: 1em;
+    }
     form {
-      background: skyblue;
-      border-radius: 10%;
-      width: 85vw;
-      margin: auto;
-      padding:10px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
-
-    input {
-      display: block;
-      margin: 10px auto;
-    }
-
     label {
-      font-size: 1.5em;
-      color: black;
+      font-size: 1.2em;
+      color: #333;
+      margin-bottom: 0.5rem;
     }
-
+    input {
+      padding: 0.75rem;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: border-color 0.3s;
+    }
+    input:focus {
+      border-color: #6A0DAD;
+      outline: none;
+    }
     .button {
       background: #6A0DAD;
-      font-size: 1.5em;
-      color: snow;
-      margin: 20px auto;
-      padding: 10px;
-      border: none;
-      display: block;
-      width: 45vw;
-    }
-
-    h1 {
-      font-size: 3em;
-      color: indigo;
-    }
-
-    .password-hint {
-      color: red;
       font-size: 1.2em;
-      margin-top: -15px;
+      color: #fff;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
     }
-    .link{ background:lime; color:snow; width:60%; margin:16px auto; padding:8px; display:block; }
+    .button:hover {
+      background: #5A0B8A;
+      transform: translateY(-2px);
+    }
+    .link {
+      color: #fff;
+      background: #6A0DAD;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+    .link:hover {
+      background: #5A0B8A;
+    }
+    .back-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      padding: 0.5rem;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .back-link:hover {
+      background-color: #0056b3;
+    }
+    .message {
+      color: red;
+      font-size: 0.9em;
+    }
+    .password-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .password-hint {
+      color: #6A0DAD;
+      font-size: 0.9em;
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+    }
+    .google-button {
+      background: #db4437;
+      font-size: 1.2em;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      margin-top: 1rem;
+    }
+    .google-button:hover {
+      background: #c4382e;
+      transform: translateY(-2px);
+    }
   </style>
 </head>
-
 <body>
-  <a href="javascript:history.go(-1)" style="position:fixed; top:0; left:0; display:inline-block; padding:10px; background-color:#007bff; color:#fff; text-decoration:none; border-radius:5px;">Back</a>
-<center>
-    <div id="heading-box" tabindex="0" role="heading" aria-level="1">
-<h1>Create Account</h1>
-    </div>
-    <p>Create account on Blind tech agent to access all features</p>
+  <a href="javascript:history.go(-1)" class="back-link">Back</a>
+  <div class="container">
+    <h1>Create Account</h1>
+    <p>Create an account on Blind Tech Agent to access all features</p>
     <form autocomplete="off" id="form">
       <label for="name">Enter your Name</label>
-      <input type="text" id="name" required>
-            <label for="email">Enter your Email ID</label>
-      <input type="email" id="email" required>
+      <input type="text" id="name" aria-label="Name" required>
+      <label for="email">Enter your Email ID</label>
+      <input type="email" id="email" aria-label="Email ID" required>
       <label for="password">Enter your Password (min. 6 characters)</label>
-      <input type="password" id="password" required>
+      <div class="password-container">
+        <input type="password" id="password" aria-label="Password" required>
+        <input type="checkbox" id="show-password"> Show Password
+      </div>
       <span class="password-hint">Password must contain at least 6 characters.</span>
-      <button class="button" type="reset">Clear inputs</button>
-      <button class="button" type="submit">Create account</button>
-<p>Already have an account?</p>
-<a href="login.html" class="link">Log in</a>
+      <button class="button" type="reset">Clear Inputs</button>
+      <button class="button" type="submit">Create Account</button>
+      <p>or</p>
+      <button class="google-button" id="google-sign-in">Sign in with Google</button>
+      <p>Already have an account? <a href="login.html" class="link">Log in</a></p>
     </form>
     <div id="announcement" role="status" aria-live="assertive"></div>
-  </center>
-
+  </div>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
   <script src="../others/firebase.js"></script>
+  <script src="../others/google-sign-in.js"></script>
+  <script src="signup.js"></script>
   <script src="../others/global.js"></script>
-  <script src="./signup.js"></script>
 </body>
-
 </html>

@@ -1,6 +1,8 @@
 const form = document.getElementById('form');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
+const showPasswordCheckbox = document.getElementById('show-password');
+const googleSignInButton = document.getElementById('google-sign-in');
 
 // Handle form submission
 form.addEventListener('submit', (e) => {
@@ -23,8 +25,7 @@ form.addEventListener('submit', (e) => {
         name: userName
       })
       .then(() => {
-        const message = 'Account created successfully. Please log in with your new account.';
-        announce(message);
+        announce('Account created successfully. Please log in with your new account.');
         window.location.href = 'login.html'; // Redirect to login.html
       })
       .catch((error) => {
@@ -35,15 +36,34 @@ form.addEventListener('submit', (e) => {
     })
     .catch((error) => {
       // Handle account creation error
-      if (error.code === 'auth/email-already-in-use') {
-        announce('An account already exists with this email. Please log in to your account.');
-        window.location.href = 'login.html'; // Redirect to login.html
-      } else if (error.code === 'auth/invalid-email') {
-        announce('Invalid email format. Please enter a valid email address.');
-      } else if (error.code === 'auth/weak-password') {
-        announce('The password is too weak. Please choose a stronger password.');
-      } else {
-        announce('An error occurred. Please try again.');
+      switch (error.code) {
+        case 'auth/email-already-in-use':
+          announce('An account already exists with this email. Please log in to your account.');
+          window.location.href = 'login.html';
+          break;
+        case 'auth/invalid-email':
+          announce('Invalid email format. Please enter a valid email address.');
+          break;
+        case 'auth/weak-password':
+          announce('The password is too weak. Please choose a stronger password.');
+          break;
+        default:
+          console.error("Account creation error:", error);
+          announce('An error occurred. Please try again.');
       }
     });
 });
+
+// Show/Hide Password
+showPasswordCheckbox.addEventListener('change', function() {
+  if (this.checked) {
+    passwordInput.type = 'text';
+  } else {
+    passwordInput.type = 'password';
+  }
+});
+
+function announce(message) {
+  const announcementBox = document.getElementById("announcement");
+  announcementBox.innerText = message;
+}
