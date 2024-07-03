@@ -12,9 +12,10 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('article-title').textContent = article.title;
             const audiotext = document.getElementById('article-content');
             audiotext.innerHTML = `
-                <p><strong>Published on:</strong> ${article.publishDate}</p>
-                <p><strong>Written by:</strong> ${article.author}</p>
-                <p><strong>Category:</strong> ${article.category}</p>
+                <p><strong>Published on: ${article.publishDate}</strong></p>
+                <p><strong>Written by: ${article.author}</strong></p>
+                <p><strong>Category: ${article.category}</strong></p>
+                <p><strong>Views: ${article.viewCount}</strong></p>
                 <p>${article.content}</p>
             `;
         } else {
