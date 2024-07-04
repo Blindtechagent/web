@@ -1,5 +1,4 @@
 const articlesList = document.getElementById('articles');
-
 const db = firebase.database().ref('articles');
 
 db.orderByKey().on('value', (snapshot) => {
@@ -29,16 +28,6 @@ function displayArticle(id, title, author, publishDate, category, viewCount) {
 }
 
 function viewArticle(id) {
-  const articleRef = db.child(id); // Reference the specific article in the database
-  articleRef.transaction((article) => { // Use a transaction to ensure data consistency
-    if (article) { // Check if article exists
-      article.viewCount = (article.viewCount || 0) + 1; // Increment viewCount
-    }
-    return article;
-  }).then(() => {
-    // Redirect to full article page after updating view count
-    window.location.href = `articles/article.html?id=${id}`;
-  }).catch((error) => {
-    console.error("Error updating view count:", error);
-  });
+  // Redirect to full article page
+  window.location.href = `articles/article.html?id=${id}`;
 }

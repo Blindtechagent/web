@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let article; // Define article outside the articleRef.on('value') scope
 
-    articleRef.on('value', (snapshot) => {
+    articleRef.once('value', (snapshot) => { // Use once to avoid continuous callback triggering
         article = snapshot.val(); // Assign article inside the callback
         if (article) {
             document.getElementById('article-title').textContent = article.title;
@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p><strong>Views: ${article.viewCount}</strong></p>
                 <p>${article.content}</p>
             `;
+
+            // Increment view count after the article is fully loaded
+            incrementViewCount(articleId);
         } else {
             document.getElementById('article-title').textContent = "Article Not Found";
             document.getElementById('article-content').innerHTML = "<p>The requested article could not be found.</p>";
@@ -120,4 +123,15 @@ document.addEventListener('DOMContentLoaded', function () {
         return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
     }
 
+    function incrementViewCount(articleId) {
+        const articleRef = firebase.database().ref('articles/' + articleId);
+        articleRef.transaction((article) => {
+            if (article) {
+                article.viewCount = (article.viewCount || 0) + 1;
+            }
+            return article;
+        }).catch((error) => {
+            console.error("Error updating view count:", error);
+        });
+    }
 });
