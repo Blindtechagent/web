@@ -4,6 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Save Article</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #article-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        label, input, textarea, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
     <div id="article-form-container">
@@ -24,6 +58,15 @@
             <label for="content">Content:</label>
             <textarea id="content" name="content" placeholder="Content" required></textarea>
             
+            <label for="meta-title">Meta Title:</label>
+            <input type="text" id="meta-title" name="meta-title" placeholder="Meta Title" required>
+            
+            <label for="meta-description">Meta Description:</label>
+            <textarea id="meta-description" name="meta-description" placeholder="Meta Description" required></textarea>
+            
+            <label for="meta-keywords">Meta Keywords:</label>
+            <input type="text" id="meta-keywords" name="meta-keywords" placeholder="Meta Keywords" required>
+            
             <button type="submit">Save Article</button>
         </form>
     </div>
@@ -41,6 +84,9 @@
         const publishDateInput = document.getElementById('publish-date');
         const categoryInput = document.getElementById('category');
         const contentInput = document.getElementById('content');
+        const metaTitleInput = document.getElementById('meta-title');
+        const metaDescriptionInput = document.getElementById('meta-description');
+        const metaKeywordsInput = document.getElementById('meta-keywords');
 
         const db = firebase.database().ref('articles');
 
@@ -51,12 +97,24 @@
             const publishDate = publishDateInput.value;
             const category = categoryInput.value;
             const content = contentInput.value;
-            saveArticle(title, author, publishDate, category, content);
-            articleForm.reset();
-            alert('Article saved successfully');
+            const metaTitle = metaTitleInput.value;
+            const metaDescription = metaDescriptionInput.value;
+            const metaKeywords = metaKeywordsInput.value;
+
+            if (validateInputs(title, author, publishDate, category, content, metaTitle, metaDescription, metaKeywords)) {
+                saveArticle(title, author, publishDate, category, content, metaTitle, metaDescription, metaKeywords);
+                articleForm.reset();
+                alert('Article saved successfully');
+            } else {
+                alert('Please fill in all fields correctly.');
+            }
         });
 
-        function saveArticle(title, author, publishDate, category, content) {
+        function validateInputs(title, author, publishDate, category, content, metaTitle, metaDescription, metaKeywords) {
+            return title.trim() && author.trim() && publishDate.trim() && category.trim() && content.trim() && metaTitle.trim() && metaDescription.trim() && metaKeywords.trim();
+        }
+
+        function saveArticle(title, author, publishDate, category, content, metaTitle, metaDescription, metaKeywords) {
             const newArticleRef = db.push();
             const serialNumber = newArticleRef.key;
             newArticleRef.set({
@@ -65,7 +123,15 @@
                 publishDate: publishDate,
                 author: author,
                 category: category,
-                content: content
+                content: content,
+                metaTitle: metaTitle,
+                metaDescription: metaDescription,
+                metaKeywords: metaKeywords
+            }).then(() => {
+                console.log('Article saved successfully.');
+            }).catch((error) => {
+                console.error('Error saving article:', error);
+                alert('Error saving article: ' + error.message);
             });
         }
     </script>
