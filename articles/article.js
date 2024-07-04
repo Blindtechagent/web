@@ -9,6 +9,14 @@ document.addEventListener('DOMContentLoaded', function () {
     articleRef.once('value', (snapshot) => { // Use once to avoid continuous callback triggering
         article = snapshot.val(); // Assign article inside the callback
         if (article) {
+            // Set page title
+            document.title = article.title;
+            
+            // Add meta tags
+            addMetaTag('description', article.metaDescription);
+            addMetaTag('keywords', article.metaKeywords);
+            addMetaTag('title', article.metaTitle);
+
             document.getElementById('article-title').textContent = article.title;
             const audiotext = document.getElementById('article-content');
             audiotext.innerHTML = `
@@ -133,5 +141,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }).catch((error) => {
             console.error("Error updating view count:", error);
         });
+    }
+
+    function addMetaTag(name, content) {
+        const meta = document.createElement('meta');
+        meta.name = name;
+        meta.content = content;
+        document.head.appendChild(meta);
     }
 });
