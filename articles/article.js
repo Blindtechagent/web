@@ -14,8 +14,10 @@ document.addEventListener('DOMContentLoaded', function () {
             
             // Add meta tags
             addMetaTag('description', article.metaDescription);
-            addMetaTag('description', article.metaDescription, 'og:description');
-            addMetaTag('title', article.metaTitle, 'og:title');
+            addMetaTag('', article.metaDescription, 'og:description');
+            addMetaTag('', article.metaTitle, 'og:title');
+            var url = window.location.href;
+            addMetaTag('', url, 'og:url');
             addMetaTag('keywords', article.metaKeywords);
             addMetaTag('title', article.metaTitle);
 
