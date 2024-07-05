@@ -27,8 +27,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p><strong>Published on: ${article.publishDate}</strong></p>
                 <p><strong>Written by: ${article.author}</strong></p>
                 <p><strong>Category: ${article.category}</strong></p>
-                <p><strong>Views: ${article.viewCount}</strong></p>
                 <p>${article.content}</p>
+                <span><strong>Views: ${article.viewCount}</strong></span>
+                <span><strong>Shares: ${article.shareCount}</strong></span>
             `;
 
             // Increment view count after the article is fully loaded
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 text: `${article.title}`,
                 url: window.location.href
             }).then(() => {
+            incrementShareCount(articleId);
                 announce('Article shared successfully!');
             }).catch((error) => {
                 announce('Error sharing article: ' + error);
@@ -84,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
             announce('Playing audio, please wait...');
             playbtn.innerHTML = 'Loading...';
 
-            const strippedText = stripHTML(article.content);
+            const strippedText = article.title + stripHTML(article.content);
 
             fetch(`${apiURL2}?text=${encodeURIComponent(strippedText)}&lang=en-in`)
                 .then((response) => {
@@ -144,6 +146,17 @@ document.addEventListener('DOMContentLoaded', function () {
             return article;
         }).catch((error) => {
             console.error("Error updating view count:", error);
+        });
+    }
+    function incrementShareCount(articleId) {
+        const articleRef = firebase.database().ref('articles/' + articleId);
+        articleRef.transaction((article) => {
+            if (article) {
+                article.shareCount = (article.shareCount || 0) + 1;
+            }
+            return article;
+        }).catch((error) => {
+            console.error("Error updating share count:", error);
         });
     }
 
