@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
             
             // Add meta tags
             addMetaTag('description', article.metaDescription);
+            addMetaTag('description', article.metaDescription, 'og:description');
+            addMetaTag('title', article.metaTitle, 'og:title');
             addMetaTag('keywords', article.metaKeywords);
             addMetaTag('title', article.metaTitle);
 
@@ -143,10 +145,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function addMetaTag(name, content) {
+    function addMetaTag(name, content, property) {
         const meta = document.createElement('meta');
         meta.name = name;
         meta.content = content;
+        meta.property = property;
         document.head.appendChild(meta);
     }
 });
