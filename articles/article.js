@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p><strong>Written by: ${article.author}</strong></p>
                 <p><strong>Category: ${article.category}</strong></p>
                 <p>${article.content}</p>
-                <span><strong>Views: ${article.viewCount}</strong></span>
-                <span><strong>Shares: ${article.shareCount}</strong></span>
+                <span style="margin:16px; padding:8px; background:#C2B280; color:#000080;"><strong>Views: ${article.viewCount}</strong></span>
+                <span style="margin:16px; padding:8px; background:#C2B280; color:#000080;"><strong>Shares: ${article.shareCount}</strong></span>
             `;
 
             // Increment view count after the article is fully loaded
