@@ -14,12 +14,13 @@ document.addEventListener('DOMContentLoaded', function () {
             
             // Add meta tags
             addMetaTag('description', article.metaDescription);
-            addMetaTag('', article.metaDescription, 'og:description');
-            addMetaTag('', article.metaTitle, 'og:title');
-            var url = window.location.href;
-            addMetaTag('', url, 'og:url');
             addMetaTag('keywords', article.metaKeywords);
             addMetaTag('title', article.metaTitle);
+
+            addOgMetaTag('og:description', article.metaDescription);
+            addOgMetaTag('og:title', article.metaTitle);
+            var url = window.location.href;
+            addOgMetaTag('og:url', url);
 
             document.getElementById('article-title').textContent = article.title;
             const audiotext = document.getElementById('article-content');
@@ -27,9 +28,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p><strong>Published on: ${article.publishDate}</strong></p>
                 <p><strong>Written by: ${article.author}</strong></p>
                 <p><strong>Category: ${article.category}</strong></p>
-                <p>${article.content}</p>
-                <span style="margin:16px; padding:8px; background:#C2B280; color:#000080;"><strong>Views: ${article.viewCount}</strong></span>
-                <span style="margin:16px; padding:8px; background:#C2B280; color:#000080;"><strong>Shares: ${article.shareCount}</strong></span>
+                <article>${article.content}</article>
+                <span style="margin:16px; padding:8px; background:#C2B280; color:skyblue;"><strong>Views: ${article.viewCount}</strong></span>
+                <span style="margin:16px; padding:8px; background:#C2B280; color:skyblue"><strong>Shares: ${article.shareCount}</strong></span>
             `;
 
             // Increment view count after the article is fully loaded
@@ -160,11 +161,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function addMetaTag(name, content, property) {
+    function addMetaTag(name, content) {
         const meta = document.createElement('meta');
         meta.name = name;
         meta.content = content;
+        document.head.appendChild(meta);
+    }
+    function addOgMetaTag(property, content) {
+        const meta = document.createElement('meta');
         meta.property = property;
+        meta.content = content;
         document.head.appendChild(meta);
     }
 });
