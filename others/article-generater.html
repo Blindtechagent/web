@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            margin: 20px 0;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .article-container {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .GeneratedArticle {
+            margin-bottom: 20px;
+        }
+        .btn.copy-btn {
+            background-color: #2196F3;
+            margin-top: 10px;
+        }
+        .btn.copy-btn:hover {
+            background-color: #0b7dda;
+        }
+        .message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+    </style>
+</head>
+<body>
+    <h1>Article Generator for Blind Tech Agent</h1>
+    <p>Enter any topic for the article</p>
+    <div class="container">
+        <label for="article-topic">Topic:</label>
+        <input type="text" id="article-topic" aria-label="Article Topic" placeholder="Enter topic here">
+        <button onclick="sendRequest()">Generate article</button>
+    </div>
+    <div class="article-container" aria-live="polite" aria-atomic="true">
+    </div>
+    <div id="message" class="message" role="alert" aria-live="assertive"></div>
+    <script src="./article-generater.js"></script>
+</body>
+</html>
