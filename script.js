@@ -103,30 +103,21 @@ $(document).ready(function () {
   }
 });
 
-    fetch('https://type.fit/api/quotes')
-      .then(response => response.json())
-      .then(data => {
-        const index = Math.floor(Math.random() * data.length);
-        const thought = data[index].text;
-        document.getElementById('thought').innerHTML = thought;
-      })
-      .catch(err => console.log(err));
-
-    function translateToHindi() {
-      const thought = document.getElementById('thought').innerHTML;
-      fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=hi&dt=t&q=${thought}`)
-        .then(response => response.json())
-        .then(data => {
-          const translated = data[0][0][0];
-          document.getElementById('thought').innerHTML = translated;
-          announce("translated successfully");
-        })
-        .catch(err => console.log(err));
-    }
-  function announce(message) {
+function translateToHindi() {
+  const thought = document.getElementById('thought').innerHTML;
+  fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=hi&dt=t&q=${thought}`)
+    .then(response => response.json())
+    .then(data => {
+      const translated = data[0][0][0];
+      document.getElementById('thought').innerHTML = translated;
+      announce("translated successfully");
+    })
+    .catch(err => console.log(err));
+}
+function announce(message) {
   var announcement = document.getElementById("announcement");
   announcement.textContent = message;
-  setTimeout(function() {
+  setTimeout(function () {
     announcement.style.display = "none";
   }, 3000);
   announcement.style.display = "block";
