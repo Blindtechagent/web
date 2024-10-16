@@ -3,52 +3,62 @@ document.addEventListener('DOMContentLoaded', function () {
     const articleId = urlParams.get('id');
 
     const articleRef = firebase.database().ref('articles/' + articleId);
+    const commentsRef = firebase.database().ref('articles/' + articleId + '/comments');
 
-    let article; // Define article outside the articleRef.on('value') scope
+    let article;
 
-    articleRef.once('value', (snapshot) => { // Use once to avoid continuous callback triggering
-        article = snapshot.val(); // Assign article inside the callback
+    // Load article details
+    articleRef.once('value', (snapshot) => {
+        article = snapshot.val();
         if (article) {
-            // Set page title
+            // Set the page title and meta tags
             document.title = article.title;
-            
-            // Add meta tags
             addMetaTag('description', article.metaDescription);
             addMetaTag('keywords', article.metaKeywords);
             addMetaTag('title', article.metaTitle);
 
             addOgMetaTag('og:description', article.metaDescription);
             addOgMetaTag('og:title', article.metaTitle);
-            var url = window.location.href;
+            const url = window.location.href;
             addOgMetaTag('og:url', url);
 
+            // Display article details
             document.getElementById('article-title').textContent = article.title;
-            const audiotext = document.getElementById('article-content');
-            audiotext.innerHTML = `
+            const articleContent = document.getElementById('article-content');
+            articleContent.innerHTML = `
                 <p><strong>Published on: ${article.publishDate}</strong></p>
                 <p><strong>Written by: ${article.author}</strong></p>
                 <p><strong>Category: ${article.category}</strong></p>
                 <article>${article.content}</article>
                 <span style="margin:16px; padding:8px; background:#C2B280; color:skyblue;"><strong>Views: ${article.viewCount}</strong></span>
-                <span style="margin:16px; padding:8px; background:#C2B280; color:skyblue"><strong>Shares: ${article.shareCount}</strong></span>
+                <span style="margin:16px; padding:8px; background:#C2B280; color:skyblue;"><strong>Shares: ${article.shareCount}</strong></span>
             `;
+
+            // Set the like and dislike counts
+            document.getElementById('like-count').textContent = article.likeCount || 0;
+            document.getElementById('dislike-count').textContent = article.dislikeCount || 0;
 
             // Increment view count after the article is fully loaded
             incrementViewCount(articleId);
+
+            // Load comments when the article loads
+            loadComments();
         } else {
+            // Handle case where article is not found
             document.getElementById('article-title').textContent = "Article Not Found";
             document.getElementById('article-content').innerHTML = "<p>The requested article could not be found.</p>";
         }
     });
 
+    // Share functionality
     document.getElementById('share-btn').addEventListener('click', function () {
         if (article && navigator.share) {
             navigator.share({
                 title: article.title,
-                text: `${article.title}`,
+                text: article.title,
                 url: window.location.href
             }).then(() => {
-            incrementShareCount(articleId);
+                incrementShareCount(articleId);
                 announce('Article shared successfully!');
             }).catch((error) => {
                 announce('Error sharing article: ' + error);
@@ -58,85 +68,70 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    const audio = new Audio();
-    const playbtn = document.getElementById('listen-btn');
-    const apiURL2 = 'https://www.techassistantforblind.com/modules/gtts.php';
-    const audiotiming = document.getElementById("audiotiming");
-    let isPlaying = false;
-    let pausedTime = 0;
-
-    playbtn.addEventListener('click', function () {
-        if (isPlaying) {
-            audio.pause();
-            pausedTime = audio.currentTime;
-            isPlaying = false;
-            playbtn.innerHTML = 'Listen Article';
-        } else {
-            playAudio();
-        }
+    // Like and Dislike functionality
+    document.getElementById('like-btn').addEventListener('click', function () {
+        incrementLikeCount(articleId);
     });
 
-    function playAudio() {
-        if (article && audio.src) {
-            audio.currentTime = pausedTime;
-            audio.play();
-            isPlaying = true;
-            playbtn.innerHTML = 'Pause Audio';
-            announce('audio resumed');
-        } else if (article) {
-            announce('Playing audio, please wait...');
-            playbtn.innerHTML = 'Loading...';
+    document.getElementById('dislike-btn').addEventListener('click', function () {
+        incrementDislikeCount(articleId);
+    });
 
-            const strippedText = article.title + stripHTML(article.content);
+    // Handle comment form submission
+    const commentForm = document.getElementById('comment-form');
+    commentForm.addEventListener('submit', function (event) {
+        event.preventDefault();
 
-            fetch(`${apiURL2}?text=${encodeURIComponent(strippedText)}&lang=en-in`)
-                .then((response) => {
-                    if (!response.ok) {
-                        throw new Error('Error: Something went wrong!');
-                    }
-                    return response.text();
-                })
-                .then((audioURL) => {
-                    audio.src = audioURL;
-                    audio.currentTime = pausedTime; // Resume from the last paused time
-                    audio.play();
-                    audio.addEventListener("loadedmetadata", () => {
-                        playbtn.innerHTML = 'Pause Audio';
-                        isPlaying = true;
-                        audiotiming.textContent = formatTime(audio.currentTime) + " / " + formatTime(audio.duration);
-                    });
+        const author = document.getElementById('comment-author').value;
+        const text = document.getElementById('comment-text').value;
 
-                    audio.addEventListener('ended', () => {
-                        isPlaying = false;
-                        playbtn.innerHTML = 'Listen Article';
-                        audiotiming.textContent = '';
-                    });
+        submitComment(author, text);
+        commentForm.reset(); // Clear the form after submission
+    });
 
-                    audio.addEventListener('timeupdate', () => {
-                        audiotiming.textContent = formatTime(audio.currentTime) + " / " + formatTime(audio.duration);
-                    });
+    // Submit a comment to Firebase
+    function submitComment(author, text) {
+        const newCommentRef = commentsRef.push();
+        newCommentRef.set({
+            author: author,
+            text: text,
+            timestamp: new Date().toISOString()
+        }).then(() => {
+            announce('Comment added successfully.');
+        }).catch((error) => {
+            console.error('Error adding comment:', error);
+            announce('Failed to add comment.');
+        });
+    }
 
-                    announce('playing audio');
-                })
-                .catch((err) => {
-                    console.error(err);
-                    announce(err.message);
-                    playbtn.innerHTML = 'Listen Article';
+    // Load and display comments in real time using 'on' listener
+    function loadComments() {
+        commentsRef.on('value', (snapshot) => {
+            const commentsList = document.getElementById('comments-list');
+            commentsList.innerHTML = ''; // Clear existing comments
+
+            const comments = snapshot.val();
+            if (comments) {
+                Object.keys(comments).forEach((commentId) => {
+                    const comment = comments[commentId];
+                    const commentElement = document.createElement('div');
+                    commentElement.classList.add('comment');
+                    commentElement.innerHTML = `
+                        <p><strong>${comment.author}</strong> (${new Date(comment.timestamp).toLocaleString()}):</p>
+                        <p>${comment.text}</p>
+                        <hr />
+                    `;
+                    commentsList.appendChild(commentElement);
                 });
-        }
+            } else {
+                commentsList.innerHTML = '<p>No comments yet. Be the first to comment!</p>';
+            }
+        }, (error) => {
+            console.error("Error loading comments:", error);
+        });
     }
 
-    function stripHTML(html) {
-        let div = document.createElement('div');
-        div.innerHTML = html;
-        return div.textContent || div.innerText || '';
-    }
-
-    function formatTime(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
-    }
+    // Utility functions...
 
     function incrementViewCount(articleId) {
         const articleRef = firebase.database().ref('articles/' + articleId);
@@ -149,6 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error("Error updating view count:", error);
         });
     }
+
     function incrementShareCount(articleId) {
         const articleRef = firebase.database().ref('articles/' + articleId);
         articleRef.transaction((article) => {
@@ -161,16 +157,50 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    function incrementLikeCount(articleId) {
+        const articleRef = firebase.database().ref('articles/' + articleId);
+        articleRef.transaction((article) => {
+            if (article) {
+                article.likeCount = (article.likeCount || 0) + 1;
+            }
+            return article;
+        }).then(() => {
+            document.getElementById('like-count').textContent = (article.likeCount || 0);
+        }).catch((error) => {
+            console.error("Error updating like count:", error);
+        });
+    }
+
+    function incrementDislikeCount(articleId) {
+        const articleRef = firebase.database().ref('articles/' + articleId);
+        articleRef.transaction((article) => {
+            if (article) {
+                article.dislikeCount = (article.dislikeCount || 0) + 1;
+            }
+            return article;
+        }).then(() => {
+            document.getElementById('dislike-count').textContent = (article.dislikeCount || 0);
+        }).catch((error) => {
+            console.error("Error updating dislike count:", error);
+        });
+    }
+
     function addMetaTag(name, content) {
         const meta = document.createElement('meta');
         meta.name = name;
         meta.content = content;
         document.head.appendChild(meta);
     }
+
     function addOgMetaTag(property, content) {
         const meta = document.createElement('meta');
         meta.property = property;
         meta.content = content;
         document.head.appendChild(meta);
+    }
+
+    function announce(message) {
+        const announcement = document.getElementById('announcement');
+        announcement.textContent = message;
     }
 });

@@ -22,6 +22,75 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/a5db627303.js" crossorigin="anonymous"></script>
   <script src="./others/loading.js"></script>
+  <style>
+    .popup {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      z-index: 1;
+      /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      background-color: rgba(0, 0, 0, 0.7);
+      /* Dark background with opacity */
+      justify-content: center;
+      /* Center the popup */
+      align-items: center;
+      /* Center the popup */
+    }
+
+    .popup-content {
+      background-color: #fff;
+      border-radius: 10px;
+      /* Rounded corners */
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 90%;
+      /* Responsive width */
+      max-width: 500px;
+      /* Max width for larger screens */
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      /* Subtle shadow */
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    #birthdayImage {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      /* Rounded corners for image */
+    }
+
+    h2 {
+      color: #ff6600;
+      /* Bright text color */
+    }
+
+    p {
+      color: #333;
+      /* Dark text for contrast */
+      font-size: 16px;
+    }
+  </style>
 </head>
 
 <body>
@@ -107,7 +176,7 @@
     <main id="main">
       <div id="accountBox" class="w3-tag w3-grey w3-padding-16 w3-card">
         <br>
-        <p>have you not created an account yet?</p>
+        <p>Have you not created an account yet?</p>
         <br>
         <a href="./menu/createAccount.html">Create account</a>
         <button class="w3-red w3-round close" onclick="document.getElementById('accountBox').style.display = 'none'"
@@ -116,88 +185,136 @@
 
       <section>
         <h2>Welcome to Blind Tech Agent</h2>
-
-        <!-- <div class="w3-round w3-container thoughtBox">
+        <div class="w3-round w3-container thoughtBox">
           <h3 class="text-center w3-text-white">Random quotation</h3>
-
+          <br>
           <div class="textCopy">
             <p id="thought">loading quotation...</p>
-            <p id="author"></p>
           </div>
           <button id="copyBtn" aria-label="copy quotation" style="font-size:10px; padding:5px;"
             class="w3-btn w3-round"><i style="background:gold; color:#080808; font-sice:12px; padding:0px;"
               class="fas fa-copy"></i><br>copy</button>
-          <button id="translateBtn" class="w3-btn w3-round">Translate to Hindi</button>
-          <button id="shareBtn" aria-label="share quotation" style="font-size:10px; padding:5px;"
-            class="w3-btn w3-round"><i style="background:gold; color:#080808; font-sice:12px; padding:0px;"
-              class="fas fa-share-alt"></i><br>share</button>
           <br>
-        </div>   -->
+        </div>
+      </section>
+      <br>
+      <section class="yellow" <h2>🌟 Learn HTML: From Basic to Advanced in One Month with Blind Tech Agent</h2>
+        <p>Are you ready to unlock the secrets of HTML and take your web development skills to the next level?</p>
+        <p>After the overwhelming success of our previous course, <strong>"Basic Web Development,"</strong> we are
+          thrilled to introduce our newest offering: a comprehensive <strong>HTML Course</strong> that you can complete
+          in just one month!</p>
+        <p>Led by our team of experts at Blind Tech Agent, this course will be conducted via Google Meet, making it
+          accessible to all interested learners. Get ready to dive into the world of HTML and transform your digital
+          skills!</p>
+
+        <h3>What Will You Learn?</h3>
+        <p>Throughout this one-month course, you will embark on an exciting journey, exploring fundamental and advanced
+          concepts of HTML, including:</p>
+        <ul>
+          <li>Understanding HTML basics</li>
+          <li>Creating simple web pages</li>
+          <li>Working with text and links</li>
+          <li>Adding images and multimedia</li>
+          <li>Creating forms, tables, and lists</li>
+          <li>Building responsive and accessible web pages</li>
+          <li>Understanding HTML tags and page structure</li>
+          <li>Overview of HTML5 features</li>
+          <li>Best practices for writing clean HTML code</li>
+        </ul>
+
+        <h3>Requirements:</h3>
+        <p>No prior knowledge needed! All you need is:</p>
+        <ul>
+          <li>An Android phone to join virtual classes</li>
+          <li>If you have a laptop, that's fantastic! But if not, don't worry - our course is designed to work
+            seamlessly on Android phones.</li>
+          <li>Notes and helpful materials will be provided</li>
+        </ul>
+
+        <h3>Class Timing:</h3>
+        <p><strong>7:00 p.m. - 8:00 p.m.</strong> (flexible scheduling available)</p>
+
+        <h3>Course Details:</h3>
+        <ul>
+          <li>Course is free, with a small ₹50 registration fee</li>
+          <li>Last date for registration: <strong>October 24, 2024</strong></li>
+        </ul>
+
+        <p>Register now: <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdt-fi1HUHgOjuhA7a-QDBYaoLBt9LvmTbhk4oOtDyA8nEGRw/viewform"
+            target="_blank">https://docs.google.com/forms/d/e/1FAIpQLSdt-fi1HUHgOjuhA7a-QDBYaoLBt9LvmTbhk4oOtDyA8nEGRw/viewform</a>
+        </p>
+
+        <p>Don't miss this incredible opportunity to enhance your web development skills, boost your confidence, and
+          unlock new opportunities in the digital world! Join our one-month course and become an HTML master! Register
+          now and start learning with Blind Tech Agent!</p>
+
+        <p><strong>Hurry! Secure your spot today!</strong></p>
+      </section>
+      <br>
+      <section class="yellow">
+        <h2 class="w3-text-purple">Join Us: We're Hiring!</h2>
+        <p>At Blind Tech Agent, we are committed to making life easier for everyone, especially visually impaired
+          individuals. We're looking for passionate and talented people to join our team. By joining us, you will make
+          a real difference and work in a supportive and innovative environment.</p>
+
+        <h3 class="w3-text-purple">Who We're Looking For:</h3>
+
+        <p><strong>Web Developers:</strong><br>
+          Do you have experience building and maintaining websites? Do you know your way around HTML? We need you to
+          help enhance our platform and make it more user-friendly.</p>
+
+        <p><strong>Educational Content Providers:</strong><br>
+          Are you skilled at creating and delivering educational materials? We need your expertise to educate and
+          support our users.</p>
+
+        <p><strong>YouTube Video Creators:</strong><br>
+          Do you enjoy making engaging videos and have at least 50 subscribers on your YouTube channel? Join us to
+          produce content that informs and inspires our audience.</p>
+
+        <p><strong>Writers/Promoters:</strong><br>
+          Do you have a talent for writing and promoting? Help us spread the word about Blind Tech Agent and reach
+          more people.</p>
+
+        <h3 class="w3-text-purple">Why You Should Join Us:</h3>
+
+        <ul>
+          <li><strong>Make a Real Impact:</strong> Your work will improve the online experience for everyone,
+            especially the visually impaired.</li>
+          <li><strong>Be Part of a Supportive Community:</strong> Join a team that values collaboration, innovation,
+            and mutual support.</li>
+          <li><strong>Develop Your Skills:</strong> Gain new skills and enhance your existing ones through hands-on
+            experience.</li>
+          <li><strong>Expand Your Network:</strong> Connect with like-minded individuals and grow your professional
+            network.</li>
+          <li><strong>Experience Personal Growth:</strong> Contribute to a meaningful cause and see your personal
+            growth.</li>
+        </ul>
+
+        <p>We value diversity and welcome applicants from all backgrounds. If you’re passionate about making a
+          difference and want to join a team that cares, we encourage you to <a href="./menu/joinUs.html"
+            style="color: #1A73E8; text-decoration: underline;">apply here</a>.</p>
+      </section>
+      <br>
+      <section>
+        <p>We are a multipurpose website dedicated to transforming lives with the power of technology. Although our
+          website is designed to be accessible for the blind, it is meant for everyone who wants to benefit from the
+          latest advancements in technology.</p>
+        <p>Our website provides a wide range of features and resources to help you navigate through your daily tasks
+          with
+          ease. From productivity and entertainment apps to education resources, we've got you covered. Visit our <a
+            href="./features.html">Features page</a> to explore what we offer.</p>
         <br>
-        <br>
-        <section class="yellow">
-          <h2 class="w3-text-purple">Join Us: We're Hiring!</h2>
-          <p>At Blind Tech Agent, we are committed to making life easier for everyone, especially visually impaired
-            individuals. We're looking for passionate and talented people to join our team. By joining us, you will make
-            a real difference and work in a supportive and innovative environment.</p>
+      </section>
 
-          <h3 class="w3-text-purple">Who We're Looking For:</h3>
-
-          <p><strong>Web Developers:</strong><br>
-            Do you have experience building and maintaining websites? Do you know your way around HTML? We need you to
-            help enhance our platform and make it more user-friendly.</p>
-
-          <p><strong>Educational Content Providers:</strong><br>
-            Are you skilled at creating and delivering educational materials? We need your expertise to educate and
-            support our users.</p>
-
-          <p><strong>YouTube Video Creators:</strong><br>
-            Do you enjoy making engaging videos and have at least 50 subscribers on your YouTube channel? Join us to
-            produce content that informs and inspires our audience.</p>
-
-          <p><strong>Writers/Promoters:</strong><br>
-            Do you have a talent for writing and promoting? Help us spread the word about Blind Tech Agent and reach
-            more people.</p>
-
-          <h3 class="w3-text-purple">Why You Should Join Us:</h3>
-
-          <ul>
-            <li><strong>Make a Real Impact:</strong> Your work will improve the online experience for everyone,
-              especially the visually impaired.</li>
-            <li><strong>Be Part of a Supportive Community:</strong> Join a team that values collaboration, innovation,
-              and mutual support.</li>
-            <li><strong>Develop Your Skills:</strong> Gain new skills and enhance your existing ones through hands-on
-              experience.</li>
-            <li><strong>Expand Your Network:</strong> Connect with like-minded individuals and grow your professional
-              network.</li>
-            <li><strong>Experience Personal Growth:</strong> Contribute to a meaningful cause and see your personal
-              growth.</li>
-          </ul>
-
-          <p>We value diversity and welcome applicants from all backgrounds. If you’re passionate about making a
-            difference and want to join a team that cares, we encourage you to <a href="./menu/joinUs.html"
-              style="color: #1A73E8; text-decoration: underline;">apply here</a>.</p>
-        </section>
-        <br>
-        <section>
-          <p>We are a multipurpose website dedicated to transforming lives with the power of technology. Although our
-            website is designed to be accessible for the blind, it is meant for everyone who wants to benefit from the
-            latest advancements in technology.</p>
-          <p>Our website provides a wide range of features and resources to help you navigate through your daily tasks
-            with
-            ease. From productivity and entertainment apps to education resources, we've got you covered. Visit our <a
-              href="./features.html">Features page</a> to explore what we offer.</p>
-          <br>
-        </section>
-
-        <section>
-          <p>If you have any questions or encounter any issues while using our website, please don't hesitate to <a
-              href="./menu/contact.html">contact us</a>. We are always happy to hear from our users and help them in any
-            way we
-            can.</p>
-          <p>To learn more about our team and our mission, check out our <a href="./menu/about.html">About page</a></p>
-        </section>
-        <div id="announcement" role="status" aria-live="assertive"></div>
+      <section>
+        <p>If you have any questions or encounter any issues while using our website, please don't hesitate to <a
+            href="./menu/contact.html">contact us</a>. We are always happy to hear from our users and help them in any
+          way we
+          can.</p>
+        <p>To learn more about our team and our mission, check out our <a href="./menu/about.html">About page</a></p>
+      </section>
+      <div id="announcement" role="status" aria-live="assertive"></div>
     </main>
 
     <footer class="footer">
@@ -230,6 +347,35 @@
       <p class="text-center">&copy; 2023 Blind Tech Agent. All Rights Reserved.</p>
     </footer>
   </div>
+
+  <!-- Birthday Popup -->
+  <div class="popup" id="birthdayPopup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <h2>🎉 Happy Birthday, Pawan Kumar! 🎉</h2>
+      <img id="birthdayImage" src="https://example.com/birthday-cake.jpg" alt="Birthday Cake" />
+      <p>We celebrate your special day and all the amazing work you do for Blind Tech Agent!</p>
+      <p>Wishing you a year filled with joy and success!</p>
+    </div>
+  </div>
+
+  <script>
+    // Function to open the birthday popup
+    function openPopup() {
+      document.getElementById("birthdayPopup").style.display = "flex";
+    }
+
+    // Function to close the birthday popup
+    function closePopup() {
+      document.getElementById("birthdayPopup").style.display = "none";
+    }
+
+    // Open the popup after the page loads
+    window.onload = function () {
+      openPopup();
+    };
+  </script>
+
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>

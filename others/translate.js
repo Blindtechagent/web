@@ -10,10 +10,16 @@ function googleTranslateElementInit() {
     }).remove();
 }
 
+function acsDialog() {
+    document.getElementById('accessibility-panel').showModal();
+}
 function openDialog() {
-    document.getElementById("dialog").showModal();
+    document.getElementById('dialog').showModal();
 }
 
 function closeDialog() {
-    document.getElementById("dialog").close();
+    document.getElementById('dialog').close();
+}
+function closeAcsDialog() {
+    document.getElementById('accessibility-panel').close();
 }

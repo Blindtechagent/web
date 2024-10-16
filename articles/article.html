@@ -57,6 +57,60 @@
         #listen-btn:hover {
             background-color: fuchsia;
         }
+
+        .reaction-btn {
+            background-color: lightgray;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .reaction-btn:hover {
+            background-color: darkgray;
+        }
+
+        #comments-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 5px;
+        }
+
+        #comments-list .comment {
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        #comment-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #comment-form input,
+        #comment-form textarea {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #dddddd;
+        }
+
+        #comment-form button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #comment-form button:hover {
+            background-color: #45a049;
+        }
     </style>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="../style.css">
@@ -138,11 +192,35 @@
             <div class="article-actions">
                 <button id="share-btn">Share Article</button>
                 <button id="listen-btn">Listen Article</button>
+                <!-- Add Like and Dislike buttons -->
+                <button id="like-btn" class="reaction-btn">👍 Like (<span id="like-count">0</span>)</button>
+                <button id="dislike-btn" class="reaction-btn">👎 Dislike (<span id="dislike-count">0</span>)</button>
                 <p id="audiotiming"></p>
             </div>
             <div id="article-content">
                 <!-- Full article content will be displayed here -->
             </div>
+
+            <!-- Comment Section -->
+            <div id="comments-section">
+                <h3>Comments</h3>
+                <div id="comments-list">
+                    <!-- Loaded comments will be displayed here -->
+                </div>
+
+                <!-- Comment Form -->
+                <h4>Add a Comment</h4>
+                <form id="comment-form">
+                    <label for="comment-author">Your Name:</label>
+                    <input type="text" id="comment-author" required placeholder="Enter your name" />
+
+                    <label for="comment-text">Your Comment:</label>
+                    <textarea id="comment-text" required placeholder="Enter your comment"></textarea>
+
+                    <button type="submit">Submit Comment</button>
+                </form>
+            </div>
+
             <div id="announcement" role="status" aria-live="assertive"></div>
         </main>
         <footer class="footer">
