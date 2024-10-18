@@ -57,7 +57,6 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      scroll-behavior: smooth;
     }
 
 
@@ -174,33 +173,26 @@
     }
 
     Nav {
-      display:                                                 flex;
+      display: flex;
       justify-content: space-between;
       background-color: cornflowerblue;
     }
 
-    .tab {
+    nav a {
       background: red;
       color: white;
       margin: 1px;
       text-decoration: none;
       width: 25%;
       text-align: center;
-      border: none;
       padding: 8px auto;
+      border: none;
     }
 
-    .tab:hover {
+    nav a:hover {
       background-color: powderblue;
       color: black;
     }
-
-a {
-  background-color: dodgerblue;
-color: ghostwhite;
-padding: 5px auto;
-border: 3px solid #F433FF;
-}
 
     .header-container {
       position: apsolute;
@@ -223,16 +215,6 @@ border: 3px solid #F433FF;
       font-size: 16px;
       display: inline;
     }
-
-button {
-background-color: limegreen;  
- color: white;
-font-size: 10px;
-cursor: pointer;
-border-radius: 2px;
-border: 2.5px solidlime;
-padding: 4px auto ;    
-}
 
     header p {
       clear: right;
@@ -326,6 +308,8 @@ padding: 4px auto ;
       padding: 30px 0;
     }
 
+    .footer-heading {}
+
     .social-icon {
       display: inline;
       font-size: 20px;
@@ -384,26 +368,16 @@ padding: 4px auto ;
       text-decoration: underline;
     }
 
-    .join-us {
-      background-color: yellow;
-      color: darkblue;
-    }
-
-    /* this class represent the importent-anouncement box */
-    .importent-anouncement {
+    .darkblue {
       background-color: blue;
       font-weight: bolder;
       color: yellow;
-      text-align: justify;
     }
 
-    /* this id represent our importent-anounce ment hedding three */
-    #information {
-  text-align: center;
-  color: gold;
-  font-weight: bolder;
-}
-    /* this is our article section */
+    .yellow {
+      background-color: yellow;
+      color: darkblue;
+    }
 
     #articles {
       background: cornflowerblue;
