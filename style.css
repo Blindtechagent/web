@@ -72,12 +72,13 @@
     }
 
     header {
-      width: 100vw;
+      width: 100%;
       height: fit-content;
       background: #F433FF;
       color: #3DFF33;
       display: block;
       padding: 16px;
+      margin: none;
       z-index: 500;
     }
 
