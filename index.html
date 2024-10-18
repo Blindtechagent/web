@@ -22,75 +22,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/a5db627303.js" crossorigin="anonymous"></script>
   <script src="./others/loading.js"></script>
-  <style>
-    .popup {
-      display: none;
-      /* Hidden by default */
-      position: fixed;
-      z-index: 1;
-      /* Sit on top */
-      left: 0;
-      top: 0;
-      width: 100%;
-      /* Full width */
-      height: 100%;
-      /* Full height */
-      background-color: rgba(0, 0, 0, 0.7);
-      /* Dark background with opacity */
-      justify-content: center;
-      /* Center the popup */
-      align-items: center;
-      /* Center the popup */
-    }
-
-    .popup-content {
-      background-color: #fff;
-      border-radius: 10px;
-      /* Rounded corners */
-      margin: 15% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 90%;
-      /* Responsive width */
-      max-width: 500px;
-      /* Max width for larger screens */
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      /* Subtle shadow */
-    }
-
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    #birthdayImage {
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-      /* Rounded corners for image */
-    }
-
-    h2 {
-      color: #ff6600;
-      /* Bright text color */
-    }
-
-    p {
-      color: #333;
-      /* Dark text for contrast */
-      font-size: 16px;
-    }
-  </style>
 </head>
 
 <body>
@@ -348,33 +279,6 @@
     </footer>
   </div>
 
-  <!-- Birthday Popup -->
-  <div class="popup" id="birthdayPopup">
-    <div class="popup-content">
-      <span class="close" onclick="closePopup()">&times;</span>
-      <h2>🎉 Happy Birthday, Pawan Kumar! 🎉</h2>
-      <img id="birthdayImage" src="https://example.com/birthday-cake.jpg" alt="Birthday Cake" />
-      <p>We celebrate your special day and all the amazing work you do for Blind Tech Agent!</p>
-      <p>Wishing you a year filled with joy and success!</p>
-    </div>
-  </div>
-
-  <script>
-    // Function to open the birthday popup
-    function openPopup() {
-      document.getElementById("birthdayPopup").style.display = "flex";
-    }
-
-    // Function to close the birthday popup
-    function closePopup() {
-      document.getElementById("birthdayPopup").style.display = "none";
-    }
-
-    // Open the popup after the page loads
-    window.onload = function () {
-      openPopup();
-    };
-  </script>
 
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>

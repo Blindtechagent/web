@@ -46,6 +46,7 @@
     /* hide body by default */
     .body {
       display: none;
+      padding: none;
     }
 
 
