@@ -95,8 +95,8 @@
     .infobox {
       padding: 20px;
       margin: 10px auto;
-      width: 60%;
-      height: 35%;
+      width: 80vw;
+      height: 35vh;
       background: #000;
       /* Initial background color */
       border: 4px solid #FFF;
