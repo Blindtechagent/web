@@ -78,6 +78,17 @@
             border-radius: 5px;
         }
 
+        #commentsContainer {
+            display: none;
+        }
+
+#commentsBtn {
+    background-color: cornflowerblue;
+    color: ghostwhite;
+    padding: 16px;
+    margin: 8px auto;
+}
+
         #comments-list .comment {
             padding: 10px;
             background-color: #ffffff;
@@ -203,10 +214,13 @@
 
             <!-- Comment Section -->
             <div id="comments-section">
+                <button id="commentsBtn" onclick="showHide()">View comments</button>
+<div id="commentsContainer">
                 <h3>Comments</h3>
                 <div id="comments-list">
                     <!-- Loaded comments will be displayed here -->
                 </div>
+</div>
 
                 <!-- Comment Form -->
                 <h4>Add a Comment</h4>
