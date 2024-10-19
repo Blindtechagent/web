@@ -46,8 +46,8 @@
     /* hide body by default */
     .body {
       display: none;
-      padding: none;
-      margin: none;
+      padding: 0;
+      margin: 0;
     }
 
 
@@ -73,7 +73,7 @@
     }
 
     header {
-      width: 100%;
+      width: 100vw;
       height: fit-content;
       background: #F433FF;
       color: #3DFF33;
@@ -138,7 +138,7 @@
       width: 20px;
       height: 20px;
       padding: 5px;
-      display: inline;
+      display: inline-block;
       border: 2px solid #388E3C;
       cursor: pointer;
     }
@@ -163,7 +163,6 @@
     }
 
     .menuLinks {
-      background: #7E57C2;
       color: #FFFFFF;
       text-decoration: none;
       margin: 10px auto;
@@ -197,9 +196,6 @@
       color: black;
     }
 
-    .header-container {
-      position: apsolute;
-    }
 
     .logo {
       flex: 1;
