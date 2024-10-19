@@ -46,8 +46,8 @@
     /* hide body by default */
     .body {
       display: none;
-      padding: 0;
-      margin: 0;
+      padding: none;
+      margin: none;
     }
 
 
@@ -138,7 +138,7 @@
       width: 20px;
       height: 20px;
       padding: 5px;
-      display: inline-block;
+      display: inline;
       border: 2px solid #388E3C;
       cursor: pointer;
     }
@@ -163,6 +163,7 @@
     }
 
     .menuLinks {
+      background: #7E57C2;
       color: #FFFFFF;
       text-decoration: none;
       margin: 10px auto;
@@ -197,7 +198,7 @@
     }
 
     .header-container {
-      position: absolute;
+      position: apsolute;
     }
 
     .logo {
@@ -304,12 +305,13 @@
 
     footer {
       background-color: #333;
-      position: absolute;
+      position: apslute;
       bottom: 0;
       color: #fff;
       padding: 30px 0;
     }
 
+    .footer-heading {}
 
     .social-icon {
       display: inline;
@@ -404,6 +406,7 @@
     .article {
       background-color: ghostwhite;
       margin: 1em auto;
+      overflow: none;
       padding: 1em;
       border: 1px solid #ccc;
       border-radius: 15px;
