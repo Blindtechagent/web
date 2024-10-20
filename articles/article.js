@@ -54,7 +54,7 @@ document.getElementById('share-btn').addEventListener('click', function () {
     if (article && navigator.share) {
         navigator.share({
             title: article.title,
-            text: article.title,
+            text: `${article.title},\n\n${article.metaDescription}`,
             url: window.location.href
         }).then(() => {
             incrementShareCount(articleId);
@@ -209,12 +209,12 @@ showHide();
 function showHide() {
     const container = document.querySelector("#commentsContainer");
     const commentsBtn = document.getElementById('commentsBtn');
-if (container.style.display == "none") {
-    container.style.display = "block";
-commentsBtn.innerText = "Hide Comments";
-}
-else {
-    container.style.display = "none";
-    commentsBtn.innerText = "Show comments";
-}
+    if (container.style.display == "none") {
+        container.style.display = "block";
+        commentsBtn.innerText = "Hide Comments";
+    }
+    else {
+        container.style.display = "none";
+        commentsBtn.innerText = "Show comments";
+    }
 }
