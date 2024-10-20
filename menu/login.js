@@ -1,12 +1,12 @@
 const firebaseConfig = {
   apiKey: "AIzaSyDHMNnIoAwyqrNP7AEDkMX2jup8L8shiTk",
-    authDomain: "blind-tech-agent-5c78e.firebaseapp.com",
-    projectId: "blind-tech-agent-5c78e",
-    storageBucket: "blind-tech-agent-5c78e.appspot.com",
-    messagingSenderId: "524768280922",
-    appId: "1:524768280922:web:8b6e7693d711a38ccab363",
-    measurementId: "G-1T12NRRERE"
-  };
+  authDomain: "blind-tech-agent-5c78e.firebaseapp.com",
+  projectId: "blind-tech-agent-5c78e",
+  storageBucket: "blind-tech-agent-5c78e.appspot.com",
+  messagingSenderId: "524768280922",
+  appId: "1:524768280922:web:8b6e7693d711a38ccab363",
+  measurementId: "G-1T12NRRERE"
+};
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -17,7 +17,7 @@ loginForm.addEventListener('submit', loginUser);
 
 function loginUser(event) {
   event.preventDefault();
-  
+
   const email = document.getElementById("login-email").value;
   const password = document.getElementById("login-password").value;
 
@@ -26,11 +26,11 @@ function loginUser(event) {
 
   // Use Firebase Authentication API to sign in the user
   firebase.auth().signInWithEmailAndPassword(email, password)
-    .then(function(userCredential) {
+    .then(function (userCredential) {
       announce("Logged in successfully");
       window.location.href = "https://blindtechagent.github.io/web/";
     })
-    .catch(function(error) {
+    .catch(function (error) {
       // Handle login errors
       switch (error.code) {
         case 'auth/user-not-found':
@@ -54,14 +54,14 @@ function loginUser(event) {
 }
 
 // Forgot Password
-document.getElementById('forgot-password-link').addEventListener('click', function() {
+document.getElementById('forgot-password-link').addEventListener('click', function () {
   const email = document.getElementById("login-email").value;
   if (email) {
     firebase.auth().sendPasswordResetEmail(email)
-      .then(function() {
+      .then(function () {
         announce('Password reset email sent.');
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.error("Password reset error:", error);
         announce("Failed to send password reset email. Please try again.");
       });
@@ -73,7 +73,7 @@ document.getElementById('forgot-password-link').addEventListener('click', functi
 const showPasswordCheckbox = document.getElementById('show-password');
 const passwordInput = document.getElementById('login-password');
 
-showPasswordCheckbox.addEventListener('change', function() {
+showPasswordCheckbox.addEventListener('change', function () {
   if (this.checked) {
     passwordInput.type = 'text';
   } else {
