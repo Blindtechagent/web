@@ -1,8 +1,28 @@
 const thoughts = {
-  "2024-10-16": "Believe you can and you're halfway there.",
-  "2024-10-17": "Act as if what you do makes a difference. It does.",
-  "2024-10-18": "Success is not final, failure is not fatal: It is the courage to continue that counts.",
-  "2024-10-19": "What lies behind us and what lies before us are tiny matters compared to what lies within us.",
+  "2024-10-20": "Believe in yourself, take the leap of faith and watch the universe conspire to make your dreams a reality.",
+
+  "2024-10-21": "Life's beauty lies in its unpredictability, so keep smiling and make the most of every moment.",
+
+  "2024-10-22": "Your worth is not measured by your accomplishments, but by your willingness to keep trying.",
+
+  "2024-10-23": "Every sunrise marks a new chance to rewrite your story, make it a bestseller.",
+
+  "2024-10-24": "You are stronger than you think, braver than you feel, and smarter than you know.",
+
+  "2024-10-25": "Don't let fear hold you back, let curiosity drive you forward.",
+
+  "2024-10-26": "Life's journey is not about finding answers, but about asking the right questions.",
+
+  "2024-10-27": "Your voice matters, use it to uplift and inspire others.",
+
+  "2024-10-28": "Every setback is an opportunity to come back stronger and wiser.",
+
+  "2024-10-29": "You are one thought away from changing your life's trajectory.",
+
+  "2024-10-30": "Embrace your uniqueness, it's your greatest strength.",
+
+  "2024-10-31": "The best is yet to come, keep shining and believing."
+
   // Add more dates and thoughts as needed
 };
 
