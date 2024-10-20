@@ -2,7 +2,6 @@ const form = document.getElementById('form');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 const showPasswordCheckbox = document.getElementById('show-password');
-const googleSignInButton = document.getElementById('google-sign-in');
 
 // Handle form submission
 form.addEventListener('submit', (e) => {
