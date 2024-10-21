@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Generator</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            color: #ff5722;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+            background-color: #ffffffdd;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"],
+        textarea {
+            padding: 12px;
+            width: 350px;
+            border: 2px solid #ff8a65;
+            border-radius: 8px;
+            font-size: 1.1em;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #ff5722;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            background-color: #ff5722;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e64a19;
+        }
+
+        .article-container {
+            margin-top: 30px;
+            border: 2px solid #ffccbc;
+            padding: 25px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .GeneratedArticle {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .btn.copy-btn {
+            background-color: #03a9f4;
+            margin-top: 15px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn.copy-btn:hover {
+            background-color: #0288d1;
+        }
+
+        .message {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1em;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #ff5722;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Article Generator for Blind Tech Agent</h1>
+    <p>Enter any topic for the article</p>
+    <div class="container">
+        <label for="article-topic">Topic:</label>
+        <input type="text" id="article-topic" aria-label="Article Topic" placeholder="Enter topic here">
+        <p>Enter additional details</p>
+        <label for="aditional">Enter additional details to include in the article:</label>
+        <textarea id="aditional" placeholder="Enter details here"></textarea>
+        <br>
+        <button onclick="sendRequest()">Generate article</button>
+    </div>
+    <div class="article-container" aria-live="polite" aria-atomic="true"></div>
+    <a href="./publish_articles.html">Publish article</a>
+    <div id="message" class="message" role="alert" aria-live="assertive"></div>
+    <script src="./article-generater.js"></script>
+</body>
+
+</html>

@@ -35,6 +35,7 @@ document.getElementById('searchform').addEventListener('submit', function (e) {
       .filter(([key, article]) =>
         article.title.toLowerCase().includes(searchText) ||
         article.category.toLowerCase().includes(searchText) ||
+        article.author.toLowerCase().includes(searchText) ||
         article.content?.toLowerCase().includes(searchText) // Check content safely
       )
       .sort(([, a], [, b]) => new Date(b.publishDate) - new Date(a.publishDate));
