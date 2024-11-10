@@ -4,103 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publish Article</title>
+    <title>Save Article</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7fa;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
-            margin: 0;
+            font-family: Arial, sans-serif;
         }
 
         #article-form-container {
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 30px;
-            border-radius: 10px;
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border: 1px solid #eaeaea;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
         }
 
-        h1 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            text-align: center;
-            color: #007bff;
-        }
-
-        label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #555;
+        label,
+        input,
+        textarea,
+        select,
+        button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
         }
 
         input,
         textarea,
         select {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            font-size: 1em;
-            transition: border-color 0.3s ease;
-        }
-
-        input:focus,
-        textarea:focus,
-        select:focus {
-            border-color: #007bff;
-            background-color: #fff;
-            outline: none;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 100px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
         }
 
         button {
-            padding: 15px;
-            font-size: 1.1em;
-            background-color: #007bff;
+            padding: 10px;
+            background-color: #28a745;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 3px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #218838;
         }
 
-        a {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #007bff;
-            text-decoration: none;
-            font-size: 0.9em;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        select {
-            height: 45px;
+        #new-category {
+            display: none;
         }
     </style>
 </head>
 
 <body>
-    <a href="javascript:history.go(-1)">go back</a>
     <div id="article-form-container">
-        <h1>Publish Article</h1>
+        <h1>Save Article</h1>
         <form id="article-form">
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" placeholder="Title" required>
@@ -111,24 +69,35 @@
             <label for="publish-date">Publish Date:</label>
             <input type="date" id="publish-date" name="publish-date" required>
 
-            <p>select category</p>
-            <select id="category" name="category">
-                <option disabled>Select any category</option>
-                <option>Artificial intelligence</option>
-                <option>Cyber security</option>
-                <option>Environment</option>
-                <option>Festivals and Occasions</option>
-                <option>Gaming</option>
-                <option>Hidden details</option>
-                <option>Logic behind</option>
-                <option>Politics</option>
-                <option>Programming</option>
-                <option>Social awareness</option>
-                <option>Space and Universe</option>
-                <option>Sports</option>
-                <option>Tech news</option>
-                <option>Technology</option>
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="" disabled selected>Select a category</option>
+                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                <option value="Cyber Security">Cyber Security</option>
+                <option value="Environment">Environment</option>
+                <option value="Festivals and Occasions">Festivals and Occasions</option>
+                <option value="Gaming">Gaming</option>
+                <option value="Hidden Details">Hidden Details</option>
+                <option value="History">History</option>
+                <option value="Logic Behind">Logic Behind</option>
+                <option value="Politics">Politics</option>
+                <option value="Programming">Programming</option>
+                <option value="Social Awareness">Social Awareness</option>
+                <option value="Space and Universe">Space and Universe</option>
+                <option value="Sports">Sports</option>
+                <option value="Tech News">Tech News</option>
+                <option value="Technology">Technology</option>
+                <option value="Website Announcement">Website Announcement</option>
+                <option value="Other">Other</option>
             </select>
+
+            <input type="text" id="new-category" name="new-category" placeholder="Enter new category">
+
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" placeholder="Content" required></textarea>
+
+            <label for="meta-title">Meta Title:</label>
+            <input type="text" id="meta-title" name="meta-title" placeholder="Meta Title" required>
 
             <label for="meta-description">Meta Description:</label>
             <textarea id="meta-description" name="meta-description" placeholder="Meta Description" required></textarea>
@@ -136,10 +105,7 @@
             <label for="meta-keywords">Meta Keywords:</label>
             <input type="text" id="meta-keywords" name="meta-keywords" placeholder="Meta Keywords" required>
 
-            <label for="content">Content:</label>
-            <textarea id="content" name="content" placeholder="Content" required></textarea>
-
-            <button type="submit">Publish Article</button>
+            <button type="submit">Save Article</button>
         </form>
     </div>
 
@@ -147,34 +113,50 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-    <script src="firebase.js"></script>
+    <script src="../others/firebase.js"></script>
 
     <script>
         const articleForm = document.getElementById('article-form');
         const titleInput = document.getElementById('title');
         const authorInput = document.getElementById('author');
         const publishDateInput = document.getElementById('publish-date');
-        const categoryInput = document.getElementById('category');
+        const categorySelect = document.getElementById('category');
+        const newCategoryInput = document.getElementById('new-category');
         const contentInput = document.getElementById('content');
-        const metaTitleInput = document.getElementById('title');
+        const metaTitleInput = document.getElementById('meta-title');
         const metaDescriptionInput = document.getElementById('meta-description');
         const metaKeywordsInput = document.getElementById('meta-keywords');
 
         const db = firebase.database().ref('articles');
+
+        categorySelect.addEventListener('change', () => {
+            if (categorySelect.value === 'Other') {
+                newCategoryInput.style.display = 'block';
+                newCategoryInput.setAttribute('required', 'required');
+            } else {
+                newCategoryInput.style.display = 'none';
+                newCategoryInput.removeAttribute('required');
+            }
+        });
 
         articleForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const title = titleInput.value;
             const author = authorInput.value;
             const publishDate = publishDateInput.value;
-            const category = categoryInput.value;
+            let category = categorySelect.value;
+            const newCategory = newCategoryInput.value.trim();
             const content = contentInput.value;
             const metaTitle = metaTitleInput.value;
             const metaDescription = metaDescriptionInput.value;
             const metaKeywords = metaKeywordsInput.value;
 
+            if (category === 'Other' && newCategory) {
+                category = newCategory;
+            }
+
             if (validateInputs(title, author, publishDate, category, content, metaTitle, metaDescription, metaKeywords)) {
-                publishArticle(title, author, publishDate, category, content, metaTitle, metaDescription, metaKeywords);
+                saveArticle(title, author, publishDate, category, content, metaTitle, metaDescription, metaKeywords);
                 articleForm.reset();
                 alert('Article saved successfully');
             } else {
@@ -186,7 +168,7 @@
             return title.trim() && author.trim() && publishDate.trim() && category.trim() && content.trim() && metaTitle.trim() && metaDescription.trim() && metaKeywords.trim();
         }
 
-        function publishArticle(title, author, publishDate, category, content, metaTitle, metaDescription, metaKeywords) {
+        function saveArticle(title, author, publishDate, category, content, metaTitle, metaDescription, metaKeywords) {
             const newArticleRef = db.push();
             const serialNumber = newArticleRef.key;
             newArticleRef.set({

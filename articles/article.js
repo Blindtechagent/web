@@ -1,10 +1,12 @@
+// Parse URL parameters to get the article ID
 const urlParams = new URLSearchParams(window.location.search);
 const articleId = urlParams.get('id');
 
+// Reference to the article and its comments in Firebase
 const articleRef = firebase.database().ref('articles/' + articleId);
 const commentsRef = firebase.database().ref('articles/' + articleId + '/comments');
 
-let article;
+let article; // Variable to hold article data
 
 // Load article details
 articleRef.once('value', (snapshot) => {
@@ -15,25 +17,32 @@ articleRef.once('value', (snapshot) => {
         addMetaTag('description', article.metaDescription);
         addMetaTag('keywords', article.metaKeywords);
         addMetaTag('title', article.metaTitle);
-
+        
+        // Set Open Graph meta tags for social sharing
+        const url = window.location.href;
         addOgMetaTag('og:description', article.metaDescription);
         addOgMetaTag('og:title', article.metaTitle);
-        const url = window.location.href;
         addOgMetaTag('og:url', url);
 
         // Display article details
         document.getElementById('article-title').textContent = article.title;
-        const articleContent = document.getElementById('article-content');
-        articleContent.innerHTML = `
-                <p><strong>Published on: ${article.publishDate}</strong></p>
-                <p><strong>Written by: ${article.author}</strong></p>
-                <p><strong>Category: ${article.category}</strong></p>
-                <article>${article.content}</article>
-                <span style="margin:16px; padding:8px; background:#C2B280; color:skyblue;"><strong>Views: ${article.viewCount}</strong></span>
-                <span style="margin:16px; padding:8px; background:#C2B280; color:skyblue;"><strong>Shares: ${article.shareCount}</strong></span>
-            `;
+        document.getElementById('article-content').innerHTML = `
+            <p><strong>Published on: ${article.publishDate}</strong></p>
+            <p><strong>Written by: ${article.author}</strong></p>
+            <p><strong>Category: ${article.category}</strong></p>
+            <article>${article.content}</article>
+            <span style="margin:16px; padding:16px; background: darkblue; color:ghostwhite;">
+                <strong>Views: ${article.viewCount}</strong>
+            </span>
+            <span style="margin:16px; padding:16px; background: darkblue; color:ghostwhite;">
+                <strong>Shares: ${article.shareCount}</strong>
+            </span>
+            <span style="margin:16px; padding:16px; background: darkblue; color:ghostwhite;">
+                <strong>Comments: <span id="comment-count">0</span></strong>
+            </span>
+        `;
 
-        // Set the like and dislike counts
+        // Set like and dislike counts
         document.getElementById('like-count').textContent = article.likeCount || 0;
         document.getElementById('dislike-count').textContent = article.dislikeCount || 0;
 
@@ -48,6 +57,29 @@ articleRef.once('value', (snapshot) => {
         document.getElementById('article-content').innerHTML = "<p>The requested article could not be found.</p>";
     }
 });
+
+// Increment view count only if the article hasn't been viewed by the user before
+function incrementViewCount(articleId) {
+    const viewedKey = `viewed_${articleId}`;
+    const hasViewed = localStorage.getItem(viewedKey);
+
+    if (!hasViewed) {
+        // Increment view count in Firebase if it's the user's first view
+        articleRef.transaction((article) => {
+            if (article) {
+                article.viewCount = (article.viewCount || 0) + 1;
+            }
+            return article;
+        }).then(() => {
+            // Store a flag in localStorage to indicate the article has been viewed
+            localStorage.setItem(viewedKey, 'true');
+        }).catch((error) => {
+            console.error("Error updating view count:", error);
+        });
+    } else {
+        console.log("User has already viewed this article. View count will not be incremented.");
+    }
+}
 
 // Share functionality
 document.getElementById('share-btn').addEventListener('click', function () {
@@ -80,7 +112,6 @@ document.getElementById('dislike-btn').addEventListener('click', function () {
 const commentForm = document.getElementById('comment-form');
 commentForm.addEventListener('submit', function (event) {
     event.preventDefault();
-
     const author = document.getElementById('comment-author').value;
     const text = document.getElementById('comment-text').value;
 
@@ -103,44 +134,34 @@ function submitComment(author, text) {
     });
 }
 
-// Load and display comments in real time using 'on' listener
+// Load and display comments in real time
 function loadComments() {
     commentsRef.on('value', (snapshot) => {
         const commentsList = document.getElementById('comments-list');
         commentsList.innerHTML = ''; // Clear existing comments
 
         const comments = snapshot.val();
+        let commentCount = 0; // Initialize comment count
         if (comments) {
             Object.keys(comments).forEach((commentId) => {
+                commentCount++; // Increment count for each comment
                 const comment = comments[commentId];
                 const commentElement = document.createElement('div');
                 commentElement.classList.add('comment');
                 commentElement.innerHTML = `
-                        <p><strong>${comment.author}</strong> (${new Date(comment.timestamp).toLocaleString()}):</p>
-                        <p>${comment.text}</p>
-                        <hr />
-                    `;
+                    <p><strong>${comment.author}</strong> (${new Date(comment.timestamp).toLocaleString()}):</p>
+                    <p>${comment.text}</p>
+                    <hr />
+                `;
                 commentsList.appendChild(commentElement);
             });
         } else {
             commentsList.innerHTML = '<p>No comments yet. Be the first to comment!</p>';
         }
+        // Update the comment count in the HTML
+        document.getElementById('comment-count').textContent = commentCount;
     }, (error) => {
         console.error("Error loading comments:", error);
-    });
-}
-
-// Utility functions...
-
-function incrementViewCount(articleId) {
-    const articleRef = firebase.database().ref('articles/' + articleId);
-    articleRef.transaction((article) => {
-        if (article) {
-            article.viewCount = (article.viewCount || 0) + 1;
-        }
-        return article;
-    }).catch((error) => {
-        console.error("Error updating view count:", error);
     });
 }
 
@@ -157,33 +178,53 @@ function incrementShareCount(articleId) {
 }
 
 function incrementLikeCount(articleId) {
-    const articleRef = firebase.database().ref('articles/' + articleId);
+const likeID = `liked_${articleId}`;
+const hasLiked = localStorage.getItem(likeID);
+
+if (!hasLiked){
     articleRef.transaction((article) => {
         if (article) {
             article.likeCount = (article.likeCount || 0) + 1;
         }
         return article;
     }).then(() => {
-        document.getElementById('like-count').textContent = (article.likeCount || 0);
+        localStorage.setItem(likeID, 'true');
+        announce('you liked this article!');
+        document.getElementById('like-count').innerHTML = (article.likeCount || 0);
     }).catch((error) => {
         console.error("Error updating like count:", error);
     });
 }
+else{
+    announce('you have already like this article!');
+}
+}
 
 function incrementDislikeCount(articleId) {
-    const articleRef = firebase.database().ref('articles/' + articleId);
+const dislikeId = `disliked_${articleId}`;
+const hasDisliked = localStorage.getItem(dislikeId);
+
+if(!hasDisliked){
     articleRef.transaction((article) => {
         if (article) {
             article.dislikeCount = (article.dislikeCount || 0) + 1;
         }
         return article;
     }).then(() => {
-        document.getElementById('dislike-count').textContent = (article.dislikeCount || 0);
+        localStorage.setItem(dislikeId, 'true');
+        announce('you disliked this article!');
+        document.getElementById('dislike-count').innerHTML = (article.dislikeCount || 0);
     }).catch((error) => {
         console.error("Error updating dislike count:", error);
     });
 }
+else{
+    announce('you have already dislike this article');
+}
+}
 
+
+// Utility functions for setting meta tags
 function addMetaTag(name, content) {
     const meta = document.createElement('meta');
     meta.name = name;
@@ -198,23 +239,22 @@ function addOgMetaTag(property, content) {
     document.head.appendChild(meta);
 }
 
+// Announce a message on the page
 function announce(message) {
     const announcement = document.getElementById('announcement');
     announcement.textContent = message;
 }
-showHide();
 
-
-// function showHide
+// Toggle comments visibility
 function showHide() {
     const container = document.querySelector("#commentsContainer");
     const commentsBtn = document.getElementById('commentsBtn');
     if (container.style.display == "none") {
         container.style.display = "block";
         commentsBtn.innerText = "Hide Comments";
-    }
-    else {
+    } else {
         container.style.display = "none";
-        commentsBtn.innerText = "Show comments";
+        commentsBtn.innerText = "Show Comments";
     }
 }
+showHide(); // Initial call to show or hide comments
