@@ -17,7 +17,7 @@ articleRef.once('value', (snapshot) => {
         addMetaTag('description', article.metaDescription);
         addMetaTag('keywords', article.metaKeywords);
         addMetaTag('title', article.metaTitle);
-        
+
         // Set Open Graph meta tags for social sharing
         const url = window.location.href;
         addOgMetaTag('og:description', article.metaDescription);
@@ -26,7 +26,8 @@ articleRef.once('value', (snapshot) => {
 
         // Display article details
         document.getElementById('article-title').textContent = article.title;
-        document.getElementById('article-content').innerHTML = `
+        const audiotext = document.getElementById('article-content');
+        audiotext.innerHTML = `
             <p><strong>Published on: ${article.publishDate}</strong></p>
             <p><strong>Written by: ${article.author}</strong></p>
             <p><strong>Category: ${article.category}</strong></p>
@@ -41,6 +42,86 @@ articleRef.once('value', (snapshot) => {
                 <strong>Comments: <span id="comment-count">0</span></strong>
             </span>
         `;
+        const audio = new Audio();
+        const playbtn = document.getElementById('listen-btn');
+        const apiURL2 = 'https://www.techassistantforblind.com/modules/gtts.php';
+        const audiotiming = document.getElementById("audiotiming");
+        let isPlaying = false;
+        let pausedTime = 0;
+
+        playbtn.addEventListener('click', function () {
+            if (isPlaying) {
+                audio.pause();
+                pausedTime = audio.currentTime;
+                isPlaying = false;
+                playbtn.innerHTML = 'Listen Article';
+            } else {
+                playAudio();
+            }
+        });
+
+        function playAudio() {
+            if (article && audio.src) {
+                audio.currentTime = pausedTime;
+                audio.play();
+                isPlaying = true;
+                playbtn.innerHTML = 'Pause Audio';
+                announce('audio resumed');
+            } else if (article) {
+                announce('Playing audio, please wait...');
+                playbtn.innerHTML = 'Loading...';
+
+                const strippedText = article.title + stripHTML(article.content);
+
+                fetch(`${apiURL2}?text=${encodeURIComponent(strippedText)}&lang=en-in`)
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error('Error: Something went wrong!');
+                        }
+                        return response.text();
+                    })
+                    .then((audioURL) => {
+                        audio.src = audioURL;
+                        audio.currentTime = pausedTime; // Resume from the last paused time
+                        audio.play();
+                        audio.addEventListener("loadedmetadata", () => {
+                            playbtn.innerHTML = 'Pause Audio';
+                            isPlaying = true;
+                            audiotiming.textContent = formatTime(audio.currentTime) + " / " + formatTime(audio.duration);
+                        });
+
+                        audio.addEventListener('ended', () => {
+                            isPlaying = false;
+                            playbtn.innerHTML = 'Listen Article';
+                            audiotiming.textContent = '';
+                        });
+
+                        audio.addEventListener('timeupdate', () => {
+                            audiotiming.textContent = formatTime(audio.currentTime) + " / " + formatTime(audio.duration);
+                        });
+
+                        announce('playing audio');
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                        announce(err.message);
+                        playbtn.innerHTML = 'Listen Article';
+                    });
+            }
+        }
+
+        function stripHTML(html) {
+            let div = document.createElement('div');
+            div.innerHTML = html;
+            return div.textContent || div.innerText || '';
+        }
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
 
         // Set like and dislike counts
         document.getElementById('like-count').textContent = article.likeCount || 0;
@@ -178,49 +259,49 @@ function incrementShareCount(articleId) {
 }
 
 function incrementLikeCount(articleId) {
-const likeID = `liked_${articleId}`;
-const hasLiked = localStorage.getItem(likeID);
+    const likeID = `liked_${articleId}`;
+    const hasLiked = localStorage.getItem(likeID);
 
-if (!hasLiked){
-    articleRef.transaction((article) => {
-        if (article) {
-            article.likeCount = (article.likeCount || 0) + 1;
-        }
-        return article;
-    }).then(() => {
-        localStorage.setItem(likeID, 'true');
-        announce('you liked this article!');
-        document.getElementById('like-count').innerHTML = (article.likeCount || 0);
-    }).catch((error) => {
-        console.error("Error updating like count:", error);
-    });
-}
-else{
-    announce('you have already like this article!');
-}
+    if (!hasLiked) {
+        articleRef.transaction((article) => {
+            if (article) {
+                article.likeCount = (article.likeCount || 0) + 1;
+            }
+            return article;
+        }).then(() => {
+            localStorage.setItem(likeID, 'true');
+            announce('you liked this article!');
+            document.getElementById('like-count').innerHTML = (article.likeCount || 0);
+        }).catch((error) => {
+            console.error("Error updating like count:", error);
+        });
+    }
+    else {
+        announce('you have already like this article!');
+    }
 }
 
 function incrementDislikeCount(articleId) {
-const dislikeId = `disliked_${articleId}`;
-const hasDisliked = localStorage.getItem(dislikeId);
+    const dislikeId = `disliked_${articleId}`;
+    const hasDisliked = localStorage.getItem(dislikeId);
 
-if(!hasDisliked){
-    articleRef.transaction((article) => {
-        if (article) {
-            article.dislikeCount = (article.dislikeCount || 0) + 1;
-        }
-        return article;
-    }).then(() => {
-        localStorage.setItem(dislikeId, 'true');
-        announce('you disliked this article!');
-        document.getElementById('dislike-count').innerHTML = (article.dislikeCount || 0);
-    }).catch((error) => {
-        console.error("Error updating dislike count:", error);
-    });
-}
-else{
-    announce('you have already dislike this article');
-}
+    if (!hasDisliked) {
+        articleRef.transaction((article) => {
+            if (article) {
+                article.dislikeCount = (article.dislikeCount || 0) + 1;
+            }
+            return article;
+        }).then(() => {
+            localStorage.setItem(dislikeId, 'true');
+            announce('you disliked this article!');
+            document.getElementById('dislike-count').innerHTML = (article.dislikeCount || 0);
+        }).catch((error) => {
+            console.error("Error updating dislike count:", error);
+        });
+    }
+    else {
+        announce('you have already dislike this article');
+    }
 }
 
 

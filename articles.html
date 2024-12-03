@@ -50,6 +50,30 @@
     .article h2 {
       margin: 0;
     }
+
+    #previousBtn,
+    #nextBtn {
+      background-color: yellow;
+      color: darkblue;
+      display: inline-block;
+      padding: 16px;
+      margin: 16px;
+      border-radius: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    #pagination {
+      overflow: hidden;
+    }
+
+    #previousBtn {
+      float: left;
+    }
+
+    #nextBtn {
+      float: right;
+    }
   </style>
 </head>
 
@@ -116,11 +140,11 @@
           <button id="reset-text" aria-label="Reset text size">
             <i class="fas fa-undo" title="Reset text size"></i>
           </button>
-        <label for="underline-toggle" aria-label="Toggle underline on links">
+          <label for="underline-toggle" aria-label="Toggle underline on links">
             Underline Links <i class="fas fa-underline" title="Toggle underline on links"></i>
           </label>
           <input type="checkbox" id="underline-toggle" aria-label="Toggle underline on links">
-          <br>  
+          <br>
           <button onclick="closeAcsDialog()" class="acsBTN w3-close" aria-label="close dialog box">&times;</button>
         </dialog> -->
 
@@ -182,6 +206,8 @@
         <option>Technology</option>
         <option>Website announcement</option>
       </select>
+      <p style="background: black; color: white; font-weight: 900; text-align: center; font-size: 1.5em; padding: 2\4px; width: 40vw; display: block; margin: auto;"
+        id="totalArticles"></p>
       <div id="articles">
         <p>Loading Articles...</p>
       </div>
@@ -190,6 +216,7 @@
         <!-- Articles will be dynamically generated here -->
 
       </div>
+      <div id="pagination"></div>
     </main>
 
     <footer class="footer">
@@ -211,6 +238,7 @@
   <script src="./others/indexGlobal.js"></script>
   <script src="./articles/index.js"></script>
   <script src="./others/translate.js"></script>
+  <script src="./others/acs-options.js"></script>
   <script type="text/javascript"
     src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script src="./articles/articles.js"></script>

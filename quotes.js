@@ -1,64 +1,35 @@
 const thoughts = {
-  "2024-11-01": "Today is a blank canvas; paint it with your passion, dreams, and kindness.",
-
-  "2024-11-02": "The only limits you have are the ones you place on yourself, so dream big and live bold.",
-
-  "2024-11-03": "True strength comes not from avoiding challenges, but from facing them head-on with grace.",
-
-  "2024-11-04": "Happiness is found in gratitude, not in perfection.",
-
-  "2024-11-05": "The journey of self-discovery is the most beautiful adventure you’ll ever take.",
-
-  "2024-11-06": "Your dreams don’t have an expiration date; take a deep breath and try again.",
-
-  "2024-11-07": "Success is not about speed, but about perseverance and staying true to your path.",
-
-  "2024-11-08": "Your actions today shape the foundation of your future—choose them wisely.",
-
-  "2024-11-09": "When you believe in the goodness of life, life reveals its goodness to you.",
-
-  "2024-11-10": "Be patient with your growth; every step forward is progress.",
-
-  "2024-11-11": "Let go of the need for control and allow the magic of life to unfold.",
-
-  "2024-11-12": "You are a work in progress, perfectly imperfect, and wonderfully unique.",
-
-  "2024-11-13": "Sometimes, all it takes is one small step to change the course of your life.",
-
-  "2024-11-14": "Hope is the seed of change; plant it daily in your thoughts and actions.",
-
-  "2024-11-15": "Radiate positivity and watch the world around you mirror that energy back.",
-
-  "2024-11-16": "Embrace the unknown; it’s often where the best surprises await.",
-
-  "2024-11-17": "In every mistake lies a lesson, in every struggle lies growth.",
-
-  "2024-11-18": "You have the power to inspire others just by being authentically you.",
-
-  "2024-11-19": "Challenges are the stepping stones to greatness; embrace them with courage.",
-
-  "2024-11-20": "Trust the process, for even the smallest steps lead to big destinations.",
-
-  "2024-11-21": "Let kindness be your compass, and it will guide you through any storm.",
-
-  "2024-11-22": "Remember, it’s okay to rest; even the strongest need time to recharge.",
-
-  "2024-11-23": "Your heart knows the way, trust its whispers.",
-
-  "2024-11-24": "You are capable of achieving remarkable things; believe and persevere.",
-
-  "2024-11-25": "Keep moving forward, even when the path is unclear. Clarity will come.",
-
-  "2024-11-26": "Joy is found in the little moments; savor each one.",
-
-  "2024-11-27": "Don’t let the opinions of others drown out your inner voice.",
-
-  "2024-11-28": "Growth begins where comfort ends. Dare to stretch beyond your limits.",
-
-  "2024-11-29": "Stay curious; life has a way of surprising those who remain open.",
-
-  "2024-11-30": "Your dreams are valid, your potential is limitless, and your time is now."
-
+  "2024-12-01": "Every day is a new opportunity to start fresh and make a difference.",
+"2024-12-02": "Success isn't measured by what you accomplish, but by how you grow through the process.",
+"2024-12-03": "The world is full of beauty; sometimes, you just need to stop and notice it.",
+"2024-12-04": "Believe in the power of kindness; it has the ability to change the world.",
+"2024-12-05": "The best way to predict the future is to create it, one step at a time.",
+"2024-12-06": "You are stronger than you think, and more capable than you know.",
+"2024-12-07": "Every setback is a setup for a greater comeback.",
+"2024-12-08": "Let your passion be the fuel that drives you towards your goals.",
+"2024-12-09": "The road to success is paved with perseverance, not perfection.",
+"2024-12-10": "Take time to appreciate the small victories; they often lead to the greatest triumphs.",
+"2024-12-11": "The journey may be long, but every step forward is a step toward your dreams.",
+"2024-12-12": "Sometimes, the hardest thing is to believe in yourself, but it’s always worth it.",
+"2024-12-13": "It’s not about being the best, but about being your best.",
+"2024-12-14": "Embrace the challenges, for they are the stepping stones to your success.",
+"2024-12-15": "Life is a series of moments; make each one count.",
+"2024-12-16": "The secret to happiness lies in the ability to appreciate what you have, not in chasing what you want.",
+"2024-12-17": "Your potential is endless, so never limit your dreams.",
+"2024-12-18": "Don’t wait for opportunities to knock; create them yourself.",
+"2024-12-19": "Each new day is a blank page—make it a story worth telling.",
+"2024-12-20": "It’s the small things that make life extraordinary.",
+"2024-12-21": "Courage is not the absence of fear, but the willingness to move forward despite it.",
+"2024-12-22": "Your uniqueness is your superpower; embrace it fully.",
+"2024-12-23": "No dream is too big if you believe in yourself and take the first step.",
+"2024-12-24": "Be kind to yourself; you are doing the best you can.",
+"2024-12-25": "The best gifts in life are often the ones we give ourselves—like time and self-compassion.",
+"2024-12-26": "Change begins within; be the change you wish to see in the world.",
+"2024-12-27": "Take risks; the greatest rewards often come from stepping out of your comfort zone.",
+"2024-12-28": "Growth is a journey, not a destination—enjoy the process.",
+"2024-12-29": "You are worthy of all the good things life has to offer.",
+"2024-12-30": "Keep pushing forward, even when things seem tough; brighter days are ahead.",
+"2024-12-31": "End this year with gratitude and optimism, knowing that tomorrow is a new beginning."
   // Add more dates and thoughts as needed
 };
 
