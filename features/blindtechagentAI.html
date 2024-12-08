@@ -13,19 +13,26 @@
   <script src="../others/loading.js"></script>
   <title>Blind tech agent AI</title>
   <style>
-    /* General styling for the main container */
     main {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
+      padding: 20px;
+      background-color: #f9f9f9;
+      /* Light background for better readability */
     }
 
     /* Main container styling */
     .container {
       max-width: 800px;
+      width: 100%;
       margin: 0 auto;
       padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     /* Heading box and header */
@@ -39,9 +46,10 @@
     #heading-box h2 {
       font-size: 24px;
       font-weight: bold;
+      margin: 0;
+      color: #333;
     }
 
-    /* Refresh button styling */
     #refreshButton {
       background: none;
       border: none;
@@ -54,10 +62,8 @@
       height: 24px;
     }
 
-    /* Hover effect for refresh button */
     #refreshButton:hover {
       transform: rotate(180deg);
-      /* Rotate the button on hover */
     }
 
     /* Chat box styling */
@@ -65,6 +71,10 @@
       margin-bottom: 20px;
       max-height: 400px;
       overflow-y: auto;
+      padding: 10px;
+      background-color: #f7f7f7;
+      border: 1px solid #ddd;
+      border-radius: 8px;
       animation: fadeIn 1s ease-in-out;
     }
 
@@ -79,27 +89,13 @@
       }
     }
 
-    /* Message section styling */
-    /* Slide-in animation */
-    @keyframes slideIn {
-      from {
-        transform: translateX(-100%);
-      }
-
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
-    /* Form and input area styling */
+    /* Input area styling */
     .input-area {
       display: flex;
       align-items: center;
       gap: 10px;
       margin-top: 20px;
       animation: bounceIn 1s ease-out;
-      /* Bounce-in effect for the input area */
     }
 
     .input-area input {
@@ -109,13 +105,11 @@
       border-radius: 5px;
       border: 1px solid #ccc;
       transition: all 0.3s ease;
-      /* Smooth transition for focus effect */
     }
 
     .input-area input:focus {
       border-color: #2196F3;
       box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
-      /* Focus effect */
     }
 
     .input-area button {
@@ -126,17 +120,14 @@
       border: none;
       cursor: pointer;
       transition: transform 0.3s ease;
-      /* Smooth transition for button hover effect */
     }
 
     .input-area button i {
       font-size: 18px;
     }
 
-    /* Button hover effect */
     .input-area button:hover {
       transform: scale(1.1);
-      /* Enlarge button slightly on hover */
     }
 
     /* Microphone button styling */
@@ -144,13 +135,12 @@
       background-color: #4CAF50;
       color: #fff;
       padding: 10px;
+      border-radius: 5px;
       transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
     .mic-btn:hover {
       background-color: #388E3C;
-      transform: scale(1.1);
-      /* Slight zoom effect on hover */
     }
 
     /* Send button styling */
@@ -158,40 +148,12 @@
       background-color: #2196F3;
       color: #fff;
       padding: 10px;
+      border-radius: 5px;
       transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
     .send-btn:hover {
       background-color: #1976D2;
-      transform: scale(1.1);
-    }
-
-    /* Listen button styling */
-    .listen-btn {
-      background-color: cornflowerblue;
-      color: ghostwhite;
-      margin: 10px;
-      float: right;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    .listen-btn:hover {
-      background-color: #FF9800;
-      transform: scale(1.1);
-    }
-
-    /* Copy button styling */
-    .copy-btn {
-      background-color: cornflowerblue;
-      color: ghostwhite;
-      margin: 10px;
-      float: right;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    .copy-btn:hover {
-      background-color: #757575;
-      transform: scale(1.1);
     }
 
     /* Message styling */
@@ -207,7 +169,6 @@
       margin-top: 10px;
       opacity: 0;
       animation: fadeInMessage 1s forwards;
-      /* Fade-in animation for messages */
     }
 
     .msg {
@@ -223,29 +184,6 @@
       animation: fadeInMessage 1s forwards;
     }
 
-    .sender-user,
-    .sender-ai {
-      font-size: 18px;
-      font-weight: bold;
-      color: #333;
-    }
-
-    .sender-ai {
-      float: right;
-    }
-
-    .sender-user {
-      float: left;
-    }
-
-    #msg_text {
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      margin-right: 10px;
-    }
-
     /* Fade-in message animation */
     @keyframes fadeInMessage {
       from {
@@ -255,39 +193,6 @@
       to {
         opacity: 1;
       }
-    }
-
-    /* Visually hidden for screen readers */
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      margin: -1px;
-      padding: 0;
-      border: 0;
-      clip: rect(0, 0, 0, 0);
-      clip-path: inset(100%);
-      overflow: hidden;
-    }
-
-    /* Button Flex container for Listen & Copy buttons */
-    .dfmbuttons {
-      display: flex;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    /* Head box and footer styling */
-    #heading-box {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    /* Button Icon styling */
-    button i {
-      font-size: 18px;
     }
 
     /* Bounce-in effect for input area */
@@ -309,6 +214,7 @@
       }
     }
 
+    /* List styling */
     main ul {
       list-style-type: disc;
       margin-left: 20px;
