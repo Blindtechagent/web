@@ -32,13 +32,13 @@ articleRef.once('value', (snapshot) => {
             <p><strong>Written by: ${article.author}</strong></p>
             <p><strong>Category: ${article.category}</strong></p>
             <article>${article.content}</article>
-            <span style="margin:16px; padding:16px; background: darkblue; color:ghostwhite;">
+            <span style="margin:20px; padding:16px; background: darkblue; color:ghostwhite;">
                 <strong>Views: ${article.viewCount}</strong>
             </span>
-            <span style="margin:16px; padding:16px; background: darkblue; color:ghostwhite;">
+            <span style="margin:20px; padding:16px; background: darkblue; color:ghostwhite;">
                 <strong>Shares: ${article.shareCount}</strong>
             </span>
-            <span style="margin:16px; padding:16px; background: darkblue; color:ghostwhite;">
+            <span style="margin:20px; padding:16px; background: darkblue; color:ghostwhite;">
                 <strong>Comments: <span id="comment-count">0</span></strong>
             </span>
         `;
