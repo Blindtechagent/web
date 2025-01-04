@@ -1,0 +1,376 @@
+/* General Styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color: #333333;
+    text-align: center;
+    background-color: #f5f5dc;
+    animation: backgroundFade 3s ease-in-out infinite alternate;
+    font-family: Arial, sans-serif;
+}
+
+@keyframes backgroundFade {
+    0% {
+        background-color: #f5f5dc;
+    }
+
+    100% {
+        background-color: #e0f7fa;
+    }
+}
+
+h1 {
+    color: #ff4500;
+    margin: 10px;
+    text-align: center;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    animation: titlePulse 2s infinite alternate;
+}
+
+@keyframes titlePulse {
+    0% {
+        color: #ff4500;
+    }
+
+    100% {
+        color: #ff9800;
+    }
+}
+
+/* Initial Screen */
+#initialScreen {
+    background-color: #f8bbd0;
+    padding: 16px;
+    margin: 50px auto;
+    width: 90%;
+    max-width: 1200px;
+    height: 50vh;
+    border: 3px solid #ff4081;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 64, 129, 0.5);
+    animation: initialScreenFade 2s ease-in-out;
+}
+
+@keyframes initialScreenFade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#start-btn {
+    padding: 12px 24px;
+    font-size: 1.2em;
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+    animation: startBtnGlow 1.5s infinite alternate;
+}
+
+@keyframes startBtnGlow {
+    0% {
+        box-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+    }
+
+    100% {
+        box-shadow: 0 0 15px rgba(76, 175, 80, 1);
+    }
+}
+
+#start-btn:hover {
+    background-color: #8bc34a;
+    transform: scale(1.1);
+}
+
+/* Game Area */
+#game-area {
+    display: none;
+    width: 90%;
+    max-width: 1200px;
+    height: fit-content;
+    padding: 16px;
+    margin: auto;
+    border: 3px solid #ffcc00;
+    border-radius: 12px;
+    background-color: #e0f7fa;
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+    text-align: center;
+    animation: gameAreaGlow 2s infinite alternate;
+}
+
+@keyframes gameAreaGlow {
+    0% {
+        box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 0 25px rgba(255, 204, 0, 1);
+    }
+}
+
+/* Enemy Info */
+#enemy_info {
+    font-size: 20px;
+    text-align: center;
+    margin: 15px auto;
+    color: #ff5722;
+    animation: enemyInfoPulse 2s infinite alternate;
+}
+
+@keyframes enemyInfoPulse {
+    0% {
+        color: #ff5722;
+    }
+
+    100% {
+        color: #e91e63;
+    }
+}
+
+/* Enemy Container */
+.enemy_container {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 30vh;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 16px auto;
+    animation: enemyContainerGlow 3s infinite alternate;
+}
+
+@keyframes enemyContainerGlow {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    100% {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.enemy_container.hit {
+    background-color: #00e676;
+}
+
+.enemy_container.miss {
+    background-color: #ff1744;
+}
+
+/* Enemy Figure */
+#enemy_figure {
+    display: none;
+    font-size: 50px;
+    background-color: #e91e63;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(233, 30, 99, 0.7);
+    opacity: 0;
+    animation: fadeIn 0.2s ease-in forwards, enemyBounce 0.2s infinite ease-in-out;
+}
+
+/* Fading in effect */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Bouncing effect */
+@keyframes enemyBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Shattering effect */
+@keyframes shatter {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+#enemy_figure.shatter {
+    animation: shatter 0.5s ease-in-out forwards;
+}
+
+#enemy_figure.left {
+    margin-right: auto;
+}
+
+#enemy_figure.center {
+    margin: 0 auto;
+}
+
+#enemy_figure.right {
+    margin-left: auto;
+}
+
+/* Controls */
+#controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    width: 80%;
+    height: 15vh;
+    overflow: hidden;
+    padding: 10px;
+    background-color: #00bcd4;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
+}
+
+/* Shoot Buttons */
+.shoot-btn {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #ffd700;
+    /* Bright gold for a vibrant button background */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    /* Slight shadow for depth */
+    display: flex;
+            justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Positioning the buttons */
+.shoot-btn[data-direction="left"] {
+    margin-right: auto;
+}
+
+.shoot-btn[data-direction="center"] {
+    margin: 0 auto;
+}
+
+.shoot-btn[data-direction="right"] {
+    margin-left: auto;
+}
+
+/* Icon Styling */
+.shoot-btn i {
+    font-size: 32px;
+    color: #2c2c2c;
+    /* Deep dark gray for strong contrast */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    /* Slight shadow for added realism */
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+/* Hover Effects */
+.shoot-btn:hover {
+    transform: scale(1.2);
+    background-color: #ffc107;
+    /* Slightly darker gold for hover effect */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    /* Enhanced shadow effect */
+}
+
+.shoot-btn:hover i {
+    color: #000000;
+    /* Solid black for maximum contrast */
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+    /* Stronger shadow for emphasis */
+}
+
+/* Click Effect */
+.shoot-btn:focus {
+    transform: scale(1.1);
+    background-color: #ff8c00;
+    /* Deep orange for click effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Scoreboard */
+#scoreboard {
+    font-size: 18px;
+    margin: 12px auto;
+    width: 80vw;
+    padding: 12px;
+    display: none;
+    justify-content: space-around;
+    background-color: #ffeb3b;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255, 235, 59, 0.5);
+}
+
+.score {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.player-score {
+    background-color: #c8e6c9;
+}
+
+.enemy-score {
+    background-color: #ffcdd2;
+}
+
+/* Game Instructions */
+#game-instructions {
+    font-size: 18px;
+    margin: 10px;
+    background-color: #ffc107;
+    color: #333333;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+
+/* Responsive Styles */
+/* @media (max-width: 768px) {
+
+    #game-area,
+    #controls,
+    .enemy_container {
+        width: 90vw;
+    }
+
+    #enemy_info {
+        font-size: 20px;
+    }
+
+    #enemy_figure {
+        font-size: 40px;
+    }
+
+    .shoot-btn {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+} */
