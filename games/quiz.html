@@ -12,20 +12,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../others/loading.js"></script>
     <style>
-        /* Basic Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
+        main {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
             color: #333;
         }
 
@@ -39,16 +31,16 @@
             text-align: center;
         }
 
-        h1 {
+        main h1 {
             font-size: 24px;
             margin-bottom: 20px;
         }
 
-        p {
+        main p {
             margin-bottom: 20px;
         }
 
-        button {
+        main button {
             padding: 10px;
             background-color: #4CAF50;
             color: white;
@@ -61,7 +53,7 @@
             margin: 10px 0;
         }
 
-        button:hover {
+        main button:hover {
             background-color: #45a049;
         }
 
@@ -229,7 +221,10 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="../others/firebase.js"></script>
     <script src="quiz-javascript.js"></script>
-
+    <script src="../others//global.js"></script>
+    <script src="../others//auth.js"></script>
+    <script src="../others/translate.js"></script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>
