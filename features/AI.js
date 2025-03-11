@@ -1,3 +1,40 @@
+// Function to fetch AI response from the server/API
+async function fetchAIResponse(userMsg, tb, loadingIndicator) {
+    try {
+        const response = await fetch("https://backend.buildpicoapps.com/aero/run/llm-api?pk=v1-Z0FBQUFBQm5IZkJDMlNyYUVUTjIyZVN3UWFNX3BFTU85SWpCM2NUMUk3T2dxejhLSzBhNWNMMXNzZlp3c09BSTR6YW1Sc1BmdGNTVk1GY0liT1RoWDZZX1lNZlZ0Z1dqd3c9PQ==", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ prompt: userMsg })
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch response');
+        }
+
+        const data = await response.json();
+
+        tb.removeChild(loadingIndicator); // Remove loading indicator after response is received
+
+        if (data.status === "success") {
+            const answerValue = data.text;
+            // Append the AI's response to the chat
+            appendMessage('BTA AI said:', answerValue, 'msg1', 'sender-ai', tb);
+            // Auto-scroll the chat window to show the new message
+            tb.scrollTop = tb.scrollHeight;
+            // Announce AI response (for screen readers)
+            announce("Blind Tech Agent AI replied");
+        } else {
+            // Error handling for failed AI response
+            announce("Error retrieving AI response, please try again.");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        tb.removeChild(loadingIndicator); // Ensure loading indicator is removed on error
+        announce("There was an error fetching the response. Please check your internet connection and try again.");
+    }
+}
 
 // Add event listener to form submission for text-based input
 document.getElementById('form').addEventListener('submit', function (event) {
@@ -45,7 +82,6 @@ function appendMessage(sender, text, messageClass, senderClass, parentElement) {
         msgContainer.appendChild(listenButton);
         const copyButton = createCopyButton(text);
         msgContainer.appendChild(copyButton);
-
     }
 
     parentElement.appendChild(msgContainer);
@@ -89,48 +125,6 @@ function createCopyButton(text) {
 
     return copyButton;  // Return the copy button to append to the message
 }
-
-// Function to fetch AI response from the server/API
-function fetchAIResponse(userMsg, tb, loadingIndicator) {
-    const xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4) {
-            // Remove loading indicator after response is received
-            tb.removeChild(loadingIndicator);
-
-            if (this.status === 200) {
-                const responseData = JSON.parse(xhttp.responseText);
-                const answerValue = responseData.response;
-
-                // Append the AI's response to the chat
-                const aiMsgContainer = appendMessage('BTA AI said:', answerValue, 'msg1', 'sender-ai', tb);
-
-                // Auto-scroll the chat window to show the new message
-                tb.scrollTop = tb.scrollHeight;
-
-                // Announce AI response (for screen readers)
-                announce("Blind Tech Agent AI replied");
-            } else {
-                // Error handling for failed AI response
-                announce("Error retrieving AI response, please try again.");
-            }
-        }
-    };
-
-    // Sending GET request to the AI API with the user's message
-    xhttp.open("GET", "https://darkness.ashlynn.workers.dev/chat/?model=gpt-4o-mini&prompt=" + encodeURIComponent(userMsg), true);
-    xhttp.send();
-}
-
-// Event listener for refresh button
-document.getElementById('refreshButton').addEventListener('click', function () {
-    const tb = document.getElementById('tb');
-    tb.innerHTML = `          <div class="dfm">
-            <span>Hello! I am Blind Tech Agent AI. How can I assist you today?</span>
-          </div>`;
-    announce("Chat refreshed successfully");
-    tb.scrollTop = 0;  // Scroll to the top after refresh
-});
 
 // Function to announce messages to screen readers
 function announce(message) {
