@@ -1,36 +1,30 @@
 const thoughts = {
-      "2025-01-30": "Your dreams are within reach—keep believing and keep moving forward.",
-    "2025-01-31": "Every ending is the beginning of something new and wonderful.",
-    "2025-02-01": "A single act of kindness can spark a chain reaction of positivity.",
-    "2025-02-02": "The journey of a thousand miles begins with a single step—take that step today.",
-    "2025-02-03": "Great things take time, so trust the process and keep going.",
-    "2025-02-04": "Your attitude determines your direction—choose optimism and determination.",
-    "2025-02-05": "The best way to inspire others is to live as your most authentic self.",
-    "2025-02-06": "Mistakes are proof that you are trying—learn from them and grow.",
-    "2025-02-07": "The more you appreciate life, the more life gives you to appreciate.",
-    "2025-02-08": "Happiness isn’t found in perfection, but in embracing the imperfections.",
-    "2025-02-09": "Don’t let the fear of failure stop you—let the excitement of success drive you.",
-    "2025-02-10": "You are capable of more than you ever imagined—keep striving forward.",
-    "2025-02-11": "Be patient with yourself; progress is progress, no matter how small.",
-    "2025-02-12": "The world needs your light—shine brightly and fearlessly.",
-    "2025-02-13": "Challenges make you stronger; embrace them as stepping stones to greatness.",
-    "2025-02-14": "Love is the most powerful force—spread it freely and abundantly.",
-    "2025-02-15": "You are not behind; you are on your own unique path—trust the timing of your life.",
-    "2025-02-16": "Success isn’t about speed; it’s about persistence and dedication.",
-    "2025-02-17": "Small daily improvements lead to stunning long-term results.",
-    "2025-02-18": "Let go of what no longer serves you, and make space for what truly matters.",
-    "2025-02-19": "Your story is still being written—make it one worth telling.",
-    "2025-02-20": "Kindness costs nothing but means everything—be generous with it.",
-    "2025-02-21": "Every challenge carries the seed of an even greater opportunity.",
-    "2025-02-22": "Don’t compare your journey to others—your path is uniquely yours.",
-    "2025-02-23": "The energy you put into the world is the energy that comes back to you.",
-    "2025-02-24": "You don’t have to be perfect to be amazing—just be you.",
-    "2025-02-25": "The simplest moments often hold the greatest joy—take time to notice them.",
-    "2025-02-26": "Your dreams matter—take steps every day to make them a reality.",
-    "2025-02-27": "Sometimes, the best way forward is to pause, breathe, and refocus.",
-    "2025-02-28": "Believe in the magic of new beginnings—they hold endless possibilities."
+  
+    "2025-03-10": "Believe in yourself and all that you are—know that there is something inside you that is greater than any obstacle.",
+    "2025-03-11": "Every small act of kindness is a step toward a more compassionate world.",
+    "2025-03-12": "The future belongs to those who believe in the beauty of their dreams.",
+    "2025-03-13": "Embrace change, for it is the catalyst for growth and new opportunities.",
+    "2025-03-14": "Your mind is a powerful thing; when you fill it with positive thoughts, your life will start to change.",
+    "2025-03-15": "Keep pushing forward, even when the going gets tough—your perseverance will pay off.",
+    "2025-03-16": "Happiness is not something ready-made; it comes from your own actions.",
+    "2025-03-17": "The only limit to your impact is your imagination and commitment.",
+    "2025-03-18": "Your greatest strength lies within you—trust yourself and keep moving forward.",
+    "2025-03-19": "Challenges are what make life interesting; overcoming them is what makes life meaningful.",
+    "2025-03-20": "The power of positivity can transform your life—embrace it wholeheartedly.",
+    "2025-03-21": "You have the ability to create the life you desire—start today and never look back.",
+    "2025-03-22": "Every day is a new opportunity to make a positive difference in your life and the lives of others.",
+    "2025-03-23": "The best way to predict your future is to create it.",
+    "2025-03-24": "Your journey is unique, and so are you—celebrate your individuality.",
+    "2025-03-25": "Focus on the present moment, for it is the only time you truly have.",
+    "2025-03-26": "Success is not the key to happiness; happiness is the key to success.",
+    "2025-03-27": "Your potential is limitless—believe in yourself and take bold steps toward your dreams.",
+    "2025-03-28": "The best time to start was yesterday; the next best time is now.",
+    "2025-03-29": "Your inner strength is greater than any challenge you face.",
+    "2025-03-30": "The journey may be long, but the destination is worth every step.",
+    "2025-03-31": "You are the architect of your own destiny—design it with purpose and passion."
 
-  // Add more dates and thoughts as needed
+
+      // Add more dates and thoughts as needed
 };
 
 // Get today's date in YYYY-MM-DD format
