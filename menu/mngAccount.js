@@ -31,7 +31,7 @@
                 const emailId = firebase.auth().currentUser.email;
                 firebase.database().ref("users/" + emailId.replace('.', ',')).update({ name: newName })
                     .then(() => {
-                        nameBtn.textContent = `${newName}, change your name`;
+                        nameBtn.textContent = `${storedName}, change your name`;
                         announce("name changed successfully");
                     })
                     .catch((error) => {
