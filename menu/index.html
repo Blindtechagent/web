@@ -1,0 +1,309 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiplayer Chess-Like Game (Firebase)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    #room-section, #game-section {
+      margin: 20px auto;
+      max-width: 600px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    #room-id, #status, #error-message {
+      font-weight: bold;
+      color: #333;
+      margin: 10px 0;
+    }
+    #error-message {
+      color: #d32f2f;
+    }
+    #board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      gap: 5px;
+      margin: 20px auto;
+      width: 315px;
+    }
+    .cell {
+      width: 100px;
+      height: 100px;
+      background-color: #fff;
+      border: 2px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .cell:hover {
+      background-color: #e0e0e0;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    input {
+      padding: 8px;
+      margin: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 200px;
+    }
+    #game-section {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="room-section">
+    <h2>Create or Join a Game</h2>
+    <div>
+      <button onclick="createRoom()">Create Room</button>
+      <p id="room-id">Room ID: None</p>
+      <p id="error-message"></p>
+      <div>
+        <input id="room-input" type="text" placeholder="Enter Room ID">
+        <button onclick="joinRoom()">Join Room</button>
+      </div>
+    </div>
+  </div>
+  <div id="game-section">
+    <h2>Multiplayer Game</h2>
+    <p id="status">Waiting for opponent...</p>
+    <p id="error-message"></p>
+    <div id="board"></div>
+    <button onclick="resetGame()">Reset Game</button>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js"></script>
+  <script>
+    // Replace with your Firebase configuration
+    const firebaseConfig = {
+      apiKey: "your-api-key",
+      authDomain: "your-project-id.firebaseapp.com",
+      databaseURL: "https://your-project-id.firebaseio.com",
+      projectId: "your-project-id",
+      storageBucket: "your-project-id.appspot.com",
+      messagingSenderId: "your-sender-id",
+      appId: "your-app-id"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    let playerSymbol = null;
+    let currentTurn = 'X';
+    let gameBoard = ['', '', '', '', '', '', '', '', ''];
+    let roomId = null;
+    let isGameActive = false;
+
+    // Set error message
+    function setError(message) {
+      document.getElementById('error-message').textContent = message;
+      console.error(message);
+    }
+
+    // Clear error message
+    function clearError() {
+      document.getElementById('error-message').textContent = '';
+    }
+
+    // Initialize game board
+    function initBoard() {
+      const board = document.getElementById('board');
+      board.innerHTML = '';
+      for (let i = 0; i < 9; i++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.dataset.index = i;
+        cell.addEventListener('click', () => makeMove(i));
+        board.appendChild(cell);
+      }
+      updateBoard();
+    }
+
+    // Create a new room
+    function createRoom() {
+      clearError();
+      roomId = Math.random().toString(36).substring(2, 8);
+      playerSymbol = 'X';
+      db.ref(`rooms/${roomId}`).set({
+        players: { playerX: true },
+        board: ['', '', '', '', '', '', '', '', ''],
+        turn: 'X'
+      }).then(() => {
+        document.getElementById('room-id').textContent = `Room ID: ${roomId}`;
+        document.getElementById('room-section').style.display = 'none';
+        document.getElementById('game-section').style.display = 'block';
+        initBoard();
+        document.getElementById('status').textContent = 'Waiting for opponent...';
+        listenForGameUpdates();
+      }).catch((err) => {
+        setError('Failed to create room: ' + err.message);
+      });
+    }
+
+    // Join an existing room
+    function joinRoom() {
+      const input = document.getElementById('room-input').value.trim();
+      clearError();
+      if (!input) {
+        setError('Please enter a Room ID');
+        return;
+      }
+      db.ref(`rooms/${input}/players`).once('value', (snapshot) => {
+        const players = snapshot.val();
+        if (players && players.playerX && !players.playerO) {
+          roomId = input;
+          playerSymbol = 'O';
+          db.ref(`rooms/${roomId}/players`).update({ playerO: true }).then(() => {
+            document.getElementById('room-id').textContent = `Room ID: ${roomId}`;
+            document.getElementById('room-section').style.display = 'none';
+            document.getElementById('game-section').style.display = 'block';
+            initBoard();
+            isGameActive = true;
+            updateStatus();
+            listenForGameUpdates();
+          }).catch((err) => {
+            setError('Failed to join room: ' + err.message);
+          });
+        } else {
+          setError('Room is full or does not exist');
+        }
+      });
+    }
+
+    // Listen for game updates
+    function listenForGameUpdates() {
+      db.ref(`rooms/${roomId}`).on('value', (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          gameBoard = data.board || ['', '', '', '', '', '', '', '', ''];
+          currentTurn = data.turn || 'X';
+          isGameActive = data.players && data.players.playerX && data.players.playerO;
+          updateBoard();
+          updateStatus();
+        } else {
+          setError('Room no longer exists');
+          resetGame();
+        }
+      });
+    }
+
+    // Make a move
+    function makeMove(index) {
+      if (isGameActive && playerSymbol === currentTurn && gameBoard[index] === '') {
+        gameBoard[index] = playerSymbol;
+        const newTurn = currentTurn === 'X' ? 'O' : 'X';
+        db.ref(`rooms/${roomId}`).update({
+          board: gameBoard,
+          turn: newTurn
+        }).catch((err) => {
+          setError('Failed to make move: ' + err.message);
+        });
+      } else if (!isGameActive) {
+        setError('Waiting for opponent to join.');
+      } else if (playerSymbol !== currentTurn) {
+        setError('It’s not your turn!');
+      }
+    }
+
+    // Update board UI
+    function updateBoard() {
+      const cells = document.querySelectorAll('.cell');
+      cells.forEach((cell, i) => {
+        cell.textContent = gameBoard[i];
+      });
+    }
+
+    // Update status message
+    function updateStatus() {
+      if (!isGameActive) {
+        document.getElementById('status').textContent = 'Waiting for opponent...';
+      } else {
+        document.getElementById('status').textContent = `Turn: ${currentTurn === playerSymbol ? 'Your turn' : 'Opponent\'s turn'}`;
+      }
+    }
+
+    // Reset game
+    function resetGame() {
+      if (roomId) {
+        db.ref(`rooms/${roomId}`).remove();
+      }
+      gameBoard = ['', '', '', '', '', '', '', '', ''];
+      currentTurn = 'X';
+      playerSymbol = null;
+      roomId = null;
+      isGameActive = false;
+      document.getElementById('room-section').style.display = 'block';
+      document.getElementById('game-section').style.display = 'none';
+      document.getElementById('room-id').textContent = 'Room ID: None';
+      document.getElementById('room-input').value = '';
+      clearError();
+    }
+  </script>
+</body>
+</html>
