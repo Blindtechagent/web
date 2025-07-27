@@ -40,69 +40,52 @@ async function fetchAIResponse(prompt, tb, loadingIndicator) {
 document.getElementById('form').addEventListener('submit', function (event) {
     event.preventDefault();
     const inputMsg = document.getElementById('msg_text').value.trim();
-    const complete_prompt = `You are a senior performance copywriter and expert content strategist. You understand human psychology, SEO, and how to write online content that helps people and makes them take action.
-Write a full article about this topic: ${inputMsg}
-
-Please follow all the steps below:
- 
-1. Introduction
-• Start with something strong. This could be a surprising fact, a clear question, or a simple comparison.
-• Make the topic sound important and useful.
- 
+    const complete_prompt = `Your task is to write a well-organized article about this topic: ${inputMsg}
+You must read, understand, and follow every instruction below carefully. Do not skip anything or do it only partially. You must follow all instructions exactly.
+1. Introduction section
+• Start the article with a strong and interesting opening. This could be a surprising fact, a clear question, or a simple comparison.
+• Then clearly explain why the topic is important and how it helps the reader.
 2. Tone and Language
-• Use a formal and clear tone.
-• Keep the words very simple and easy to read.
-• Do not use hard words or robotic sentences.
-• You can use “we” or “us” when it helps explain something better.
-• Do not use slang or overly casual words.
- 
-3. Structure and Formatting
-• Use this format in the whole article:
- • Start with the heading: <h2>Introduction</h2>
- • End with the heading: <h2>Conclusion</h2>
- • Use <h3> for main sections
- • Use <h4> for sub-sections
- • Wrap all regular text in <p> tags
- • Use <ul> or <ol> for any lists
-• Keep the content organized. Only write about one main topic.
- 
+• Write the article in a polite, formal, and clear way.
+• Use only simple words that are easy to understand. Avoid hard words, slang, or robotic or casual language.
+• You can write long paragraphs to explain things better if needed, as long as the words stay simple and the language stays easy to understand.
+3. HTML Structure and Formatting
+• Put the whole article inside one <div> tag with id="articleCode".
+• Begin the article with <h2>Introduction</h2>.
+• Wrap all regular paragraphs in <p> tags.
+• After the introduction, include 4 to 5 main sections at least, each with a heading using <h3>. You can have more if the topic needs it, but not fewer than 4.
+• If needed, break the main sections into smaller parts using <h4> headings, but this should not reduce the number of <h3> main sections.
+• End the article with <h2>Conclusion</h2>.
+• Use <ul> and <li> tags for bullet point lists.
+• Use <ol> and <li> tags for numbered lists.
+• Use <strong> or <em> tags only to show very important words or phrases, and use them sparingly.
+• Do not add any other HTML tags like <html>, <body>, or extra code outside the <div id="articleCode">...</div>.
 4. Content Style and Quality
-• Keep everything clear and useful.
-• Use simple examples if the topic is hard.
-• Use real facts, numbers, or studies when helpful.
-• Think about what the reader needs. Are they learning, solving a problem, or looking to act?
-• Don’t repeat things or add filler. Every paragraph should be useful.
-• Always use plain and simple language.
- 
-5. SEO and Discoverability
-• Add long-tail keywords in a natural way.
-• Use related keywords too, but do not overuse them.
-• Use <strong> and <em> only when something is very important.
-• Do not make the article sound fake or full of keywords.
- 
-6. Authority and Trust
-• Write like an expert.
-• Use mock expert quotes or real examples to build trust.
-• Keep the writing focused and helpful.
-• Be clear and professional all the way through.
- 
-7. Final Review Checklist
-Before finishing the article, make sure:
-• The tone is formal and respectful
-• Simple words are used everywhere
-• Sentences are short and easy to follow
-• Each part connects well to the next
-• The ending clearly sums up the main points
-• The whole article is helpful and easy to understand
- 
-8. Output Format
-• Return only the clean HTML content. Do not include <html>, <body>, or extra code.
-• After the article, the also provide following in separate lines, not in HTML:
- • Title: A clear and simple headline
- • Meta Description: One sentence (around 150 characters) that explains the article
- • Meta Keywords: A list of related keywords, separated by commas
- • Shareable Text: A short sentence that can be posted on social media.
-`;
+• Explain ideas clearly and in a useful way.
+• Use simple examples to help explain difficult ideas.
+• Include real facts, numbers, or studies when they help make things clearer.
+• Do not repeat ideas or add extra words that don’t help. Every paragraph should give new information.
+• Write in plain and easy words that everyone can understand.
+• Remember, you can write longer paragraphs to explain things better if you need to, as long as the language stays simple and easy.
+5. SEO and Keywords
+• Naturally include one or more long-tail keywords related to the topic in the article.
+• You can also add related keywords but do not use them too much.
+• Avoid putting in too many keywords or making the sentences sound unnatural.
+6. Final Checklist Before Finishing
+• Make sure the tone stays polite, formal, and clear all through the article.
+• Use simple words everywhere in the article.
+• Make sure the sections connect well and flow smoothly.
+• The conclusion should clearly wrap up the main points.
+• The whole article should be detailed,  elaborated, useful, easy to read, and meet all the instructions above.
+7. Output Format and Extra Information
+• Write only the article content inside the <div id="articleCode">...</div>. Do not add any other HTML or code outside this.
+• Right after the closing </div>, add one <hr> tag.
+• Below the <hr>, write these four items on separate lines using <br> tags (surrounded by <p></p>):
+• Title: a clear and simple headline for the article
+• Meta Description: one short sentence about 150 characters that summarizes the article
+• Meta Keywords: related keywords separated by commas
+• Shareable Text: a short sentence that can be shared on social media
+Remember: You must follow every instruction fully and exactly. Use only the HTML tags and format shown here. Do not skip or only partly do any step.`;
     const tb = document.getElementById('tb');
 
     if (inputMsg !== '') {
@@ -133,18 +116,17 @@ function appendMessage(sender, text, messageClass, senderClass, parentElement) {
     heading.className = senderClass;
 
     const msgText = document.createElement('span');
-    msgText.textContent = text;
+    msgText.innerHTML = text;
 
     msgContainer.appendChild(heading);
     msgContainer.appendChild(msgText);
     let lineBreak = document.createElement('br');;
     msgContainer.appendChild(lineBreak);
-    // Add "Listen" and "copy" button for AI messages
+    // Add code copy button
     if (messageClass === 'msg1') {
-        const listenButton = createListenButton(text);
-        msgContainer.appendChild(listenButton);
-        const copyButton = createCopyButton(text);
-        msgContainer.appendChild(copyButton);
+        const codeCopyBtn = document.createElement('div');
+        codeCopyBtn.innerHTML = `<button class='btn' onclick="navigator.clipboard.writeText(document.getElementById('articleCode').innerHTML)">copy article code</button>`
+        msgContainer.appendChild(codeCopyBtn);
     }
 
     parentElement.appendChild(msgContainer);
@@ -152,42 +134,6 @@ function appendMessage(sender, text, messageClass, senderClass, parentElement) {
     return msgContainer;  // Return the message container to remove loading indicator later
 }
 
-// Function to create the "Listen" button and add voice functionality
-function createListenButton(text) {
-    const listenButton = document.createElement('button');
-    listenButton.className = 'btn listen-btn';
-    listenButton.setAttribute('aria-label', 'Listen');
-    // Adding the icon for Listen button
-    const icon = document.createElement('i');
-    icon.className = 'fas fa-volume-up';  // Font Awesome icon for volume up
-    listenButton.appendChild(icon);
-    listenButton.addEventListener('click', function () {
-        const speech = new SpeechSynthesisUtterance(text);
-        speech.lang = 'en-US';
-        window.speechSynthesis.speak(speech);
-    });
-    return listenButton;
-}
-
-// Function to create a 'Copy' button for AI message
-function createCopyButton(text) {
-    const copyButton = document.createElement('button');
-    copyButton.className = 'btn copy-btn';
-    copyButton.setAttribute('aria-label', 'Copy response');
-    // Adding the icon for Copy button
-    const icon = document.createElement('i');
-    icon.className = 'fas fa-copy';  // Font Awesome icon for copy
-    copyButton.appendChild(icon);
-
-    // Adding click event to copy the AI message to the clipboard
-    copyButton.addEventListener('click', function () {
-        navigator.clipboard.writeText(text)
-            .then(() => announce("Message copied to clipboard"))  // Announce copy success
-            .catch(() => announce("Failed to copy message"));  // Announce copy failure
-    });
-
-    return copyButton;  // Return the copy button to append to the message
-}
 
 // Function to announce messages to screen readers
 function announce(message) {
