@@ -169,10 +169,10 @@
       <input type="email" id="email" aria-label="Email ID" required>
       <label for="password">Enter your Password (min. 6 characters)</label>
       <div class="password-container">
-        <input type="password" id="password" aria-label="Password" required>
-        <input type="checkbox" id="show-password"> Show Password
+        <input type="password" id="password" aria-label="Password" aria-describedby="password-hint" required>
+        <label><input type="checkbox" id="show-password"> Show Password</label>
       </div>
-      <span class="password-hint">Password must contain at least 6 characters.</span>
+      <span class="password-hint" id="password-hint">Password must contain at least 6 characters.</span>
       <button class="button" type="reset">Clear Inputs</button>
       <button class="button" type="submit">Create Account</button>
       <!-- <p>or</p>
