@@ -87,8 +87,9 @@
             <p>Unleash your creativity with this tool and give shape to your imagination!</p>
             <div class="container">
                 <div class="inputArea">
-                    <textarea id="imgPrompt" placeholder="Type your prompt here..."></textarea>
-                    <button class="btn" onclick="sendPrompt()">Generate Image</button>
+                    <label for="imgPrompt" class="w3-label">Image Prompt</label>
+                    <textarea id="imgPrompt" class="w3-input w3-border" placeholder="Describe the image you want to create. For example: 'A majestic lion in the savanna at sunset'"></textarea>
+                    <button id="generateBtn" class="btn" onclick="sendPrompt()">Generate Image</button>
                 </div>
                 <div class="img-box" id="imgBox"></div>
             </div>

@@ -68,3 +68,21 @@ h2 {
     padding: 8px;
 }
 
+#downloadContainer {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#downloadBtn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#downloadBtn:hover {
+    background-color: #45a049;
+}
