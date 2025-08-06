@@ -128,5 +128,31 @@ document.getElementById('pagination').innerHTML = `
   <button id="nextBtn" onclick="nextPage()">Next 7 days</button>
 `;
 
+function sortArticles(sortOption) {
+  switch (sortOption) {
+    case 'popular':
+      sortedArticles.sort(([, a], [, b]) => (b.viewCount || 0) - (a.viewCount || 0));
+      break;
+    case 'latest':
+      sortedArticles.sort(([, a], [, b]) => new Date(b.publishDate) - new Date(a.publishDate));
+      break;
+    case 'oldest':
+      sortedArticles.sort(([, a], [, b]) => new Date(a.publishDate) - new Date(b.publishDate));
+      break;
+    default:
+      // Default to sorting by latest
+      sortedArticles.sort(([, a], [, b]) => new Date(b.publishDate) - new Date(a.publishDate));
+      break;
+  }
+  currentPage = 0; // Reset to the first page
+  displayArticles();
+}
+
 // Initial display
 displayArticles();
+
+
+// sort articles
+document.getElementById('sort-by').addEventListener('change', function () {
+  sortArticles(this.value);
+});
