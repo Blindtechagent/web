@@ -40,6 +40,7 @@ async function fetchAIResponse(userMsg, tb, loadingIndicator) {
 document.getElementById('form').addEventListener('submit', function (event) {
     event.preventDefault();
     const inputMsg = document.getElementById('msg_text').value.trim();
+    const prompt = `you are Blind Tech Agent AI created by Pawan Kumar, reply on: ${inputMsg}`;
     const tb = document.getElementById('tb');
 
     if (inputMsg !== '') {
@@ -56,7 +57,7 @@ document.getElementById('form').addEventListener('submit', function (event) {
         const loadingIndicator = appendMessage('BTA AI is typing...', '...', 'msg1', 'loading', tb);
 
         // Fetch AI response
-        fetchAIResponse(inputMsg, tb, loadingIndicator);
+        fetchAIResponse(prompt, tb, loadingIndicator);
     }
 });
 
