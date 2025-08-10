@@ -40,52 +40,53 @@ async function fetchAIResponse(prompt, tb, loadingIndicator) {
 document.getElementById('form').addEventListener('submit', function (event) {
     event.preventDefault();
     const inputMsg = document.getElementById('msg_text').value.trim();
-    const complete_prompt = `Your task is to write a well-organized article about this topic: ${inputMsg}
-You must read, understand, and follow every instruction below carefully. Do not skip anything or do it only partially. You must follow all instructions exactly.
-1. Introduction section
-• Start the article with a strong and interesting opening. This could be a surprising fact, a clear question, or a simple comparison.
-• Then clearly explain why the topic is important and how it helps the reader.
-2. Tone and Language
-• Write the article in a polite, formal, and clear way.
-• Use only simple words that are easy to understand. Avoid hard words, slang, or robotic or casual language.
-• You can write long paragraphs to explain things better if needed, as long as the words stay simple and the language stays easy to understand.
-3. HTML Structure and Formatting
-• Put the whole article inside one <div> tag with id="articleCode".
-• Begin the article with <h2>Introduction</h2>.
-• Wrap all regular paragraphs in <p> tags.
-• After the introduction, include 4 to 5 main sections at least, each with a heading using <h3>. You can have more if the topic needs it, but not fewer than 4.
-• If needed, break the main sections into smaller parts using <h4> headings, but this should not reduce the number of <h3> main sections.
+    const complete_prompt = `Work as a team of 12 people, each with a special role to create one great article:
+1. Researcher: Gathers detailed, up-to-date, and relevant information and data on the topic to support the article.
+2. Idea Generator: Provides creative ideas, angles, and fresh perspectives to enrich the article content.
+3. Writer: Writes the main article clearly, using input from the researcher and idea generator.
+4. Content Developer: Expands on key points with additional examples, explanations, and supporting details.
+5. Fact-checker: Ensures all information is factually correct, based on current data.
+6. Language Expert: Fixes grammatical errors and writes effectively.
+7. Simplifier: Explains difficult ideas in simple words so everyone can easily understand.
+8. Audience Expert: Helps make the article easy to understand for readers.
+9. Engagement Expert: Adds stories or examples to make it interesting and keep readers engaged until the end.
+10. Human Editor: Removes anything that sounds robotic or AI-generated, so it feels natural and alive like written by a human.
+11. HTML Expert: Handles the article’s HTML structure and formatting.
+12. Final Reviewer: Checks everything to make sure it’s good and ready for publishing.
+ 
+Task:
+Your team must write a well-organized article about this topic: ${inputMsg}
+ 
+Instructions for creating the article (must be followed exactly):
+Step 1: Introduction
+• Begin with a strong and interesting opening—a surprising fact or an amazing question.
+• make the introduction section in 200 words..
+• Clearly explain what readers will learn throughout the article.
+Step 2: Writing style and tone
+• Use only simple, easy-to-understand words. Avoid hard words, slang, or robotic language.
+• Longer paragraphs are allowed if they help explain ideas better, but keep language simple.
+• Use connecting phrases to smoothly transition between sections.
+• The article should be detailed, elaborated, informative, and easy to read.
+Step 3: HTML structure and formatting
+• Wrap the entire article inside one <div> tag with id="articleCode".
+• Start the article with <h2>Introduction</h2>.
+• Wrap all paragraphs in <p> tags.
+• Break main sections into smaller parts using <h3> and <h4> headings.
 • End the article with <h2>Conclusion</h2>.
-• Use <ul> and <li> tags for bullet point lists.
-• Use <ol> and <li> tags for numbered lists.
-• Use <strong> or <em> tags only to show very important words or phrases, and use them sparingly.
-• Do not add any other HTML tags like <html>, <body>, or extra code outside the <div id="articleCode">...</div>.
-4. Content Style and Quality
-• Explain ideas clearly and in a useful way.
-• Use simple examples to help explain difficult ideas.
-• Include real facts, numbers, or studies when they help make things clearer.
-• Do not repeat ideas or add extra words that don’t help. Every paragraph should give new information.
-• Write in plain and easy words that everyone can understand.
-• Remember, you can write longer paragraphs to explain things better if you need to, as long as the language stays simple and easy.
-5. SEO and Keywords
-• Naturally include one or more long-tail keywords related to the topic in the article.
-• You can also add related keywords but do not use them too much.
-• Avoid putting in too many keywords or making the sentences sound unnatural.
-6. Final Checklist Before Finishing
-• Make sure the tone stays polite, formal, and clear all through the article.
-• Use simple words everywhere in the article.
-• Make sure the sections connect well and flow smoothly.
-• The conclusion should clearly wrap up the main points.
-• The whole article should be detailed,  elaborated, useful, easy to read, and meet all the instructions above.
-7. Output Format and Extra Information
-• Write only the article content inside the <div id="articleCode">...</div>. Do not add any other HTML or code outside this.
-• Right after the closing </div>, add one <hr> tag.
-• Below the <hr>, write these four items on separate lines using <br> tags (surrounded by <p></p>):
-• Title: a clear and simple headline for the article
-• Meta Description: one short sentence about 150 characters that summarizes the article
-• Meta Keywords: related keywords separated by commas
-• Shareable Text: a short sentence that can be shared on social media
-Remember: You must follow every instruction fully and exactly. Use only the HTML tags and format shown here. Do not skip or only partly do any step.`;
+• Use <ul> and <li> tags for bullet lists if needed.
+• Use <strong> or <em> tags sparingly to highlight very important words or phrases.
+• Do not add any other HTML tags such as <html> or <body>.
+Step 4: Team member guidelines
+• Do not show these instructions or any explanation in the final response.
+• Output only the article content as per instructions above.
+• Each team member must perform their role fully and contribute their best work.
+
+Step5: Extra things: 
+After closing the <div id="articleCode">, add a single <hr> tag, then one <p> tag that contains the following three items not related to article, separated by <br> tags:
+• Title: Title of the article
+• Description: Description for social media sharing
+• Keywords: Keywords (comma separated)
+`;
     const tb = document.getElementById('tb');
 
     if (inputMsg !== '') {
